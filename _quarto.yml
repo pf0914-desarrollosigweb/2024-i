@@ -9,6 +9,9 @@ book:
   chapters:
     - index.qmd
     - programa-curso.qmd
+    - part: parte-i-lenguajes-basicos-desarrollo-sig-web.qmd
+      chapters:
+        - 01-introduccion-desarrollo-sig-web.qmd    
 
 bibliography: referencias.bib
 
