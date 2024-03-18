@@ -12,6 +12,7 @@ book:
     - part: parte-i-lenguajes-basicos-desarrollo-sig-web.qmd
       chapters:
         - 01-introduccion-desarrollo-sig-web.qmd    
+        - 02-html.qmd
 
 bibliography: referencias.bib
 

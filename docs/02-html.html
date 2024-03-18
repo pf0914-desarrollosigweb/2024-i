@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - 2&nbsp; El Lenguaje de marcado de hipertexto (HTML)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./01-introduccion-desarrollo-sig-web.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-i-lenguajes-basicos-desarrollo-sig-web.html">I - Lenguajes básicos para desarrollo de SIG en la Web</a></li><li class="breadcrumb-item"><a href="./02-html.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./programa-curso.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Programa del curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./parte-i-lenguajes-basicos-desarrollo-sig-web.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">I - Lenguajes básicos para desarrollo de SIG en la Web</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-desarrollo-sig-web.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción al desarrollo de SIG en la Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-html.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">2.1</span> Introducción</a></li>
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link" data-scroll-target="#conceptos-básicos"><span class="header-section-number">2.2</span> Conceptos básicos</a>
+  <ul class="collapse">
+  <li><a href="#elementos" id="toc-elementos" class="nav-link" data-scroll-target="#elementos"><span class="header-section-number">2.2.1</span> Elementos</a></li>
+  <li><a href="#atributos" id="toc-atributos" class="nav-link" data-scroll-target="#atributos"><span class="header-section-number">2.2.2</span> Atributos</a></li>
+  <li><a href="#elementos-anidados-y-elementos-vacíos" id="toc-elementos-anidados-y-elementos-vacíos" class="nav-link" data-scroll-target="#elementos-anidados-y-elementos-vacíos"><span class="header-section-number">2.2.3</span> Elementos anidados y elementos vacíos</a></li>
+  <li><a href="#comentarios" id="toc-comentarios" class="nav-link" data-scroll-target="#comentarios"><span class="header-section-number">2.2.4</span> Comentarios</a></li>
+  </ul></li>
+  <li><a href="#principales-elementos" id="toc-principales-elementos" class="nav-link" data-scroll-target="#principales-elementos"><span class="header-section-number">2.3</span> Principales elementos</a>
+  <ul class="collapse">
+  <li><a href="#doctype" id="toc-doctype" class="nav-link" data-scroll-target="#doctype"><span class="header-section-number">2.3.1</span> <code>DOCTYPE</code></a></li>
+  <li><a href="#el-elemento-html" id="toc-el-elemento-html" class="nav-link" data-scroll-target="#el-elemento-html"><span class="header-section-number">2.3.2</span> El elemento <code>html</code></a></li>
+  <li><a href="#el-elemento-head" id="toc-el-elemento-head" class="nav-link" data-scroll-target="#el-elemento-head"><span class="header-section-number">2.3.3</span> El elemento <code>head</code></a></li>
+  <li><a href="#el-elemento-meta" id="toc-el-elemento-meta" class="nav-link" data-scroll-target="#el-elemento-meta"><span class="header-section-number">2.3.4</span> El elemento <code>meta</code></a></li>
+  <li><a href="#el-elemento-title" id="toc-el-elemento-title" class="nav-link" data-scroll-target="#el-elemento-title"><span class="header-section-number">2.3.5</span> El elemento <code>title</code></a></li>
+  <li><a href="#el-elemento-link" id="toc-el-elemento-link" class="nav-link" data-scroll-target="#el-elemento-link"><span class="header-section-number">2.3.6</span> El elemento <code>link</code></a></li>
+  <li><a href="#el-elemento-script" id="toc-el-elemento-script" class="nav-link" data-scroll-target="#el-elemento-script"><span class="header-section-number">2.3.7</span> El elemento <code>script</code></a></li>
+  <li><a href="#el-elemento-body" id="toc-el-elemento-body" class="nav-link" data-scroll-target="#el-elemento-body"><span class="header-section-number">2.3.8</span> El elemento <code>body</code></a></li>
+  <li><a href="#los-elementos-h1---h6" id="toc-los-elementos-h1---h6" class="nav-link" data-scroll-target="#los-elementos-h1---h6"><span class="header-section-number">2.3.9</span> Los elementos <code>h1</code> - <code>h6</code></a></li>
+  <li><a href="#el-elemento-p" id="toc-el-elemento-p" class="nav-link" data-scroll-target="#el-elemento-p"><span class="header-section-number">2.3.10</span> El elemento <code>p</code></a></li>
+  <li><a href="#el-elemento-br" id="toc-el-elemento-br" class="nav-link" data-scroll-target="#el-elemento-br"><span class="header-section-number">2.3.11</span> El elemento <code>br</code></a></li>
+  <li><a href="#el-elemento-strong" id="toc-el-elemento-strong" class="nav-link" data-scroll-target="#el-elemento-strong"><span class="header-section-number">2.3.12</span> El elemento <code>strong</code></a></li>
+  <li><a href="#el-elemento-em" id="toc-el-elemento-em" class="nav-link" data-scroll-target="#el-elemento-em"><span class="header-section-number">2.3.13</span> El elemento <code>em</code></a></li>
+  <li><a href="#el-elemento-a" id="toc-el-elemento-a" class="nav-link" data-scroll-target="#el-elemento-a"><span class="header-section-number">2.3.14</span> El elemento <code>a</code></a></li>
+  <li><a href="#el-elemento-img" id="toc-el-elemento-img" class="nav-link" data-scroll-target="#el-elemento-img"><span class="header-section-number">2.3.15</span> El elemento <code>img</code></a></li>
+  <li><a href="#el-elemento-ul" id="toc-el-elemento-ul" class="nav-link" data-scroll-target="#el-elemento-ul"><span class="header-section-number">2.3.16</span> El elemento <code>ul</code></a></li>
+  <li><a href="#el-elemento-ol" id="toc-el-elemento-ol" class="nav-link" data-scroll-target="#el-elemento-ol"><span class="header-section-number">2.3.17</span> El elemento <code>ol</code></a></li>
+  <li><a href="#el-elemento-table" id="toc-el-elemento-table" class="nav-link" data-scroll-target="#el-elemento-table"><span class="header-section-number">2.3.18</span> El elemento <code>table</code></a></li>
+  <li><a href="#el-elemento-div" id="toc-el-elemento-div" class="nav-link" data-scroll-target="#el-elemento-div"><span class="header-section-number">2.3.19</span> El elemento <code>div</code></a></li>
+  </ul></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales"><span class="header-section-number">2.4</span> Recursos adicionales</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-i-lenguajes-basicos-desarrollo-sig-web.html">I - Lenguajes básicos para desarrollo de SIG en la Web</a></li><li class="breadcrumb-item"><a href="./02-html.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-pencom" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">2.1</span> Introducción</h2>
+<p>El <a href="https://html.spec.whatwg.org/">Lenguaje de Marcado de Hipertexto o HTML</a> (siglas en inglés de <em>Hypertext Markup Language</em>) es el lenguaje de marcas estándar para documentos diseñados para desplegarse en un navegador web. El término “hipertexto” hace referencia a los enlaces que conectan páginas web entre sí, ya sea dentro de un mismo sitio web o entre diferentes sitios web (ej. <a href="http://info.cern.ch/">este es un enlace al primer sitio web</a>). El HTML fue creado en 1990 por Tim Berners-Lee. Junto con <a href="https://www.w3.org/TR/CSS/#css">Hojas de Estilo en Cascada o CSS</a> (siglas en inglés de <em>Cascading Style Sheets</em>) y <a href="https://es.wikipedia.org/wiki/JavaScript">JavaScript</a> conforma el grupo de las tres tecnologías principales de la Web.</p>
+<p>El HTML especifica la estructura y la semántica de una página web mediante marcas (también llamadas etiquetas) o <em>tags</em>. Un navegador web recibe documentos HTML desde un servidor web (o desde almacenamiento local) y despliega sus componentes (textos, imágenes, hiperenlaces, etc.) de acuerdo con las especificaciones contenidas en los <em>tags.</em> Se recomienda que los documentos HTML no contengan componentes de presentación ni de interactivdad y que estos sean implementados mediante CSS y JavaScript.</p>
+<p>EL HTML es un estándar del <a href="https://www.w3.org/">World Wide Web Consortium (W3C)</a>, un consorcio internacional creado por Tim Berners-Lee en 1994 que genera recomendaciones y estándares que aseguran el crecimiento de la WWW a largo plazo. La versión más reciente del estándar es <a href="https://www.w3.org/TR/2017/REC-html52-20171214/">HTML5</a> y se caracteriza por incluir soporte para los tipos más recientes de multimedios y reducir la necesidad de plataformas propietarias (ej. Adobe Flash) para su incorporación en páginas web que pueden desplegarse en diferentes tipos de dispositivos y tamaños de pantallas (computadoras, tabletas, teléfonos, pantallas gigantes, etc.).</p>
+<p>El siguiente es un ejemplo de un documento HTML, el cual contiene, entre otras, etiquetas que especifican el lenguaje, el título y el cuerpo del documento, además de comentarios (que no son desplegados por el navegador web).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"es"</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"UTF-8"</span><span class="dt">&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Ejemplo de documento HTML<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span>     </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- Comentario --&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    Contenido de documento HTML.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conceptos-básicos" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="conceptos-básicos"><span class="header-section-number">2.2</span> Conceptos básicos</h2>
+<section id="elementos" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="elementos"><span class="header-section-number">2.2.1</span> Elementos</h3>
+<p>Un documento HTML está compuesto por <strong>elementos</strong>, como el que muestra en la <a href="#fig-html-elemento-componentes" class="quarto-xref">Figura&nbsp;<span>2.1</span></a>.</p>
+<div id="fig-html-elemento-componentes" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Componentes de un elemento HTML">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-html-elemento-componentes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/html-elemento-componentes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="img/html-elemento-componentes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Componentes de un elemento HTML"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-html-elemento-componentes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.1: Componentes de un elemento HTML. Fuente: <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/HTML_basics">MDN Web Docs</a>.
+</figcaption>
+</figure>
+</div>
+<p>Los componentes de un elemento HTML son:</p>
+<ol type="1">
+<li><strong>La etiqueta de apertura</strong>: consiste del nombre del elemento (en este caso <code>p</code>, correspondiente a un párrafo), encerrado por paréntesis angulares (&lt; &gt;) de apertura y cierre. Establece el inicio del elemento —en este caso, donde es el comienzo del párrafo—.</li>
+<li><strong>El contenido</strong>: este es el contenido del elemento, que en este caso es solamente texto. También pueden usarse imágenes, hipervínculos, direcciones web u otros elementos HTML.</li>
+<li><strong>La etiqueta de cierre</strong>: es similar que la etiqueta de apertura, pero incluye una barra de cierre (/) antes del nombre de la etiqueta. Establece el final del elemento —en este caso, en donde termina el párrafo—.</li>
+</ol>
+</section>
+<section id="atributos" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="atributos"><span class="header-section-number">2.2.2</span> Atributos</h3>
+<p>Los elementos HTML pueden tener <strong>atributos</strong>, como el que se muestra en la <a href="#fig-html-elemento-atributos" class="quarto-xref">Figura&nbsp;<span>2.2</span></a>.</p>
+<div id="fig-html-elemento-atributos" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Ejemplo de atributo de un elemento HTML">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-html-elemento-atributos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="img/html-elemento-atributos.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="img/html-elemento-atributos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Ejemplo de atributo de un elemento HTML"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-html-elemento-atributos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.2: Ejemplo de atributo de un elemento HTML. Fuente: <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/HTML_basics">MDN Web Docs</a>.
+</figcaption>
+</figure>
+</div>
+<p>Los atributos proporcionan información adicional acerca del elemento, la cual no se despliega en su contenido. Los atributos se especifican en la etiqueta de apertura mediante la sintaxis <code>nombre_atributo=valor</code>. En la <a href="#fig-html-elemento-atributos" class="quarto-xref">Figura&nbsp;<span>2.2</span></a>, <code>class</code> es el nombre del atributo y <code>editor-note</code> su valor (<code>class</code> es un atributo que permite asociar al elemento con una clase o grupo de elementos, lo que puede ser útil para asignarles de manera conjunta estilos y otras propiedades). Si un elemento tiene varios atributos, deben separarse con (al menos) un espacio en blanco. Si el valor del atributo contiene espacios, debe encerrarse entre comillas dobles (““) o simples (’’). Se considera una buena práctica entrecomillar los valores de atributos aunque no contengan espacios, para mejorar la legibilidad.</p>
+<p>Cada elemento tiene una lista de atributos que puede usar. Existen <a href="https://developer.mozilla.org/es/docs/Web/HTML/Global_attributes">atributos globales</a>, que pueden usarse en todos los elementos.</p>
+</section>
+<section id="elementos-anidados-y-elementos-vacíos" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="elementos-anidados-y-elementos-vacíos"><span class="header-section-number">2.2.3</span> Elementos anidados y elementos vacíos</h3>
+<p>Un elemento HTML puede contener otros elementos. A estos elementos se les llama <strong>elementos anidados</strong>. Por ejemplo:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Mi gato es muy <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>gruñón<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El elemento anterior también puede escribirse así:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    Mi gato es muy <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>gruñón<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+La tabulación es opcional, pero ayuda a mejorar la legibilidad. En ambos casos, el resultado es:
+<p>
+Mi gato es muy <strong>gruñón</strong>
+</p>
+<p>Algunos elementos no tienen contenido, solamente atributos. Estos elementos se denominan <strong>elementos vacíos</strong>. Por ejemplo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"img/html-elemento-atributos.png"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Atributo HTML"</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Como puede observarse, el elemento <code>img</code>, el cual se usa para incluir una imagen, no tiene una etiqueta de cierre y, por lo tanto, no puede especificar contenido.</p>
+</section>
+<section id="comentarios" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="comentarios"><span class="header-section-number">2.2.4</span> Comentarios</h3>
+<p>Las etiquetas <code>&lt;!--</code> y <code>--&gt;</code> marcan el inicio y el final de cadenas de caracteres que no son interpretadas como código HTML por los navegadores web y, por lo tanto, no se despliegan. Estos “comentarios” pueden ser utilizados para explicar la lógica del documento HTML o realizar cualquier tipo de anotación. Como en el caso de los comentarios de los lenguajes de programación, se recomienda utilizar comentarios en HTML para facilitar la comprensión del código.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Esto es un comentario --&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Esto es un párrafo.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="principales-elementos" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="principales-elementos"><span class="header-section-number">2.3</span> Principales elementos</h2>
+<p>A continuación, se describen y se ejemplifican algunos de los principales elementos de HTML.</p>
+<section id="doctype" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="doctype"><span class="header-section-number">2.3.1</span> <code>DOCTYPE</code></h3>
+<p><a href="https://developer.mozilla.org/es/docs/Glossary/Doctype"><code>DOCTYPE</code></a> (tipo de documento) le informa al navegador web cual es la versión HTML de un documento. No es una etiqueta ni un elemento HTML. Más bien es una declaración que le permite al navegador saber como interpretar los elementos HTML que hay en el resto del documento. Se coloca al inicio del documento.</p>
+<p>La siguiente etiqueta <code>DOCTYPE</code> especifica que el documento usa HTML5.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE</span> html<span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-html" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="el-elemento-html"><span class="header-section-number">2.3.2</span> El elemento <code>html</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/html"><code>html</code></a> es el elemento raíz de un documento y contiene el resto de los elementos.</p>
+<p>El siguiente elemento <code>html</code> especifica el lenguaje del documento a través del atributo globlal <a href="https://developer.mozilla.org/es/docs/Web/HTML/Global_attributes/lang"><code>lang</code></a>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">"es"</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-head" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="el-elemento-head"><span class="header-section-number">2.3.3</span> El elemento <code>head</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/head"><code>head</code></a> contiene los metadatos del documento y otros elementos como su título y referencias a <em>scripts</em> y hojas de estilo (CSS).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"UTF-8"</span><span class="dt">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Título del documento<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"css/estilos.css"</span><span class="dt">&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"js/scripts.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span>        </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-meta" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="el-elemento-meta"><span class="header-section-number">2.3.4</span> El elemento <code>meta</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/meta"><code>meta</code></a> especifica metadatos del documento tales como su autor, descripción, palabras clave y juego de caracteres, entre otros.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">"UTF-8"</span><span class="dt">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">"author"</span><span class="ot"> content</span><span class="op">=</span><span class="st">"Manuel Vargas"</span><span class="dt">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">"description"</span><span class="ot"> content</span><span class="op">=</span><span class="st">"Curso introductorio de programación"</span><span class="dt">&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> name</span><span class="op">=</span><span class="st">"keywords"</span><span class="ot"> content</span><span class="op">=</span><span class="st">"Python, programación"</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-title" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="el-elemento-title"><span class="header-section-number">2.3.5</span> El elemento <code>title</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/title"><code>title</code></a> especifica el título del documento, el cual se muestra en la parte superior de la ventana (o pestaña del navegador). Es un elemento obligatorio de todo documento HTML válido y debe estar ubicado dentro del elemento <code>head</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Curso de programación en Python<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-link" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="el-elemento-link"><span class="header-section-number">2.3.6</span> El elemento <code>link</code></h3>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/link"><code>link</code></a> especifica la relación entre el documento actual y un recurso externo, como una hoja de estilos.</p>
+<p>Enlace a la hoja de estilos de la biblioteca geoespacial <a href="https://leafletjs.com/">Leaflet</a>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"</span><span class="ot"> integrity</span><span class="op">=</span><span class="st">"sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="</span><span class="ot"> crossorigin</span><span class="op">=</span><span class="st">""</span><span class="dt">/&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-script" class="level3" data-number="2.3.7">
+<h3 data-number="2.3.7" class="anchored" data-anchor-id="el-elemento-script"><span class="header-section-number">2.3.7</span> El elemento <code>script</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>script</code></a> se utiliza para incluir código de algún lenguaje de programación, típicamente JavaScript, aunque también usarse con otros lenguajes y sintaxis (ej. <a href="https://www.json.org/json-en.html">JSON</a>).</p>
+<p>Enlace al código JavaScript de la biblioteca geoespacial <a href="https://leafletjs.com/">Leaflet</a>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"</span><span class="ot"> integrity</span><span class="op">=</span><span class="st">"sha512XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="</span><span class="ot"> crossorigin</span><span class="op">=</span><span class="st">""</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="el-elemento-body" class="level3" data-number="2.3.8">
+<h3 data-number="2.3.8" class="anchored" data-anchor-id="el-elemento-body"><span class="header-section-number">2.3.8</span> El elemento <code>body</code></h3>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/body"><code>body</code></a> especifica el contenido principal del documento (texto, multimedia, hipervínculos, etc.).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.python.org/"</span><span class="dt">&gt;</span>Python<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> es un lenguaje de programación creado por Guido van Rossum.</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="los-elementos-h1---h6" class="level3" data-number="2.3.9">
+<h3 data-number="2.3.9" class="anchored"><span class="header-section-number">2.3.9</span> Los elementos <code>h1</code> - <code>h6</code></h3>
+<p>Los elementos <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/Heading_Elements"><code>h1-h6</code></a> (<code>h1, h2, h3, h4, h5, h6</code>) definen encabezados (<em>headings</em>) de seis niveles. <code>h1</code> es el encabezado de mayor nivel (con letras más grandes) y <code>h6</code> el de menor nivel.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Encabezado de nivel 1<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Encabezado de nivel 2<span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Encabezado de nivel 3<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Encabezado de nivel 3<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>Encabezado de nivel 2<span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Encabezado de nivel 3<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Encabezado de nivel 3<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<h1>
+Encabezado de nivel 1
+</h1>
+<h2 class="anchored" data-anchor-id="los-elementos-h1---h6">
+Encabezado de nivel 2
+</h2><h2 class="anchored">
+</h2><h3 class="anchored">
+Encabezado de nivel 3
+</h3>
+<h3 class="anchored">
+Encabezado de nivel 3
+</h3>
+<h2 class="anchored">
+Encabezado de nivel 2
+</h2><h2 class="anchored">
+</h2><h3 class="anchored">
+Encabezado de nivel 3
+</h3>
+<h3 class="anchored">
+Encabezado de nivel 3
+</h3>
+</section>
+<section id="el-elemento-p" class="level3" data-number="2.3.10">
+<h3 data-number="2.3.10" class="anchored" data-anchor-id="el-elemento-p"><span class="header-section-number">2.3.10</span> El elemento <code>p</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/p"><code>p</code></a> define un párrafo (i.e.&nbsp;texto o elementos HTML delimitados por líneas en blanco al principio y al final). La etiqueta de cierre es opcional. Una etiqueta <code>&lt;p&gt;</code> sola genera una línea en blanco.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Python es un lenguaje de programación de propósito general ...<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Fue creado en 1989 por Guido van Rossum...<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<p>
+Python es un lenguaje de programación de propósito general …
+</p>
+<p>
+Fue creado en 1989 por Guido van Rossum…
+</p>
+</section>
+<section id="el-elemento-br" class="level3" data-number="2.3.11">
+<h3 data-number="2.3.11" class="anchored" data-anchor-id="el-elemento-br"><span class="header-section-number">2.3.11</span> El elemento <code>br</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/br"><code>br</code></a> (<em>line break</em>) genera un salto de línea (o “retorno de carro”) en el documento. No debe usarse para incrementar el espacio entre los parrafos. Para eso se recomienda utilizar el elemento <code>p</code> u hojas de estilo.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Mozilla Foundation<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>1981 Landings Drive<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Building K<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>Mountain View, CA 94043-0801<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>USA</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se visualiza así: Mozilla Foundation<br> 1981 Landings Drive<br> Building K<br> Mountain View, CA 94043-0801<br> USA</p>
+</section>
+<section id="el-elemento-strong" class="level3" data-number="2.3.12">
+<h3 data-number="2.3.12" class="anchored" data-anchor-id="el-elemento-strong"><span class="header-section-number">2.3.12</span> El elemento <code>strong</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/strong"><code>strong</code></a> se utiliza para denotar la importancia de una parte del texto. Los navegadores acostumbran usar letra en negrita para implementar este elemento. Sin embargo, no debe utilizarse para simplemente escribir un texto en negrita. Para eso, se recomienda emplear la propiedad <a href="https://developer.mozilla.org/es/docs/Web/CSS/font-weight"><code>font-weight</code></a> de CSS.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>"... the most important rule, the rule you can never forget, no matter how much he cries, no matter how much he begs: <span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>never feed him after midnight<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;</span>."<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<p>
+“… the most important rule, the rule you can never forget, no matter how much he cries, no matter how much he begs: <strong>never feed him after midnight</strong>.”
+</p>
+<p>Los elementos semánticos (i.e que pretenden transmitir un significado) como <code>strong</code> y <code>em</code> facilitan la comprensión de textos por parte de personas y también programas. Por ejemplo, los <a href="https://es.wikipedia.org/wiki/Lector_de_pantalla">lectores de pantalla</a> pueden utilizar estos elementos para pronunciar las palabras con mayor fuerza o volumen.</p>
+</section>
+<section id="el-elemento-em" class="level3" data-number="2.3.13">
+<h3 data-number="2.3.13" class="anchored" data-anchor-id="el-elemento-em"><span class="header-section-number">2.3.13</span> El elemento <code>em</code></h3>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/em"><code>em</code></a> marca un fragmento de texto al que se se da un énfasis particular. Puede utilizarse de forma anidada, con cada nivel de anidamiento indicando un mayor grado de énfasis. Los navegadores acostumbran usar letra en itálica para implementar este elemento. Sin embargo, no debe utilizarse para simplemente escribir un texto en itálica. Para eso, se recomienda emplear la propiedad <a href="https://developer.mozilla.org/es/docs/Web/CSS/font-style"><code>font-style</code></a> de CSS.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Tenemos que <span class="dt">&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>hacer<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> algo al respecto.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<p>
+Tenemos que <em>hacer</em> algo al respecto.
+</p>
+<p>Los elementos semánticos (i.e que pretenden transmitir un significado) como <code>strong</code> y <code>em</code> facilitan la comprensión de textos por parte de personas y también programas. Por ejemplo, los <a href="https://es.wikipedia.org/wiki/Lector_de_pantalla">lectores de pantalla</a> pueden utilizar estos elementos para pronunciar las palabras con mayor fuerza o volumen.</p>
+</section>
+<section id="el-elemento-a" class="level3" data-number="2.3.14">
+<h3 data-number="2.3.14" class="anchored" data-anchor-id="el-elemento-a"><span class="header-section-number">2.3.14</span> El elemento <code>a</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/a"><code>a</code></a> (<em>anchor</em> o ancla) crea un hipervínculo a otro documento HTML, a un archivo, a una dirección de email o a cualquier otro tipo de URL <a href="https://es.wikipedia.org/wiki/Localizador_de_recursos_uniforme">(<em>Uniform Resource Locator</em> o localizador de recursos uniforme)</a>. El atributo <code>href</code> especifica el URL. El contenido del elemento especifica el texto que se le muestra al usuario en el enlace.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://www.python.org/"</span><span class="dt">&gt;</span>El lenguaje de programación Python<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se visualiza así: <a href="https://www.python.org/">El lenguaje de programación Python</a></p>
+</section>
+<section id="el-elemento-img" class="level3" data-number="2.3.15">
+<h3 data-number="2.3.15" class="anchored" data-anchor-id="el-elemento-img"><span class="header-section-number">2.3.15</span> El elemento <code>img</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/img"><code>img</code></a> inserta una imagen en un documento. Solo usa la etiqueta de apertura. El atributo <code>src</code> especifica el URL de la imagen y el atributo <code>alt</code> una descripción textual de la imagen. Los atributos <code>height</code> y <code>width</code> especifican, en pixeles, la altura y el ancho de la imagen respectivamente.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"img/python-logo.png"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Logo de Python"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"100"</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se visualiza así:<br>
+<img src="img/python-logo.png" alt="Logo de Python" height="100"></p>
+</section>
+<section id="el-elemento-ul" class="level3" data-number="2.3.16">
+<h3 data-number="2.3.16" class="anchored" data-anchor-id="el-elemento-ul"><span class="header-section-number">2.3.16</span> El elemento <code>ul</code></h3>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/ul"><code>ul</code></a> define una lista <strong>no ordenada</strong> cuyos ítems se especifican mediante el elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/li"><code>li</code></a> (<em>list item</em>).</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Azúcar<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Harina<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Limones<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Arroz<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<ul>
+<li>
+Azúcar
+</li>
+<li>
+Harina
+</li>
+<li>
+Limones
+</li>
+<li>
+Arroz
+</li>
+</ul>
+</section>
+<section id="el-elemento-ol" class="level3" data-number="2.3.17">
+<h3 data-number="2.3.17" class="anchored" data-anchor-id="el-elemento-ol"><span class="header-section-number">2.3.17</span> El elemento <code>ol</code></h3>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/ol"><code>ol</code></a> define una lista <strong>ordenada</strong> cuyos ítems se especifican mediante el elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/li"><code>li</code></a> (<em>list item</em>).</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ol</span><span class="dt">&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Azúcar<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Harina<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Limones<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>Arroz<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ol</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<ol>
+<li>
+Azúcar
+</li>
+<li>
+Harina
+</li>
+<li>
+Limones
+</li>
+<li>
+Arroz
+</li>
+</ol>
+</section>
+<section id="el-elemento-table" class="level3" data-number="2.3.18">
+<h3 data-number="2.3.18" class="anchored" data-anchor-id="el-elemento-table"><span class="header-section-number">2.3.18</span> El elemento <code>table</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/table"><code>table</code></a> se utiliza para presentar datos en filas y columnas. Los elementos <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead"><code>thead</code></a> y <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody"><code>tbody</code></a> especifican el encabezado y el cuerpo de la tabla, respectivamente. El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/tr"><code>tr</code></a> especifica las filas y <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/td"><code>td</code></a> las columnas o las celdas. <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/th"><code>th</code></a> se usa en las celdas de los encabezados.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">table</span><span class="dt">&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">th</span><span class="ot"> colspan</span><span class="op">=</span><span class="st">"2"</span><span class="dt">&gt;</span>Encabezado de la tabla<span class="dt">&lt;/</span><span class="kw">th</span><span class="dt">&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">thead</span><span class="dt">&gt;</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Fila 1,columna 1<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Fila 1,columna 2<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Fila 2,columna 1<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;&lt;</span><span class="kw">td</span><span class="dt">&gt;</span>Fila 2,columna 2<span class="dt">&lt;/</span><span class="kw">td</span><span class="dt">&gt;</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">tr</span><span class="dt">&gt;</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">tbody</span><span class="dt">&gt;</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">table</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Se visualiza así:
+<table>
+<thead>
+<tr>
+<th colspan="2">
+Encabezado de la tabla
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Fila 1,columna 1
+</td>
+<td>
+Fila 1,columna 2
+</td>
+</tr>
+<tr>
+<td>
+Fila 2,columna 1
+</td>
+<td>
+Fila 2,columna 2
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="el-elemento-div" class="level3" data-number="2.3.19">
+<h3 data-number="2.3.19" class="anchored" data-anchor-id="el-elemento-div"><span class="header-section-number">2.3.19</span> El elemento <code>div</code></h3>
+<p>El elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/div"><code>div</code></a> se utiliza para definir secciones o agrupar contenidos en un documento.</p>
+<p>En el ejemplo siguiente, <code>div</code> se emplea para asignar colores diferentes a dos partes de un documento:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">"background-color:#F00;"</span><span class="dt">&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Sección roja<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Esta sección tiene fondo rojo.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">"background-color:#0F0;"</span><span class="dt">&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Sección verde<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Esta sección tiene fondo verde.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="recursos-adicionales" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="recursos-adicionales"><span class="header-section-number">2.4</span> Recursos adicionales</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTML">HTML: Lenguaje de marcas de hipertexto | MDN</a></li>
+<li><a href="https://www.w3schools.com/html/">HTML Tutorial | W3Schools</a></li>
+<li><a href="https://validator.w3.org/">The W3C Markup Validation Service</a></li>
+</ul>
+
+
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figura&nbsp;2.1: Componentes de un elemento HTML. Fuente: <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/HTML_basics">MDN Web Docs</a>.</span>
+<span class="glightbox-desc lightbox-desc-2">Figura&nbsp;2.2: Ejemplo de atributo de un elemento HTML. Fuente: <a href="https://developer.mozilla.org/es/docs/Learn/Getting_started_with_the_web/HTML_basics">MDN Web Docs</a>.</span>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-introduccion-desarrollo-sig-web.html" class="pagination-link" aria-label="Introducción al desarrollo de SIG en la Web">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción al desarrollo de SIG en la Web</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+
+
+</body></html>
