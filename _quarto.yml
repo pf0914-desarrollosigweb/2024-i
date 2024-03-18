@@ -1,0 +1,18 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I"
+  author: "Manuel Vargas"
+  date: "2024-03-17"
+  chapters:
+    - index.qmd
+    - programa-curso.qmd
+
+bibliography: referencias.bib
+
+format:
+  html:
+    lang: es
+    theme: cosmo

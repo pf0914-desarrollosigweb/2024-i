@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I",
+    "section": "",
+    "text": "Presentación\nEste curso curso trata sobre el desarrollo de sistemas de información geográfica (SIG) en la Web. Los estudiantes adquieren las habilidades y conocimientos necesarios para construir SIG con una arquitectura cliente-servidor. Para el desarrollo del cliente (front end) se estudia Leaflet, una biblioteca del lenguaje de programación JavaScript especializada en la generación de mapas interactivos. El servidor (back end) se basa en una extensión de Django, el popular marco de trabajo para desarrollo web del lenguaje Python, llamada GeoDjango, la cual está orientada a aplicaciones web geoespaciales.\nLos contenidos del curso y los recursos relacionados se comparten en el sitio web https://pf0914-desarrollosigweb.github.io/2024-i/ y en la plataforma Mediación Virtual de la Universidad de Costa Rica.\nEl curso se imparte en la Maestría Profesional en Sistemas de Información Geográfica y Teledetección de la Universidad de Costa Rica y la Universidad Nacional.",
+    "crumbs": [
+      "Presentación"
+    ]
+  },
+  {
+    "objectID": "index.html#general",
+    "href": "index.html#general",
+    "title": "PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I",
+    "section": "General",
+    "text": "General\nDesarrollar sistemas de información geográfica en la Web con una arquitectura cliente-servidor.",
+    "crumbs": [
+      "Presentación"
+    ]
+  },
+  {
+    "objectID": "index.html#específicos",
+    "href": "index.html#específicos",
+    "title": "PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I",
+    "section": "Específicos",
+    "text": "Específicos\n\nCrear páginas web con el lenguaje de marcado de hipertexto (HTML).\n\nAplicar estilos a páginas web con el lenguaje de hojas de estilo en cascada (CSS).\n\nAñadir interactividad a páginas web mediante el lenguaje de programación JavaScript.\n\nCrear mapas interactivos para páginas web con la biblioteca Leaflet de JavaScript.\n\nDesarrollar aplicaciones web geoespaciales basadas en el marco de trabajo GeoDjango.",
+    "crumbs": [
+      "Presentación"
+    ]
+  },
+  {
+    "objectID": "programa-curso.html",
+    "href": "programa-curso.html",
+    "title": "Programa del curso",
+    "section": "",
+    "text": "Programa del curso",
+    "crumbs": [
+      "Programa del curso"
+    ]
+  }
+]

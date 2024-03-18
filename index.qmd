@@ -1,0 +1,32 @@
+# Presentación {.unnumbered}
+Este curso curso trata sobre el desarrollo de sistemas de información geográfica (SIG) en la Web. Los estudiantes adquieren las habilidades y conocimientos necesarios para construir SIG con una arquitectura cliente-servidor. Para el desarrollo del cliente (*front end*) se estudia Leaflet, una biblioteca del lenguaje de programación JavaScript especializada en la generación de mapas interactivos. El servidor (*back end*) se basa en una extensión de Django, el popular marco de trabajo para desarrollo web del lenguaje Python, llamada GeoDjango, la cual está orientada a aplicaciones web geoespaciales.
+
+Los contenidos del curso y los recursos relacionados se comparten en el sitio web [https://pf0914-desarrollosigweb.github.io/2024-i/](https://pf0914-desarrollosigweb.github.io/2024-i/) y en la plataforma Mediación Virtual de la Universidad de Costa Rica.
+
+El curso se imparte en la [Maestría Profesional en Sistemas de Información Geográfica y Teledetección](https://www.sep.ucr.ac.cr/posgrados/geografia/folleto/ppgeo-teledeteccion.pdf) de la [Universidad de Costa Rica](https://www.ucr.ac.cr/) y la [Universidad Nacional](https://www.una.ac.cr/).
+
+# Objetivos {.unnumbered}
+## General
+Desarrollar sistemas de información geográfica en la Web con una arquitectura cliente-servidor.
+
+## Específicos
+1. Crear páginas web con el lenguaje de marcado de hipertexto (HTML).  
+2. Aplicar estilos a páginas web con el lenguaje de hojas de estilo en cascada (CSS).  
+3. Añadir interactividad a páginas web mediante el lenguaje de programación JavaScript.  
+4. Crear mapas interactivos para páginas web con la biblioteca Leaflet de JavaScript.  
+5. Desarrollar aplicaciones web geoespaciales basadas en el marco de trabajo GeoDjango.  
+
+# Programa {.unnumbered}
+[Programa del curso](pf0914-modeladoprocesosgeoespaciales-g001-2024-i.pdf)
+
+# Información de contacto {.unnumbered}
+Si tiene alguna pregunta o comentario sobre este curso, por favor contacte a:
+
+> Manuel Vargas - manuel.vargas_d\@ucr.ac.cr\
+> Profesor\
+> Universidad de Costa Rica,\
+> Ciudad Universitaria Rodrigo Facio,\
+> San Pedro de Montes de Oca,\
+> Costa Rica.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="Licencia de Creative Commons" style="border-width:0"/></a><br />Los contenidos de este curso, a menos que se especifique de otra forma, se comparten mediante una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">licencia de Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional</a>.
