@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./02-html.html" rel="next">
 <link href="./parte-i-lenguajes-basicos-desarrollo-sig-web.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -169,6 +170,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción al desarrollo de SIG en la Web</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-html.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-css.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">El lenguaje Hojas de Estilo en Cascada (CSS)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -177,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
@@ -223,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>En sus inicios, en la década de 1960 (y durante varias décadas subsiguientes), los SIG fueron implementados principalmente como aplicaciones <em>de escritorio</em>. Es decir, sistemas de software que funcionan íntegramente en la computadora del usuario, sin acceder a otras computadoras o recursos externos para realizar tareas como las mencionadas anteriormente. Con la paulatina popularización de las redes de computadoras y de la Internet, a partir de la década de 1980, se hizo cada vez más evidente la conveniencia de utilizar la <em>World Wide Web</em> (WWW) para realizar de manera ditribuida (i.e.&nbsp;en varias computadoras) estas tareas, así como de aprovechar el potencial de su interfaz, entre otras ventajas.</p>
 <p>La WWW, llamada también “la Web”, es un sistema de distribución de documentos de hipertexto e hipermedia, llamados también páginas web, interconectados a través del <a href="https://tools.ietf.org/html/rfc7540">Protocolo de Transferencia de Hipertexto o HTTP</a> (siglas en inglés de <em>Hypertext Transfer Protocol</em>), uno de los integrantes de la <a href="https://es.wikipedia.org/wiki/Familia_de_protocolos_de_internet">familia de protocolos de Internet</a>. Con un navegador web, un usuario visualiza sitios web compuestos de páginas web que pueden contener textos, imágenes, vídeos u otros contenidos multimedia, permitiendo la navegación a través de esas páginas mediante hiperenlaces. Los sitios web se alojan en servidores que responden a las solicitudes de los clientes (i.e.&nbsp;navegadores web), de acuerdo con el <a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model">modelo cliente-servidor</a>, como se muestra en la <a href="#fig-protocolo-http" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>.</p>
-<div id="fig-protocolo-http" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Protocolo HTTP" data-fig-align="center">
+<div id="fig-protocolo-http" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Protocolo HTTP">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-protocolo-http-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/protocolo-http.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="img/protocolo-http.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Protocolo HTTP"></a>
@@ -235,7 +248,7 @@ Figura&nbsp;1.1: Protocolo HTTP.
 </div>
 <p><a href="https://home.cern/science/computing/birth-web">La WWW fue creada en 1989</a> por el científico inglés Tim Berners-Lee, como parte de su trabajo en la Organización Europea para la Investigación Nuclear (CERN, <em>Conseil européen pour la recherche nucléaire</em>). Fue concebida originalmente como parte de un sistema para que los investigadores del CERN utilizaran y compartieran documentos con investigadores de otros centros de investigación.</p>
 <p>Los SIG en la Web permiten, por ejemplo, visualizar en un navegador de Internet mapas elaborados con datos geoespaciales almacenados en repositorios remotos o acceder servicios de geoprocesamiento disponibles en servidores administrados por terceros. En la <a href="#fig-ala-geoespacial" class="quarto-xref">Figura&nbsp;<span>1.2</span></a> se muestra un ejemplo de SIG en la Web.</p>
-<div id="fig-ala-geoespacial" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Portal geoespacial del Atlas of Livinig Australia (ALA)" data-fig-align="center">
+<div id="fig-ala-geoespacial" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Portal geoespacial del Atlas of Livinig Australia (ALA)">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ala-geoespacial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/ala-osphranter-rufus.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="img/ala-osphranter-rufus.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Portal geoespacial del Atlas of Livinig Australia (ALA)"></a>
@@ -246,7 +259,7 @@ Figura&nbsp;1.2: Portal geoespacial del Atlas of Livinig Australia (ALA). Fuente
 </figure>
 </div>
 <p>Algunas de las diferencias mencionadas entre los SIG de escritorio y los SIG en la Web se ilustran en la <a href="#fig-sigescritorio-sigweb" class="quarto-xref">Figura&nbsp;<span>1.3</span></a>.</p>
-<div id="fig-sigescritorio-sigweb" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="SIG de escritorio y SIG en la Web" data-fig-align="center">
+<div id="fig-sigescritorio-sigweb" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="SIG de escritorio y SIG en la Web">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sigescritorio-sigweb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/sigescritorio-sigweb.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="img/sigescritorio-sigweb.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="SIG de escritorio y SIG en la Web"></a>
@@ -324,7 +337,7 @@ El procesamiento se realiza en servidores remotos
 <section id="tecnologías-utilizadas-en-el-desarrollo-de-sig-en-la-web" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="tecnologías-utilizadas-en-el-desarrollo-de-sig-en-la-web"><span class="header-section-number">1.2</span> Tecnologías utilizadas en el desarrollo de SIG en la Web</h2>
 <p>En general, las tecnologías que se utilizan en el desarrollo de aplicaciones para la Web pueden dividirse en dos grupos: las de <em>front end</em> (cliente) y las de <em>back end</em> (servidor). El <em>front end</em> se encarga de presentarle los datos al usuario (ej. en mapas) y capturar sus instrucciones para manipularlos (ej. alejamientos, acercamientos, filtros, análisis). El <em>back end</em> procesa los datos de acuerdo con estas instrucciones. Típicamente, en el caso de los SIG en la Web, el <em>front end</em> se implementa en un navegador web y el <em>back end</em> a través de servidores de mapas y de bases de datos geoespaciales, entre otros. Los componentes del <em>front end</em> y del <em>back end</em> se ilustran en la <a href="#fig-frontend-backend" class="quarto-xref">Figura&nbsp;<span>1.4</span></a>.</p>
-<div id="fig-frontend-backend" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Front end y back end de SIG en la Web" data-fig-align="center">
+<div id="fig-frontend-backend" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Front end y back end de SIG en la Web">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-frontend-backend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/frontend-backend.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="img/frontend-backend.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Front end y back end de SIG en la Web"></a>
@@ -363,7 +376,7 @@ Figura&nbsp;1.4: <em>Front end</em> y <em>back end</em> de SIG en la Web.
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>La página web que se despliega como producto del documento HTML anterior se muestra en la <a href="#fig-tim-berners-lee-html" class="quarto-xref">Figura&nbsp;<span>1.5</span></a>.</p>
-<div id="fig-tim-berners-lee-html" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Documento HTML" data-fig-align="center">
+<div id="fig-tim-berners-lee-html" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Documento HTML">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tim-berners-lee-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/tim-berners-lee-html.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="img/tim-berners-lee-html.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Documento HTML"></a>
@@ -397,7 +410,7 @@ Figura&nbsp;1.5: Documento HTML.
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span><span class="cn">gray</span><span class="op">;</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>}   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>El resultado de la aplicación de estos estilos se muestra en la <a href="#fig-tim-berners-lee-css" class="quarto-xref">Figura&nbsp;<span>1.6</span></a>.</p>
-<div id="fig-tim-berners-lee-css" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Documento HTML con estilos especificados mediante CSS" data-fig-align="center">
+<div id="fig-tim-berners-lee-css" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Documento HTML con estilos especificados mediante CSS">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tim-berners-lee-css-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/tim-berners-lee-css.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6"><img src="img/tim-berners-lee-css.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Documento HTML con estilos especificados mediante CSS"></a>
@@ -423,7 +436,7 @@ Figura&nbsp;1.6: Documento HTML con estilos especificados mediante CSS.
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'fechaYhora'</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="bu">Date</span>()<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>La <a href="#fig-tim-berners-lee-js" class="quarto-xref">Figura&nbsp;<span>1.7</span></a> muestra el resultado de su ejecución desde un documento HTML.</p>
-<div id="fig-tim-berners-lee-js" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Documento HTML con botón que llama a función en JavaScript que despliega la fecha y la hora" data-fig-align="center">
+<div id="fig-tim-berners-lee-js" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Documento HTML con botón que llama a función en JavaScript que despliega la fecha y la hora">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tim-berners-lee-js-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="img/tim-berners-lee-js.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-glightbox="description: .lightbox-desc-7"><img src="img/tim-berners-lee-js.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Documento HTML con botón que llama a función en JavaScript que despliega la fecha y la hora"></a>
@@ -890,10 +903,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./02-html.html" class="pagination-link" aria-label="El Lenguaje de marcado de hipertexto (HTML)">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

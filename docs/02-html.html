@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./03-css.html" rel="next">
 <link href="./01-introduccion-desarrollo-sig-web.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -175,6 +176,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">El Lenguaje de marcado de hipertexto (HTML)</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-css.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">El lenguaje Hojas de Estilo en Cascada (CSS)</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -183,20 +190,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">2.1</span> Introducción</a></li>
   <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link" data-scroll-target="#conceptos-básicos"><span class="header-section-number">2.2</span> Conceptos básicos</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#elementos" id="toc-elementos" class="nav-link" data-scroll-target="#elementos"><span class="header-section-number">2.2.1</span> Elementos</a></li>
   <li><a href="#atributos" id="toc-atributos" class="nav-link" data-scroll-target="#atributos"><span class="header-section-number">2.2.2</span> Atributos</a></li>
   <li><a href="#elementos-anidados-y-elementos-vacíos" id="toc-elementos-anidados-y-elementos-vacíos" class="nav-link" data-scroll-target="#elementos-anidados-y-elementos-vacíos"><span class="header-section-number">2.2.3</span> Elementos anidados y elementos vacíos</a></li>
   <li><a href="#comentarios" id="toc-comentarios" class="nav-link" data-scroll-target="#comentarios"><span class="header-section-number">2.2.4</span> Comentarios</a></li>
   </ul></li>
   <li><a href="#principales-elementos" id="toc-principales-elementos" class="nav-link" data-scroll-target="#principales-elementos"><span class="header-section-number">2.3</span> Principales elementos</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#doctype" id="toc-doctype" class="nav-link" data-scroll-target="#doctype"><span class="header-section-number">2.3.1</span> <code>DOCTYPE</code></a></li>
   <li><a href="#el-elemento-html" id="toc-el-elemento-html" class="nav-link" data-scroll-target="#el-elemento-html"><span class="header-section-number">2.3.2</span> El elemento <code>html</code></a></li>
   <li><a href="#el-elemento-head" id="toc-el-elemento-head" class="nav-link" data-scroll-target="#el-elemento-head"><span class="header-section-number">2.3.3</span> El elemento <code>head</code></a></li>
@@ -1017,10 +1024,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./03-css.html" class="pagination-link" aria-label="El lenguaje Hojas de Estilo en Cascada (CSS)">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">El lenguaje Hojas de Estilo en Cascada (CSS)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
