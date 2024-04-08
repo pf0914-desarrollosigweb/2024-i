@@ -366,5 +366,92 @@
       "I - Lenguajes básicos para desarrollo de SIG en la Web",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>El lenguaje de programación JavaScript (JS)</span>"
     ]
+  },
+  {
+    "objectID": "parte-iv-evaluaciones.html",
+    "href": "parte-iv-evaluaciones.html",
+    "title": "Evaluaciones",
+    "section": "",
+    "text": "Tareas\nTarea 1",
+    "crumbs": [
+      "Evaluaciones"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html",
+    "href": "tarea-01.html",
+    "title": "Tarea 1",
+    "section": "",
+    "text": "Fecha y hora límite de entrega",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html#fecha-y-hora-límite-de-entrega",
+    "href": "tarea-01.html#fecha-y-hora-límite-de-entrega",
+    "title": "Tarea 1",
+    "section": "",
+    "text": "Grupo 001\nMartes 16 de abril de 2024, 04:59 p.m.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html#objetivos",
+    "href": "tarea-01.html#objetivos",
+    "title": "Tarea 1",
+    "section": "Objetivos",
+    "text": "Objetivos\nCada estudiante debe mostrar que es capaz de:\n\nEscribir documentos en el lenguaje de marcado HTML.\nAplicar estilos a los documentos HTML con el lenguaje CSS.\nPublicar repositorios de GitHub como sitios web en GitHub Pages.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html#entregables",
+    "href": "tarea-01.html#entregables",
+    "title": "Tarea 1",
+    "section": "Entregables",
+    "text": "Entregables\n\nDirección de un repositorio en GitHub (ej. https://github.com/mfvargas/tarea-01) con archivos HTML y CSS con el contenido especificado en la sección Desarrollo.\nDirección de un sitio web publicado en GitHub Pages generado a partir del repositorio especificado en el punto anterior (ej. https://mfvargas.github.io/tarea-01/). Se recomienda usar un nombre más significativo que tarea-01 para el repositorio, acorde con su contenido.\n\nLa entrega debe realizarse a través de la plataforma Mediación Virtual.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html#consideraciones-adicionales",
+    "href": "tarea-01.html#consideraciones-adicionales",
+    "title": "Tarea 1",
+    "section": "Consideraciones adicionales",
+    "text": "Consideraciones adicionales\nEsta tarea es estrictamente individual.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html#desarrollo",
+    "href": "tarea-01.html#desarrollo",
+    "title": "Tarea 1",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nDebe desarrollar, con HTML y CSS, un sitio web sobre un tema de su elección (un adelanto del trabajo final de graduación, alguna temática tratada en otro curso, un proyecto personal, etc.). El sitio debe contener, como mínimo, los siguientes elementos:\n\nAl menos dos documentos HTML (el principal debe llamarse index.html).\nUn documento CSS que defina estilos para todos los documentos HTML.\nContenido (por lo menos 500 palabras en cada documento HTML). Debe estar estructurado (ej. con encabezados, secciones, artículos), contener hipervínculos y al menos una imagen por documento. Los documentos HTML deben contar con una barra de navegación para navegar a través del sitio.\nEstilos. Al menos deben especificarse estilos para el color del fondo del cuerpo de los documentos, el tipo de letra, el tamaño de letra y la barra de navegación.\n\nPuede utilizar contenido (ej. texto, imágenes) de fuentes externas, pero debe dar los créditos apropiados (proporcionar la cita bibliográfica o al menos un enlace a la fuente). Puede utilizar el contenido de la tarea 1 del curso PF-0907 Programación en SIG 2023-II.\nEl contenido del sitio debe ser coherente y estar bien presentado.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
+  },
+  {
+    "objectID": "tarea-01.html#calificación",
+    "href": "tarea-01.html#calificación",
+    "title": "Tarea 1",
+    "section": "Calificación",
+    "text": "Calificación\nEntre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:\nCoherencia y presentación general del sitio web (10%).\nRevisión de las direcciones entregadas:\n\nDirección del repositorio en GitHub (5%).\nDirección del sitio web publicado en GitHub Pages (5%).\n\nRevisión de los elementos del documento escrito en Markdown:\n\nContenido (40%).\nEstilos (40%).",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 1"
+    ]
   }
 ]

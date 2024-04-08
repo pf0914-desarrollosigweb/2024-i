@@ -1,0 +1,51 @@
+# Tarea 1 {.unnumbered}
+
+## Fecha y hora límite de entrega {.unnumbered}
+
+### Grupo 001
+Martes 16 de abril de 2024, 04:59 p.m.  
+
+## Objetivos
+Cada estudiante debe mostrar que es capaz de:
+
+1.  Escribir documentos en el lenguaje de marcado HTML.
+2.  Aplicar estilos a los documentos HTML con el lenguaje CSS.
+3.  Publicar repositorios de GitHub como sitios web en GitHub Pages.
+
+## Entregables
+1.  Dirección de un repositorio en GitHub (ej. `https://github.com/mfvargas/tarea-01`) con archivos HTML y CSS con el contenido especificado en la sección Desarrollo.
+2.  Dirección de un sitio web publicado en GitHub Pages generado a partir del repositorio especificado en el punto anterior (ej. `https://mfvargas.github.io/tarea-01/`). **Se recomienda usar un nombre más significativo que `tarea-01` para el repositorio, acorde con su contenido.**
+
+La entrega debe realizarse a través de la plataforma Mediación Virtual.
+
+## Consideraciones adicionales
+**Esta tarea es estrictamente individual**.
+
+## Desarrollo
+Debe desarrollar, con HTML y CSS, un sitio web sobre un tema de su elección (un adelanto del trabajo final de graduación, alguna temática tratada en otro curso, un proyecto personal, etc.). El sitio debe contener, como mínimo, los siguientes elementos:
+
+- Al menos dos documentos HTML (el principal debe llamarse `index.html`).
+- Un documento CSS que defina estilos para todos los documentos HTML.
+
+- Contenido (por lo menos 500 palabras en cada documento HTML). Debe estar estructurado (ej. con encabezados, secciones, artículos), contener hipervínculos y al menos una imagen por documento. Los documentos HTML deben contar con una barra de navegación para navegar a través del sitio.
+- Estilos. Al menos deben especificarse estilos para el color del fondo del cuerpo de los documentos, el tipo de letra, el tamaño de letra y la barra de navegación.
+
+Puede utilizar contenido (ej. texto, imágenes) de fuentes externas, pero debe dar los créditos apropiados (proporcionar la cita bibliográfica o al menos un enlace a la fuente). Puede utilizar el contenido de la tarea 1 del curso PF-0907 Programación en SIG 2023-II.
+
+El contenido del sitio debe ser **coherente** y estar **bien presentado**.
+
+
+## Calificación
+Entre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:
+
+Coherencia y presentación general del sitio web (10%).
+
+Revisión de las direcciones entregadas:
+
+- Dirección del repositorio en GitHub (5%).
+- Dirección del sitio web publicado en GitHub Pages (5%).
+
+Revisión de los elementos del documento escrito en Markdown:
+
+- Contenido (40%).
+- Estilos (40%).

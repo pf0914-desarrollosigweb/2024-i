@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Manuel Vargas">
 
-<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</title>
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - Evaluaciones</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./programa-curso.html" rel="next">
+<link href="./tarea-01.html" rel="next">
+<link href="./04-js.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Presentación</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iv-evaluaciones.html">Evaluaciones</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./parte-iv-evaluaciones.html" class="sidebar-item-text sidebar-link">
+            <a href="./parte-iv-evaluaciones.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Evaluaciones</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -180,14 +180,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos">Objetivos</a>
-  <ul>
-  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
-  <li><a href="#específicos" id="toc-específicos" class="nav-link" data-scroll-target="#específicos">Específicos</a></li>
-  </ul></li>
-  <li><a href="#programa" id="toc-programa" class="nav-link" data-scroll-target="#programa">Programa</a></li>
-  <li><a href="#información-de-contacto" id="toc-información-de-contacto" class="nav-link" data-scroll-target="#información-de-contacto">Información de contacto</a></li>
+  <li><a href="#tareas" id="toc-tareas" class="nav-link active" data-scroll-target="#tareas">Tareas</a></li>
   </ul>
 </nav>
     </div>
@@ -196,26 +189,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</h1>
+<h1 class="title">Evaluaciones</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Manuel Vargas </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">17 de marzo de 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -225,49 +206,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="presentación" class="level1 unnumbered">
-<h1 class="unnumbered">Presentación</h1>
-<p>Este curso curso trata sobre el desarrollo de sistemas de información geográfica (SIG) en la Web. Los estudiantes adquieren las habilidades y conocimientos necesarios para construir SIG con una arquitectura cliente-servidor. Para el desarrollo del cliente (<em>front end</em>) se estudia Leaflet, una biblioteca del lenguaje de programación JavaScript especializada en la generación de mapas interactivos. El servidor (<em>back end</em>) se basa en una extensión de Django, el popular marco de trabajo para desarrollo web del lenguaje Python, llamada GeoDjango, la cual está orientada a aplicaciones web geoespaciales.</p>
-<p>Los contenidos del curso y los recursos relacionados se comparten en el sitio web <a href="https://pf0914-desarrollosigweb.github.io/2024-i/">https://pf0914-desarrollosigweb.github.io/2024-i/</a> y en la plataforma Mediación Virtual de la Universidad de Costa Rica.</p>
-<p>El curso se imparte en la <a href="https://www.sep.ucr.ac.cr/posgrados/geografia/folleto/ppgeo-teledeteccion.pdf">Maestría Profesional en Sistemas de Información Geográfica y Teledetección</a> de la <a href="https://www.ucr.ac.cr/">Universidad de Costa Rica</a> y la <a href="https://www.una.ac.cr/">Universidad Nacional</a>.</p>
-</section>
-<section id="objetivos" class="level1 unnumbered">
-<h1 class="unnumbered">Objetivos</h1>
-<section id="general" class="level2">
-<h2 class="anchored" data-anchor-id="general">General</h2>
-<p>Desarrollar sistemas de información geográfica en la Web con una arquitectura cliente-servidor.</p>
-</section>
-<section id="específicos" class="level2">
-<h2 class="anchored" data-anchor-id="específicos">Específicos</h2>
-<ol type="1">
-<li>Crear páginas web con el lenguaje de marcado de hipertexto (HTML).<br>
-</li>
-<li>Aplicar estilos a páginas web con el lenguaje de hojas de estilo en cascada (CSS).<br>
-</li>
-<li>Añadir interactividad a páginas web mediante el lenguaje de programación JavaScript.<br>
-</li>
-<li>Crear mapas interactivos para páginas web con la biblioteca Leaflet de JavaScript.<br>
-</li>
-<li>Desarrollar aplicaciones web geoespaciales basadas en el marco de trabajo GeoDjango.</li>
-</ol>
-</section>
-</section>
-<section id="programa" class="level1 unnumbered">
-<h1 class="unnumbered">Programa</h1>
-<p><a href="pf0914-modeladoprocesosgeoespaciales-g001-2024-i.pdf">Programa del curso</a></p>
-</section>
-<section id="información-de-contacto" class="level1 unnumbered">
-<h1 class="unnumbered">Información de contacto</h1>
-<p>Si tiene alguna pregunta o comentario sobre este curso, por favor contacte a:</p>
-<blockquote class="blockquote">
-<p>Manuel Vargas - manuel.vargas_d@ucr.ac.cr<br>
-Profesor<br>
-Universidad de Costa Rica,<br>
-Ciudad Universitaria Rodrigo Facio,<br>
-San Pedro de Montes de Oca,<br>
-Costa Rica.</p>
-</blockquote>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="Licencia de Creative Commons" style="border-width:0"></a><br>Los contenidos de este curso, a menos que se especifique de otra forma, se comparten mediante una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">licencia de Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional</a>.</p>
+<section id="tareas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="tareas">Tareas</h2>
+<p><a href="./tarea-01.html">Tarea 1</a></p>
 
 
 </section>
@@ -684,10 +625,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./04-js.html" class="pagination-link" aria-label="El lenguaje de programación JavaScript (JS)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">El lenguaje de programación JavaScript (JS)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./programa-curso.html" class="pagination-link" aria-label="Programa del curso">
-        <span class="nav-page-text">Programa del curso</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tarea-01.html" class="pagination-link" aria-label="Tarea 1">
+        <span class="nav-page-text">Tarea 1</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
