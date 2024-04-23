@@ -17,7 +17,7 @@ book:
         - 04-js.qmd
     - part: parte-ii-leaflet.qmd
       chapters:
-        - 05-leaflet.qmd            
+        - 05-leaflet-conceptos-basicos.qmd            
     - part: parte-iv-evaluaciones.qmd
       chapters: 
         - tarea-01.qmd        

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Manuel Vargas">
 
-<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</title>
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - 5&nbsp; Leaflet - conceptos básicos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./programa-curso.html" rel="next">
+<link href="./parte-iv-evaluaciones.html" rel="next">
+<link href="./parte-ii-leaflet.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Presentación</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-ii-leaflet.html">II - Leaflet: biblioteca para desarrollo de mapas interactivos</a></li><li class="breadcrumb-item"><a href="./05-leaflet-conceptos-basicos.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leaflet - conceptos básicos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -164,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-leaflet-conceptos-basicos.html" class="sidebar-item-text sidebar-link">
+  <a href="./05-leaflet-conceptos-basicos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leaflet - conceptos básicos</span></span></a>
   </div>
 </li>
@@ -197,42 +231,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos">Objetivos</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">5.1</span> Introducción</a></li>
+  <li><a href="#documentación" id="toc-documentación" class="nav-link" data-scroll-target="#documentación"><span class="header-section-number">5.2</span> Documentación</a></li>
+  <li><a href="#preparativos-para-el-uso" id="toc-preparativos-para-el-uso" class="nav-link" data-scroll-target="#preparativos-para-el-uso"><span class="header-section-number">5.3</span> Preparativos para el uso</a></li>
+  <li><a href="#ejemplo-de-mapa-leaflet-básico" id="toc-ejemplo-de-mapa-leaflet-básico" class="nav-link" data-scroll-target="#ejemplo-de-mapa-leaflet-básico"><span class="header-section-number">5.4</span> Ejemplo de mapa Leaflet básico</a></li>
+  <li><a href="#clases-del-api-de-leaflet" id="toc-clases-del-api-de-leaflet" class="nav-link" data-scroll-target="#clases-del-api-de-leaflet"><span class="header-section-number">5.5</span> Clases del API de Leaflet</a>
   <ul>
-  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
-  <li><a href="#específicos" id="toc-específicos" class="nav-link" data-scroll-target="#específicos">Específicos</a></li>
+  <li><a href="#clase-map" id="toc-clase-map" class="nav-link" data-scroll-target="#clase-map"><span class="header-section-number">5.5.1</span> Clase Map</a></li>
+  <li><a href="#método-setview" id="toc-método-setview" class="nav-link" data-scroll-target="#método-setview"><span class="header-section-number">5.5.2</span> Método setView()</a></li>
+  <li><a href="#clase-tilelayer" id="toc-clase-tilelayer" class="nav-link" data-scroll-target="#clase-tilelayer"><span class="header-section-number">5.5.3</span> Clase TileLayer</a></li>
+  <li><a href="#clase-marker" id="toc-clase-marker" class="nav-link" data-scroll-target="#clase-marker"><span class="header-section-number">5.5.4</span> Clase Marker</a></li>
+  <li><a href="#clase-control" id="toc-clase-control" class="nav-link" data-scroll-target="#clase-control"><span class="header-section-number">5.5.5</span> Clase Control</a></li>
   </ul></li>
-  <li><a href="#programa" id="toc-programa" class="nav-link" data-scroll-target="#programa">Programa</a></li>
-  <li><a href="#información-de-contacto" id="toc-información-de-contacto" class="nav-link" data-scroll-target="#información-de-contacto">Información de contacto</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">5.6</span> Ejercicios</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-ii-leaflet.html">II - Leaflet: biblioteca para desarrollo de mapas interactivos</a></li><li class="breadcrumb-item"><a href="./05-leaflet-conceptos-basicos.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leaflet - conceptos básicos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</h1>
+<h1 class="title"><span id="sec-pencom" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leaflet - conceptos básicos</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Manuel Vargas </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">17 de marzo de 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -242,49 +269,91 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="presentación" class="level1 unnumbered">
-<h1 class="unnumbered">Presentación</h1>
-<p>Este curso curso trata sobre el desarrollo de sistemas de información geográfica (SIG) en la Web. Los estudiantes adquieren las habilidades y conocimientos necesarios para construir SIG con una arquitectura cliente-servidor. Para el desarrollo del cliente (<em>front end</em>) se estudia Leaflet, una biblioteca del lenguaje de programación JavaScript especializada en la generación de mapas interactivos. El servidor (<em>back end</em>) se basa en una extensión de Django, el popular marco de trabajo para desarrollo web del lenguaje Python, llamada GeoDjango, la cual está orientada a aplicaciones web geoespaciales.</p>
-<p>Los contenidos del curso y los recursos relacionados se comparten en el sitio web <a href="https://pf0914-desarrollosigweb.github.io/2024-i/">https://pf0914-desarrollosigweb.github.io/2024-i/</a> y en la plataforma Mediación Virtual de la Universidad de Costa Rica.</p>
-<p>El curso se imparte en la <a href="https://www.sep.ucr.ac.cr/posgrados/geografia/folleto/ppgeo-teledeteccion.pdf">Maestría Profesional en Sistemas de Información Geográfica y Teledetección</a> de la <a href="https://www.ucr.ac.cr/">Universidad de Costa Rica</a> y la <a href="https://www.una.ac.cr/">Universidad Nacional</a>.</p>
+<section id="introducción" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">5.1</span> Introducción</h2>
+<p><a href="https://leafletjs.com/">Leaflet</a> es una biblioteca de programación en JavaScript para hacer mapas en la Web. Es de código abierto y fue diseñada para funcionar en una gran variedad de dispositivos, incluyendo móviles (ej. celulares, tabletas). Su funcionalidad puede ser extendida a través de <a href="https://leafletjs.com/plugins.html">complementos</a>. Su primera versión fue publicada en 2011 por Vladimir Agafonkin. Junto con <a href="https://openlayers.org/">OpenLayers</a> y <a href="https://developers.google.com/maps/documentation">Google Maps</a>, es una de las más bibliotecas más populares para programar mapas en la Web.</p>
+<p>El código JavaScript de Leaflet se invoca desde documentos en <a href="https://html.spec.whatwg.org/">Lenguaje de Marcas de hipertexto (HTML)</a>. Su código fuente se distribuye junto con un conjunto de <a href="https://www.w3.org/Style/CSS/#specs">Hojas de Estilo en Cascada (CSS)</a>.</p>
 </section>
-<section id="objetivos" class="level1 unnumbered">
-<h1 class="unnumbered">Objetivos</h1>
-<section id="general" class="level2">
-<h2 class="anchored" data-anchor-id="general">General</h2>
-<p>Desarrollar sistemas de información geográfica en la Web con una arquitectura cliente-servidor.</p>
+<section id="documentación" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="documentación"><span class="header-section-number">5.2</span> Documentación</h2>
+<p>La referencia de la interfaz de programación de aplicaciones <a href="https://leafletjs.com/reference-1.7.1.html">(API) de Leaflet</a> contiene la documentación de las clases, métodos, eventos y demás componentes para la programación en JavaScript. El sitio oficial contiene también un conjunto de <a href="https://leafletjs.com/examples.html">tutoriales y ejemplos</a>.</p>
 </section>
-<section id="específicos" class="level2">
-<h2 class="anchored" data-anchor-id="específicos">Específicos</h2>
+<section id="preparativos-para-el-uso" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="preparativos-para-el-uso"><span class="header-section-number">5.3</span> Preparativos para el uso</h2>
+<p>De acuerdo con la <a href="https://leafletjs.com/examples/quick-start/">Guía de inicio rápido</a>, para utilizar Leaflet en un sitio web, primero debe incluirse en el código HTML:</p>
+<ul>
+<li>Un enlace a la hoja CSS de Leaflet.</li>
+<li>Un enlace a la biblioteca JavaScript con el código de Leaflet.</li>
+<li>Un elemento <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/div">div</a> para contener el mapa.</li>
+</ul>
+<p>Los archivos JavaScript y CSS de Leaflet pueden descargarse del <a href="https://github.com/Leaflet/Leaflet">repositorio de código fuente</a> o referenciarse a través de enlaces a una <a href="https://leafletjs.com/download.html">red de distribución de contenidos (CDN)</a>.</p>
+</section>
+<section id="ejemplo-de-mapa-leaflet-básico" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="ejemplo-de-mapa-leaflet-básico"><span class="header-section-number">5.4</span> Ejemplo de mapa Leaflet básico</h2>
+<p>Haga clic en la imagen para acceder al mapa interactivo.<br>
+<a href="https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-basico/"><img src="img/ejemplo-mapa-leaflet-basico.png" class="img-fluid"></a></p>
+<p><a href="https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-basico">Código fuente</a></p>
+</section>
+<section id="clases-del-api-de-leaflet" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="clases-del-api-de-leaflet"><span class="header-section-number">5.5</span> Clases del API de Leaflet</h2>
+<section id="clase-map" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="clase-map"><span class="header-section-number">5.5.1</span> Clase Map</h3>
+<p>La clase <a href="https://leafletjs.com/reference.html#map">Map</a> es la clase central del API de Leaflet. Se utiliza para crear un mapa y manipularlo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Mapa Leaflet</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> mapa <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(<span class="st">'mapid'</span>)<span class="op">.</span><span class="fu">setView</span>([<span class="dv">10</span><span class="op">,</span> <span class="op">-</span><span class="dv">84</span>]<span class="op">,</span> <span class="dv">7</span>)<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="método-setview" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="método-setview"><span class="header-section-number">5.5.2</span> Método setView()</h3>
+<p>El método <a href="https://leafletjs.com/reference.html#map-setview">setView()</a> asigna una vista (centro y nivel de acercamiento) y niveles de animación al mapa.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Definición de la vista de un mapa</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>map<span class="op">.</span><span class="fu">setView</span>(L<span class="op">.</span><span class="fu">latLng</span>([<span class="dv">10</span><span class="op">,</span> <span class="op">-</span><span class="dv">84</span>])<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span>   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="clase-tilelayer" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="clase-tilelayer"><span class="header-section-number">5.5.3</span> Clase TileLayer</h3>
+<p>La clase <a href="https://leafletjs.com/reference.html#tilelayer">TileLayer</a> se utiliza para desplegar capas de teselas.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Despliegue de la capa de OpenStreetMap</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">tileLayer</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?'</span><span class="op">,</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">maxZoom</span><span class="op">:</span> <span class="dv">19</span><span class="op">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attribution</span><span class="op">:</span> <span class="st">'&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors'</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">Leaflet Provider Demo</a> puede verse una lista de proveedores de capas de teselas.</p>
+</section>
+<section id="clase-marker" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="clase-marker"><span class="header-section-number">5.5.4</span> Clase Marker</h3>
+<p>La clase <a href="https://leafletjs.com/reference.html#marker">Marker</a> se utiliza para desplegar marcadores en el mapa.</p>
+<p>Puede utilizarse conjuntamente con las clases <a href="https://leafletjs.com/reference-1.7.1.html#popup">Popup</a> y <a href="https://leafletjs.com/reference-1.7.1.html#tooltip">Tooltip</a>, para desplegar información en ventanas emergentes.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Marcador para la Catedral Metropolitana de San José</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> catedralSJMarker <span class="op">=</span> L<span class="op">.</span><span class="fu">marker</span>([<span class="fl">9.9326673</span><span class="op">,</span> <span class="op">-</span><span class="fl">84.0787633</span>])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>catedralSJMarker<span class="op">.</span><span class="fu">bindPopup</span>(<span class="st">'&lt;a href="https://es.wikipedia.org/wiki/Catedral_metropolitana_de_San_Jos%C3%A9"&gt;Catedral Metropolitana de San José&lt;/a&gt;.&lt;br&gt;Catedral de estilo clásico y barroco. Templo principal de la arquidiócesis católica de San José.&lt;br&gt;Construída entre 1825 y 1827 y reconstruída en 1878.'</span>)<span class="op">.</span><span class="fu">openPopup</span>()<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>catedralSJMarker<span class="op">.</span><span class="fu">bindTooltip</span>(<span class="st">"Catedral Metropolitana de San José"</span>)<span class="op">.</span><span class="fu">openTooltip</span>()<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Varios sitios web ofrecen íconos que pueden utilizarse como marcadores personalizados como, por ejemplo, <a href="https://fontawesome.com/">Font Awesome</a>. Para utilizarlos, siga la documentación en <a href="https://www.w3schools.com/icons/fontawesome5_intro.asp">Font Awesome 5 Intro</a> y <a href="https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use">Basic Use - Font Awesome</a>. Puede ver un ejemplo de su uso en <a href="https://tpb729-desarrollosigweb-2021.github.io/ejemplo-mapa-leaflet-iconos-fa/">https://tpb729-desarrollosigweb-2021.github.io/ejemplo-mapa-leaflet-iconos-fa/</a>.</p>
+</section>
+<section id="clase-control" class="level3" data-number="5.5.5">
+<h3 data-number="5.5.5" class="anchored" data-anchor-id="clase-control"><span class="header-section-number">5.5.5</span> Clase Control</h3>
+<p>La clase <a href="https://leafletjs.com/reference.html#control">Control</a> es la clase base para implementar controles en un mapa. Todas las clases de controles heredan de esta clase. Ejemplos de clases de controles:</p>
+<ul>
+<li><a href="https://leafletjs.com/reference.html#control-zoom">Zoom</a>: botones de acercamiento y alejamiento.</li>
+<li><a href="https://leafletjs.com/reference.html#control-attribution">Attribution</a>: datos de atribución (ej. autoría).</li>
+<li><a href="https://leafletjs.com/reference.html#control-layers">Layers</a>: activa y desactiva capas.</li>
+<li><a href="https://leafletjs.com/reference.html#control-scale">Scale</a>: añade una escala.</li>
+</ul>
+</section>
+</section>
+<section id="ejercicios" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">5.6</span> Ejercicios</h2>
+<p>Clone el código del mapa de ejemplo y:</p>
 <ol type="1">
-<li>Crear páginas web con el lenguaje de marcado de hipertexto (HTML).<br>
-</li>
-<li>Aplicar estilos a páginas web con el lenguaje de hojas de estilo en cascada (CSS).<br>
-</li>
-<li>Añadir interactividad a páginas web mediante el lenguaje de programación JavaScript.<br>
-</li>
-<li>Crear mapas interactivos para páginas web con la biblioteca Leaflet de JavaScript.<br>
-</li>
-<li>Desarrollar aplicaciones web geoespaciales basadas en el marco de trabajo GeoDjango.</li>
+<li>Agregue dos capas base.</li>
+<li>Agregue un marcador para San José.</li>
+<li>En los marcadores, agregue ventanas de <em>popup</em> con el nombre de cada ciudad (o cantón) y un enlace a la página correspondiente en <a href="https://es.wikipedia.org/">Wikipedia</a>.</li>
+<li>Personalice los marcadores (al menos uno) con íconos de Font Awsome.</li>
+<li>Agregue un control de escala.</li>
+<li>Publique su mapa en <a href="https://pages.github.com/">GitHub Pages</a>.</li>
 </ol>
-</section>
-</section>
-<section id="programa" class="level1 unnumbered">
-<h1 class="unnumbered">Programa</h1>
-<p><a href="pf0914-modeladoprocesosgeoespaciales-g001-2024-i.pdf">Programa del curso</a></p>
-</section>
-<section id="información-de-contacto" class="level1 unnumbered">
-<h1 class="unnumbered">Información de contacto</h1>
-<p>Si tiene alguna pregunta o comentario sobre este curso, por favor contacte a:</p>
-<blockquote class="blockquote">
-<p>Manuel Vargas - manuel.vargas_d@ucr.ac.cr<br>
-Profesor<br>
-Universidad de Costa Rica,<br>
-Ciudad Universitaria Rodrigo Facio,<br>
-San Pedro de Montes de Oca,<br>
-Costa Rica.</p>
-</blockquote>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="Licencia de Creative Commons" style="border-width:0"></a><br>Los contenidos de este curso, a menos que se especifique de otra forma, se comparten mediante una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">licencia de Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional</a>.</p>
 
 
 </section>
@@ -701,10 +770,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./parte-ii-leaflet.html" class="pagination-link" aria-label="II - Leaflet: biblioteca para desarrollo de mapas interactivos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">II - Leaflet: biblioteca para desarrollo de mapas interactivos</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./programa-curso.html" class="pagination-link" aria-label="Programa del curso">
-        <span class="nav-page-text">Programa del curso</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./parte-iv-evaluaciones.html" class="pagination-link" aria-label="Evaluaciones">
+        <span class="nav-page-text">Evaluaciones</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
