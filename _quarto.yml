@@ -15,6 +15,9 @@ book:
         - 02-html.qmd
         - 03-css.qmd
         - 04-js.qmd
+    - part: parte-ii-leaflet.qmd
+      chapters:
+        - 05-leaflet.qmd            
     - part: parte-iv-evaluaciones.qmd
       chapters: 
         - tarea-01.qmd        

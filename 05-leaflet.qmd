@@ -1,0 +1,92 @@
+# Leaflet - biblioteca para desarrollo de mapas interactivos  {#sec-pencom}
+
+## Introducción
+[Leaflet](https://leafletjs.com/) es una biblioteca de programación en JavaScript para hacer mapas en la Web. Es de código abierto y fue diseñada para funcionar en una gran variedad de dispositivos, incluyendo móviles (ej. celulares, tabletas). Su funcionalidad puede ser extendida a través de [complementos](https://leafletjs.com/plugins.html). Su primera versión fue publicada en 2011 por Vladimir Agafonkin. Junto con [OpenLayers](https://openlayers.org/) y [Google Maps](https://developers.google.com/maps/documentation), es una de las más bibliotecas más populares para programar mapas en la Web.
+
+El código JavaScript de Leaflet se invoca desde documentos en [Lenguaje de Marcas de hipertexto (HTML)](https://html.spec.whatwg.org/). Su código fuente se distribuye junto con un conjunto de [Hojas de Estilo en Cascada (CSS)](https://www.w3.org/Style/CSS/#specs).
+
+## Documentación
+La referencia de la interfaz de programación de aplicaciones [(API) de Leaflet](https://leafletjs.com/reference-1.7.1.html) contiene la documentación de las clases, métodos, eventos y demás componentes para la programación en JavaScript. El sitio oficial contiene también un conjunto de [tutoriales y ejemplos](https://leafletjs.com/examples.html).
+
+## Preparativos para el uso
+De acuerdo con la [Guía de inicio rápido](https://leafletjs.com/examples/quick-start/), para utilizar Leaflet en un sitio web, primero debe incluirse en el código HTML:
+
+- Un enlace a la hoja CSS de Leaflet.
+- Un enlace a la biblioteca JavaScript con el código de Leaflet.
+- Un elemento [div](https://developer.mozilla.org/es/docs/Web/HTML/Element/div) para contener el mapa.
+
+Los archivos JavaScript y CSS de Leaflet pueden descargarse del [repositorio de código fuente](https://github.com/Leaflet/Leaflet) o referenciarse a través de enlaces a una [red de distribución de contenidos (CDN)](https://leafletjs.com/download.html).
+
+## Ejemplo de mapa Leaflet básico
+Haga clic en la imagen para acceder al mapa interactivo.  
+[![](img/ejemplo-mapa-leaflet-basico.png)](https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-basico/)
+
+[Código fuente](https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-basico)
+
+
+## Clases del API de Leaflet
+### Clase Map
+La clase [Map](https://leafletjs.com/reference.html#map) es la clase central del API de Leaflet. Se utiliza para crear un mapa y manipularlo.
+
+```javascript
+// Mapa Leaflet
+var mapa = L.map('mapid').setView([10, -84], 7);
+```
+
+### Método setView()
+El método [setView()](https://leafletjs.com/reference.html#map-setview) asigna una vista (centro y nivel de acercamiento) y niveles de animación al mapa.
+
+```javascript
+// Definición de la vista de un mapa
+map.setView(L.latLng([10, -84]), 10);	
+```
+
+### Clase TileLayer
+La clase [TileLayer](https://leafletjs.com/reference.html#tilelayer) se utiliza para desplegar capas de teselas.
+
+```javascript
+// Despliegue de la capa de OpenStreetMap
+L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', 
+  {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }
+)
+```
+
+En [Leaflet Provider Demo](https://leaflet-extras.github.io/leaflet-providers/preview/) puede verse una lista de proveedores de capas de teselas.
+
+### Clase Marker
+La clase [Marker](https://leafletjs.com/reference.html#marker) se utiliza para desplegar marcadores en el mapa.
+
+Puede utilizarse conjuntamente con las clases [Popup](https://leafletjs.com/reference-1.7.1.html#popup) y [Tooltip](https://leafletjs.com/reference-1.7.1.html#tooltip), para desplegar información en ventanas emergentes.
+
+```javascript
+// Marcador para la Catedral Metropolitana de San José
+var catedralSJMarker = L.marker([9.9326673, -84.0787633])
+
+catedralSJMarker.bindPopup('<a href="https://es.wikipedia.org/wiki/Catedral_metropolitana_de_San_Jos%C3%A9">Catedral Metropolitana de San José</a>.<br>Catedral de estilo clásico y barroco. Templo principal de la arquidiócesis católica de San José.<br>Construída entre 1825 y 1827 y reconstruída en 1878.').openPopup();
+catedralSJMarker.bindTooltip("Catedral Metropolitana de San José").openTooltip();
+```
+
+Varios sitios web ofrecen íconos que pueden utilizarse como marcadores personalizados como, por ejemplo, [Font Awesome](https://fontawesome.com/). Para utilizarlos, siga la documentación en [Font Awesome 5 Intro](https://www.w3schools.com/icons/fontawesome5_intro.asp) y [Basic Use - Font Awesome](https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use). Puede ver un ejemplo de su uso en [https://tpb729-desarrollosigweb-2021.github.io/ejemplo-mapa-leaflet-iconos-fa/](https://tpb729-desarrollosigweb-2021.github.io/ejemplo-mapa-leaflet-iconos-fa/).
+
+### Clase Control
+La clase [Control](https://leafletjs.com/reference.html#control) es la clase base para implementar controles en un mapa. Todas las clases de controles heredan de esta clase. Ejemplos de clases de controles: 
+
+* [Zoom](https://leafletjs.com/reference.html#control-zoom): botones de acercamiento y alejamiento.
+* [Attribution](https://leafletjs.com/reference.html#control-attribution): datos de atribución (ej. autoría).
+* [Layers](https://leafletjs.com/reference.html#control-layers): activa y desactiva capas.
+* [Scale](https://leafletjs.com/reference.html#control-scale): añade una escala.
+
+## Ejercicios
+Clone el código del mapa de ejemplo y:
+
+1. Agregue dos capas base.
+2. Agregue un marcador para San José.
+3. En los marcadores, agregue ventanas de *popup* con el nombre de cada ciudad (o cantón) y un enlace a la página correspondiente en [Wikipedia](https://es.wikipedia.org/).
+4. Personalice los marcadores (al menos uno) con íconos de Font Awsome.
+5. Agregue un control de escala.
+6. Publique su mapa en [GitHub Pages](https://pages.github.com/).
+
