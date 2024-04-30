@@ -1,0 +1,54 @@
+# Leaflet - manejo de capas vectoriales  {#sec-pencom}
+
+## Introducción
+Leaflet puede manejar tanto capas vectoriales como raster. Aquí se describe el manejo de datos vectoriales mediante la clase GeoJSON.
+
+## Clases del API de Leaflet
+
+### Clase GeoJSON
+La clase [GeoJSON](https://leafletjs.com/reference-1.7.1.html#geojson) representa un objeto o un arreglo de objetos GeoJSON, permitiendo su despliegue en un mapa Leaflet.
+
+## Ejemplo de mapa Leaflet con capas vectoriales
+Haga clic en la imagen para acceder al mapa interactivo.  
+[![](img/ejemplo-mapa-leaflet-capas-vectoriales.png)](https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-capas-vectoriales/)
+
+[Código fuente](https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-capas-vectoriales)
+
+## La biblioteca jQuery
+[jQuery](https://jquery.com/) es una biblioteca JavaScript de uso muy extendido. Fue diseñada para facilitar el acceso al [Document Object Model (DOM)](https://es.wikipedia.org/wiki/Document_Object_Model) de HTML, así como para el manejo de eventos y animaciones CSS, entre otras capacidades.
+
+Para utilizar jQuery, debe incluirse su enlace en el documento HTML:
+```html
+<!-- Enlace a biblioteca JQuery -->
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"
+></script>
+```
+
+jQuery define una función global llamada `jQuery()`, la cual acostumbra referenciarse de manera abreviada con el símbolo `$`. La sintaxis básica de jQuery es `$(selector).accion()`.
+
+```javascript
+// Esconde todos los elementos p
+$("p").hide()
+
+// Esconde todos los elementos de la clase test
+$(".test").hide()
+
+// Esconde el elemento con id="test"
+$("#test").hide()
+
+// Cambia el color de todos los elementos h1
+$("h1").css("color", "#0088ff");
+```
+
+## Ejercicios
+
+1. Cree un sitio web con un mapa Leaflet que contenga:
+    - Al menos una capa base.
+    - Al menos una capa de polígonos.
+    - Al menos una capa de líneas.
+    - Al menos una capa de puntos.
+    
+2. Publique el sitio en GitHub Pages.

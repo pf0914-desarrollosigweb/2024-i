@@ -18,6 +18,7 @@ book:
     - part: parte-ii-leaflet.qmd
       chapters:
         - 05-leaflet-conceptos-basicos.qmd            
+        - 06-leaflet-capas-vectoriales.qmd            
     - part: parte-iv-evaluaciones.qmd
       chapters: 
         - tarea-01.qmd        

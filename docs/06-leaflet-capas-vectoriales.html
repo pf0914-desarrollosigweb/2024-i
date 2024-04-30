@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Manuel Vargas">
 
-<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</title>
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - 6&nbsp; Leaflet - manejo de capas vectoriales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./programa-curso.html" rel="next">
+<link href="./parte-iv-evaluaciones.html" rel="next">
+<link href="./05-leaflet-conceptos-basicos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Presentación</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-ii-leaflet.html">II - Leaflet: biblioteca para desarrollo de mapas interactivos</a></li><li class="breadcrumb-item"><a href="./06-leaflet-capas-vectoriales.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Leaflet - manejo de capas vectoriales</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -170,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-leaflet-capas-vectoriales.html" class="sidebar-item-text sidebar-link">
+  <a href="./06-leaflet-capas-vectoriales.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Leaflet - manejo de capas vectoriales</span></span></a>
   </div>
 </li>
@@ -203,42 +237,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a></li>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos">Objetivos</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">6.1</span> Introducción</a></li>
+  <li><a href="#clases-del-api-de-leaflet" id="toc-clases-del-api-de-leaflet" class="nav-link" data-scroll-target="#clases-del-api-de-leaflet"><span class="header-section-number">6.2</span> Clases del API de Leaflet</a>
   <ul>
-  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
-  <li><a href="#específicos" id="toc-específicos" class="nav-link" data-scroll-target="#específicos">Específicos</a></li>
+  <li><a href="#clase-geojson" id="toc-clase-geojson" class="nav-link" data-scroll-target="#clase-geojson"><span class="header-section-number">6.2.1</span> Clase GeoJSON</a></li>
   </ul></li>
-  <li><a href="#programa" id="toc-programa" class="nav-link" data-scroll-target="#programa">Programa</a></li>
-  <li><a href="#información-de-contacto" id="toc-información-de-contacto" class="nav-link" data-scroll-target="#información-de-contacto">Información de contacto</a></li>
+  <li><a href="#ejemplo-de-mapa-leaflet-con-capas-vectoriales" id="toc-ejemplo-de-mapa-leaflet-con-capas-vectoriales" class="nav-link" data-scroll-target="#ejemplo-de-mapa-leaflet-con-capas-vectoriales"><span class="header-section-number">6.3</span> Ejemplo de mapa Leaflet con capas vectoriales</a></li>
+  <li><a href="#la-biblioteca-jquery" id="toc-la-biblioteca-jquery" class="nav-link" data-scroll-target="#la-biblioteca-jquery"><span class="header-section-number">6.4</span> La biblioteca jQuery</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">6.5</span> Ejercicios</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-ii-leaflet.html">II - Leaflet: biblioteca para desarrollo de mapas interactivos</a></li><li class="breadcrumb-item"><a href="./06-leaflet-capas-vectoriales.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Leaflet - manejo de capas vectoriales</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I</h1>
+<h1 class="title"><span id="sec-pencom" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Leaflet - manejo de capas vectoriales</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>Manuel Vargas </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">17 de marzo de 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -248,49 +270,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="presentación" class="level1 unnumbered">
-<h1 class="unnumbered">Presentación</h1>
-<p>Este curso curso trata sobre el desarrollo de sistemas de información geográfica (SIG) en la Web. Los estudiantes adquieren las habilidades y conocimientos necesarios para construir SIG con una arquitectura cliente-servidor. Para el desarrollo del cliente (<em>front end</em>) se estudia Leaflet, una biblioteca del lenguaje de programación JavaScript especializada en la generación de mapas interactivos. El servidor (<em>back end</em>) se basa en una extensión de Django, el popular marco de trabajo para desarrollo web del lenguaje Python, llamada GeoDjango, la cual está orientada a aplicaciones web geoespaciales.</p>
-<p>Los contenidos del curso y los recursos relacionados se comparten en el sitio web <a href="https://pf0914-desarrollosigweb.github.io/2024-i/">https://pf0914-desarrollosigweb.github.io/2024-i/</a> y en la plataforma Mediación Virtual de la Universidad de Costa Rica.</p>
-<p>El curso se imparte en la <a href="https://www.sep.ucr.ac.cr/posgrados/geografia/folleto/ppgeo-teledeteccion.pdf">Maestría Profesional en Sistemas de Información Geográfica y Teledetección</a> de la <a href="https://www.ucr.ac.cr/">Universidad de Costa Rica</a> y la <a href="https://www.una.ac.cr/">Universidad Nacional</a>.</p>
+<section id="introducción" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">6.1</span> Introducción</h2>
+<p>Leaflet puede manejar tanto capas vectoriales como raster. Aquí se describe el manejo de datos vectoriales mediante la clase GeoJSON.</p>
 </section>
-<section id="objetivos" class="level1 unnumbered">
-<h1 class="unnumbered">Objetivos</h1>
-<section id="general" class="level2">
-<h2 class="anchored" data-anchor-id="general">General</h2>
-<p>Desarrollar sistemas de información geográfica en la Web con una arquitectura cliente-servidor.</p>
+<section id="clases-del-api-de-leaflet" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="clases-del-api-de-leaflet"><span class="header-section-number">6.2</span> Clases del API de Leaflet</h2>
+<section id="clase-geojson" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="clase-geojson"><span class="header-section-number">6.2.1</span> Clase GeoJSON</h3>
+<p>La clase <a href="https://leafletjs.com/reference-1.7.1.html#geojson">GeoJSON</a> representa un objeto o un arreglo de objetos GeoJSON, permitiendo su despliegue en un mapa Leaflet.</p>
 </section>
-<section id="específicos" class="level2">
-<h2 class="anchored" data-anchor-id="específicos">Específicos</h2>
+</section>
+<section id="ejemplo-de-mapa-leaflet-con-capas-vectoriales" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="ejemplo-de-mapa-leaflet-con-capas-vectoriales"><span class="header-section-number">6.3</span> Ejemplo de mapa Leaflet con capas vectoriales</h2>
+<p>Haga clic en la imagen para acceder al mapa interactivo.<br>
+<a href="https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-capas-vectoriales/"><img src="img/ejemplo-mapa-leaflet-capas-vectoriales.png" class="img-fluid"></a></p>
+<p><a href="https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-capas-vectoriales">Código fuente</a></p>
+</section>
+<section id="la-biblioteca-jquery" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="la-biblioteca-jquery"><span class="header-section-number">6.4</span> La biblioteca jQuery</h2>
+<p><a href="https://jquery.com/">jQuery</a> es una biblioteca JavaScript de uso muy extendido. Fue diseñada para facilitar el acceso al <a href="https://es.wikipedia.org/wiki/Document_Object_Model">Document Object Model (DOM)</a> de HTML, así como para el manejo de eventos y animaciones CSS, entre otras capacidades.</p>
+<p>Para utilizar jQuery, debe incluirse su enlace en el documento HTML:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Enlace a biblioteca JQuery --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ot">  src</span><span class="op">=</span><span class="st">"https://code.jquery.com/jquery-3.7.1.js"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ot">  integrity</span><span class="op">=</span><span class="st">"sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ot">  crossorigin</span><span class="op">=</span><span class="st">"anonymous"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>jQuery define una función global llamada <code>jQuery()</code>, la cual acostumbra referenciarse de manera abreviada con el símbolo <code>$</code>. La sintaxis básica de jQuery es <code>$(selector).accion()</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Esconde todos los elementos p</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">$</span>(<span class="st">"p"</span>)<span class="op">.</span><span class="fu">hide</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Esconde todos los elementos de la clase test</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">$</span>(<span class="st">".test"</span>)<span class="op">.</span><span class="fu">hide</span>()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Esconde el elemento con id="test"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">$</span>(<span class="st">"#test"</span>)<span class="op">.</span><span class="fu">hide</span>()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Cambia el color de todos los elementos h1</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">$</span>(<span class="st">"h1"</span>)<span class="op">.</span><span class="fu">css</span>(<span class="st">"color"</span><span class="op">,</span> <span class="st">"#0088ff"</span>)<span class="op">;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejercicios" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.5</span> Ejercicios</h2>
 <ol type="1">
-<li>Crear páginas web con el lenguaje de marcado de hipertexto (HTML).<br>
-</li>
-<li>Aplicar estilos a páginas web con el lenguaje de hojas de estilo en cascada (CSS).<br>
-</li>
-<li>Añadir interactividad a páginas web mediante el lenguaje de programación JavaScript.<br>
-</li>
-<li>Crear mapas interactivos para páginas web con la biblioteca Leaflet de JavaScript.<br>
-</li>
-<li>Desarrollar aplicaciones web geoespaciales basadas en el marco de trabajo GeoDjango.</li>
+<li>Cree un sitio web con un mapa Leaflet que contenga:
+<ul>
+<li>Al menos una capa base.</li>
+<li>Al menos una capa de polígonos.</li>
+<li>Al menos una capa de líneas.</li>
+<li>Al menos una capa de puntos.</li>
+</ul></li>
+<li>Publique el sitio en GitHub Pages.</li>
 </ol>
-</section>
-</section>
-<section id="programa" class="level1 unnumbered">
-<h1 class="unnumbered">Programa</h1>
-<p><a href="pf0914-modeladoprocesosgeoespaciales-g001-2024-i.pdf">Programa del curso</a></p>
-</section>
-<section id="información-de-contacto" class="level1 unnumbered">
-<h1 class="unnumbered">Información de contacto</h1>
-<p>Si tiene alguna pregunta o comentario sobre este curso, por favor contacte a:</p>
-<blockquote class="blockquote">
-<p>Manuel Vargas - manuel.vargas_d@ucr.ac.cr<br>
-Profesor<br>
-Universidad de Costa Rica,<br>
-Ciudad Universitaria Rodrigo Facio,<br>
-San Pedro de Montes de Oca,<br>
-Costa Rica.</p>
-</blockquote>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="Licencia de Creative Commons" style="border-width:0"></a><br>Los contenidos de este curso, a menos que se especifique de otra forma, se comparten mediante una <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">licencia de Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional</a>.</p>
 
 
 </section>
@@ -707,10 +738,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05-leaflet-conceptos-basicos.html" class="pagination-link" aria-label="Leaflet - conceptos básicos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Leaflet - conceptos básicos</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./programa-curso.html" class="pagination-link" aria-label="Programa del curso">
-        <span class="nav-page-text">Programa del curso</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./parte-iv-evaluaciones.html" class="pagination-link" aria-label="Evaluaciones">
+        <span class="nav-page-text">Evaluaciones</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

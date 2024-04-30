@@ -650,5 +650,104 @@
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Leaflet - conceptos básicos</span>"
     ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html",
+    "href": "06-leaflet-capas-vectoriales.html",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "",
+    "text": "6.1 Introducción\nLeaflet puede manejar tanto capas vectoriales como raster. Aquí se describe el manejo de datos vectoriales mediante la clase GeoJSON.",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#documentación",
+    "href": "06-leaflet-capas-vectoriales.html#documentación",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.2 Documentación",
+    "text": "6.2 Documentación\nLa referencia de la interfaz de programación de aplicaciones (API) de Leaflet contiene la documentación de las clases, métodos, eventos y demás componentes para la programación en JavaScript. El sitio oficial contiene también un conjunto de tutoriales y ejemplos.",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#preparativos-para-el-uso",
+    "href": "06-leaflet-capas-vectoriales.html#preparativos-para-el-uso",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.3 Preparativos para el uso",
+    "text": "6.3 Preparativos para el uso\nDe acuerdo con la Guía de inicio rápido, para utilizar Leaflet en un sitio web, primero debe incluirse en el código HTML:\n\nUn enlace a la hoja CSS de Leaflet.\nUn enlace a la biblioteca JavaScript con el código de Leaflet.\nUn elemento div para contener el mapa.\n\nLos archivos JavaScript y CSS de Leaflet pueden descargarse del repositorio de código fuente o referenciarse a través de enlaces a una red de distribución de contenidos (CDN).",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#ejemplo-de-mapa-leaflet-básico",
+    "href": "06-leaflet-capas-vectoriales.html#ejemplo-de-mapa-leaflet-básico",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.4 Ejemplo de mapa Leaflet básico",
+    "text": "6.4 Ejemplo de mapa Leaflet básico\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#clases-del-api-de-leaflet",
+    "href": "06-leaflet-capas-vectoriales.html#clases-del-api-de-leaflet",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.2 Clases del API de Leaflet",
+    "text": "6.2 Clases del API de Leaflet\n\n6.2.1 Clase GeoJSON\nLa clase GeoJSON representa un objeto o un arreglo de objetos GeoJSON, permitiendo su despliegue en un mapa Leaflet.",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#ejercicios",
+    "href": "06-leaflet-capas-vectoriales.html#ejercicios",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.5 Ejercicios",
+    "text": "6.5 Ejercicios\n\nCree un sitio web con un mapa Leaflet que contenga:\n\nAl menos una capa base.\nAl menos una capa de polígonos.\nAl menos una capa de líneas.\nAl menos una capa de puntos.\n\nPublique el sitio en GitHub Pages.",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#ejemplo-de-mapa-leaflet-con-capas-vectoriales",
+    "href": "06-leaflet-capas-vectoriales.html#ejemplo-de-mapa-leaflet-con-capas-vectoriales",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.3 Ejemplo de mapa Leaflet con capas vectoriales",
+    "text": "6.3 Ejemplo de mapa Leaflet con capas vectoriales\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#clases-del-api-de-leaflet-1",
+    "href": "06-leaflet-capas-vectoriales.html#clases-del-api-de-leaflet-1",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.4 Clases del API de Leaflet",
+    "text": "6.4 Clases del API de Leaflet\n\n6.4.1 Clase Map\nLa clase Map es la clase central del API de Leaflet. Se utiliza para crear un mapa y manipularlo.\n// Mapa Leaflet\nvar mapa = L.map('mapid').setView([10, -84], 7);\n\n\n6.4.2 Método setView()\nEl método setView() asigna una vista (centro y nivel de acercamiento) y niveles de animación al mapa.\n// Definición de la vista de un mapa\nmap.setView(L.latLng([10, -84]), 10);   \n\n\n6.4.3 Clase TileLayer\nLa clase TileLayer se utiliza para desplegar capas de teselas.\n// Despliegue de la capa de OpenStreetMap\nL.tileLayer(\n  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', \n  {\n    maxZoom: 19,\n    attribution: '&copy; &lt;a href=\"https://www.openstreetmap.org/copyright\"&gt;OpenStreetMap&lt;/a&gt; contributors'\n  }\n)\nEn Leaflet Provider Demo puede verse una lista de proveedores de capas de teselas.\n\n\n6.4.4 Clase Marker\nLa clase Marker se utiliza para desplegar marcadores en el mapa.\nPuede utilizarse conjuntamente con las clases Popup y Tooltip, para desplegar información en ventanas emergentes.\n// Marcador para la Catedral Metropolitana de San José\nvar catedralSJMarker = L.marker([9.9326673, -84.0787633])\n\ncatedralSJMarker.bindPopup('&lt;a href=\"https://es.wikipedia.org/wiki/Catedral_metropolitana_de_San_Jos%C3%A9\"&gt;Catedral Metropolitana de San José&lt;/a&gt;.&lt;br&gt;Catedral de estilo clásico y barroco. Templo principal de la arquidiócesis católica de San José.&lt;br&gt;Construída entre 1825 y 1827 y reconstruída en 1878.').openPopup();\ncatedralSJMarker.bindTooltip(\"Catedral Metropolitana de San José\").openTooltip();\nVarios sitios web ofrecen íconos que pueden utilizarse como marcadores personalizados como, por ejemplo, Font Awesome. Para utilizarlos, siga la documentación en Font Awesome 5 Intro y Basic Use - Font Awesome. Puede ver un ejemplo de su uso en https://tpb729-desarrollosigweb-2021.github.io/ejemplo-mapa-leaflet-iconos-fa/.\n\n\n6.4.5 Clase Control\nLa clase Control es la clase base para implementar controles en un mapa. Todas las clases de controles heredan de esta clase. Ejemplos de clases de controles:\n\nZoom: botones de acercamiento y alejamiento.\nAttribution: datos de atribución (ej. autoría).\nLayers: activa y desactiva capas.\nScale: añade una escala.",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
+  },
+  {
+    "objectID": "06-leaflet-capas-vectoriales.html#la-biblioteca-jquery",
+    "href": "06-leaflet-capas-vectoriales.html#la-biblioteca-jquery",
+    "title": "6  Leaflet - manejo de capas vectoriales",
+    "section": "6.4 La biblioteca jQuery",
+    "text": "6.4 La biblioteca jQuery\njQuery es una biblioteca JavaScript de uso muy extendido. Fue diseñada para facilitar el acceso al Document Object Model (DOM) de HTML, así como para el manejo de eventos y animaciones CSS, entre otras capacidades.\nPara utilizar jQuery, debe incluirse su enlace en el documento HTML:\n&lt;!-- Enlace a biblioteca JQuery --&gt;\n&lt;script\n  src=\"https://code.jquery.com/jquery-3.7.1.js\"\n  integrity=\"sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=\"\n  crossorigin=\"anonymous\"\n&gt;&lt;/script&gt;\njQuery define una función global llamada jQuery(), la cual acostumbra referenciarse de manera abreviada con el símbolo $. La sintaxis básica de jQuery es $(selector).accion().\n// Esconde todos los elementos p\n$(\"p\").hide()\n\n// Esconde todos los elementos de la clase test\n$(\".test\").hide()\n\n// Esconde el elemento con id=\"test\"\n$(\"#test\").hide()\n\n// Cambia el color de todos los elementos h1\n$(\"h1\").css(\"color\", \"#0088ff\");",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Leaflet - manejo de capas vectoriales</span>"
+    ]
   }
 ]
