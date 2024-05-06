@@ -10,8 +10,17 @@ En este capítulo, se describen diversas formas de visualización de capas vecto
 ## Mapas con capas de coropletas
 Los [mapas de coropletas](https://es.wikipedia.org/wiki/Mapa_coropl%C3%A9tico) se utilizan para visualizar datos estadísticos o numéricos en un área geográfica. El área se divide en regiones o polígonos, y cada uno se colorea o sombrea de acuerdo con el valor de la variable que se está representando.
 
-## Ejemplo de mapa Leaflet con capas de coropletas
+**Ejemplo de mapa Leaflet con capas de coropletas**  
 Haga clic en la imagen para acceder al mapa interactivo.  
 [![](img/ejemplo-mapa-leaflet-coropletas.png)](https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-coropletas/)
 
 [Código fuente](https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-coropletas)
+
+## Mapas con capas de puntos agrupados
+Los [mapas de coropletas](https://es.wikipedia.org/wiki/Mapa_coropl%C3%A9tico) se utilizan para visualizar datos estadísticos o numéricos en un área geográfica. El área se divide en regiones o polígonos, y cada uno se colorea o sombrea de acuerdo con el valor de la variable que se está representando.
+
+**Ejemplo de mapa Leaflet con capas de puntos agrupados**  
+Haga clic en la imagen para acceder al mapa interactivo.  
+[![](img/ejemplo-mapa-leaflet-agrupados.png)](https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-agrupados/)
+
+[Código fuente](https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-agrupados)
