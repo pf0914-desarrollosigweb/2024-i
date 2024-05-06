@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - Programa del curso</title>
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - 7&nbsp; Leaflet - mapas con capas de coropletas, puntos agrupados y calor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./parte-i-lenguajes-basicos-desarrollo-sig-web.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./parte-iv-evaluaciones.html" rel="next">
+<link href="./06-leaflet-capas-vectoriales.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programa-curso.html">Programa del curso</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-ii-leaflet.html">II - Leaflet: biblioteca para desarrollo de mapas interactivos</a></li><li class="breadcrumb-item"><a href="./07-leaflet-coropletas-agrupados-calor.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./programa-curso.html" class="sidebar-item-text sidebar-link active">
+  <a href="./programa-curso.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Programa del curso</span></a>
   </div>
 </li>
@@ -176,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-leaflet-coropletas-agrupados-calor.html" class="sidebar-item-text sidebar-link">
+  <a href="./07-leaflet-coropletas-agrupados-calor.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span></span></a>
   </div>
 </li>
@@ -205,14 +205,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">7.1</span> Introducción</a></li>
+  <li><a href="#mapas-con-capas-de-coropletas" id="toc-mapas-con-capas-de-coropletas" class="nav-link" data-scroll-target="#mapas-con-capas-de-coropletas"><span class="header-section-number">7.2</span> Mapas con capas de coropletas</a></li>
+  <li><a href="#ejemplo-de-mapa-leaflet-con-capas-de-coropletas" id="toc-ejemplo-de-mapa-leaflet-con-capas-de-coropletas" class="nav-link" data-scroll-target="#ejemplo-de-mapa-leaflet-con-capas-de-coropletas"><span class="header-section-number">7.3</span> Ejemplo de mapa Leaflet con capas de coropletas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-ii-leaflet.html">II - Leaflet: biblioteca para desarrollo de mapas interactivos</a></li><li class="breadcrumb-item"><a href="./07-leaflet-coropletas-agrupados-calor.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Programa del curso</h1>
+<h1 class="title"><span id="sec-pencom" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span></span></h1>
 </div>
 
 
@@ -229,9 +237,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="pf0914-modeladoprocesosgeoespaciales-g001-2024-i.pdf">Programa del curso</a></p>
+<section id="introducción" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">7.1</span> Introducción</h2>
+<p>En este capítulo, se describen diversas formas de visualización de capas vectoriales en Leaflet:</p>
+<ul>
+<li>Mapas con capas de coropletas.</li>
+<li>Mapas con capas de puntos agrupados.</li>
+<li>Mapas de calor.</li>
+</ul>
+</section>
+<section id="mapas-con-capas-de-coropletas" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="mapas-con-capas-de-coropletas"><span class="header-section-number">7.2</span> Mapas con capas de coropletas</h2>
+<p>Los <a href="https://es.wikipedia.org/wiki/Mapa_coropl%C3%A9tico">mapas de coropletas</a> se utilizan para visualizar datos estadísticos o numéricos en un área geográfica. El área se divide en regiones o polígonos, y cada uno se colorea o sombrea de acuerdo con el valor de la variable que se está representando.</p>
+</section>
+<section id="ejemplo-de-mapa-leaflet-con-capas-de-coropletas" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="ejemplo-de-mapa-leaflet-con-capas-de-coropletas"><span class="header-section-number">7.3</span> Ejemplo de mapa Leaflet con capas de coropletas</h2>
+<p>Haga clic en la imagen para acceder al mapa interactivo.<br>
+<a href="https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-coropletas/"><img src="img/ejemplo-mapa-leaflet-coropletas.png" class="img-fluid"></a></p>
+<p><a href="https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-coropletas">Código fuente</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -645,13 +671,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Presentación">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Presentación</span>
+      <a href="./06-leaflet-capas-vectoriales.html" class="pagination-link" aria-label="Leaflet - manejo de capas vectoriales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Leaflet - manejo de capas vectoriales</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./parte-i-lenguajes-basicos-desarrollo-sig-web.html" class="pagination-link" aria-label="I - Lenguajes básicos para desarrollo de SIG en la Web">
-        <span class="nav-page-text">I - Lenguajes básicos para desarrollo de SIG en la Web</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./parte-iv-evaluaciones.html" class="pagination-link" aria-label="Evaluaciones">
+        <span class="nav-page-text">Evaluaciones</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

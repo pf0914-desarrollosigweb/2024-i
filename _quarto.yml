@@ -19,6 +19,7 @@ book:
       chapters:
         - 05-leaflet-conceptos-basicos.qmd            
         - 06-leaflet-capas-vectoriales.qmd            
+        - 07-leaflet-coropletas-agrupados-calor.qmd
     - part: parte-iv-evaluaciones.qmd
       chapters: 
         - tarea-01.qmd        
