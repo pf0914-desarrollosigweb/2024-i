@@ -766,7 +766,7 @@
     "href": "07-leaflet-coropletas-agrupados-calor.html#introducción",
     "title": "7  Leaflet - mapas con capas de coropletas, puntos agrupados y calor",
     "section": "",
-    "text": "Mapas con capas de coropletas.\nMapas con capas de puntos agrupados.\nMapas de calor.",
+    "text": "Mapas con capas de coropletas.\nMapas con capas de puntos agrupados.\nMapas con capas de calor.",
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span>"
@@ -799,7 +799,7 @@
     "href": "07-leaflet-coropletas-agrupados-calor.html#mapas-con-capas-de-puntos-agrupados",
     "title": "7  Leaflet - mapas con capas de coropletas, puntos agrupados y calor",
     "section": "7.3 Mapas con capas de puntos agrupados",
-    "text": "7.3 Mapas con capas de puntos agrupados\nLos mapas de coropletas se utilizan para visualizar datos estadísticos o numéricos en un área geográfica. El área se divide en regiones o polígonos, y cada uno se colorea o sombrea de acuerdo con el valor de la variable que se está representando.\nEjemplo de mapa Leaflet con capas de puntos agrupados\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "text": "7.3 Mapas con capas de puntos agrupados\nEjemplo de mapa Leaflet con capas de puntos agrupados\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span>"
@@ -811,6 +811,17 @@
     "title": "7  Leaflet - mapas con capas de coropletas, puntos agrupados y calor",
     "section": "7.5 Ejemplo de mapa Leaflet con capas de puntos agrupados",
     "text": "7.5 Ejemplo de mapa Leaflet con capas de puntos agrupados\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span>"
+    ]
+  },
+  {
+    "objectID": "07-leaflet-coropletas-agrupados-calor.html#mapas-con-capas-de-calor",
+    "href": "07-leaflet-coropletas-agrupados-calor.html#mapas-con-capas-de-calor",
+    "title": "7  Leaflet - mapas con capas de coropletas, puntos agrupados y calor",
+    "section": "7.4 Mapas con capas de calor",
+    "text": "7.4 Mapas con capas de calor\nEjemplo de mapa Leaflet con capas de calor\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span>"
