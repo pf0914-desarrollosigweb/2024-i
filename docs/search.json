@@ -459,7 +459,7 @@
     "href": "parte-ii-leaflet.html",
     "title": "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
     "section": "",
-    "text": "5 Leaflet - conceptos básicos\n6 Leaflet - manejo de capas vectoriales\n7 Leaflet - mapas con capas de coropletas, puntos agrupados y calor",
+    "text": "5 Leaflet - conceptos básicos\n6 Leaflet - manejo de capas vectoriales\n7 Leaflet - mapas con capas de coropletas, puntos agrupados y calor\n8 Leaflet - mapas con capas raster",
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos"
     ]
@@ -825,6 +825,28 @@
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Leaflet - mapas con capas de coropletas, puntos agrupados y calor</span>"
+    ]
+  },
+  {
+    "objectID": "08-leaflet-capas-raster.html",
+    "href": "08-leaflet-capas-raster.html",
+    "title": "8  Leaflet - mapas con capas raster",
+    "section": "",
+    "text": "8.1 Introducción\nLeaflet puede manejar tanto capas vectoriales como raster. Aquí se describe el manejo de datos vectoriales mediante el complemento georaster-layer-for-leaflet.",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Leaflet - mapas con capas raster</span>"
+    ]
+  },
+  {
+    "objectID": "08-leaflet-capas-raster.html#el-complemento-georasterlayer",
+    "href": "08-leaflet-capas-raster.html#el-complemento-georasterlayer",
+    "title": "8  Leaflet - mapas con capas raster",
+    "section": "8.2 El complemento GeoRasterLayer",
+    "text": "8.2 El complemento GeoRasterLayer\ngeoraster-layer-for-leaflet despliega archivos GeoTIFF en mapas Leaflet.\nEjemplo de mapa Leaflet con capas raster\nEste ejemplo se implementa mediante el complemento georaster-layer-for-leaflet.\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Leaflet - mapas con capas raster</span>"
     ]
   }
 ]

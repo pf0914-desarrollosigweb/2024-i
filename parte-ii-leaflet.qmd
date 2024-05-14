@@ -3,3 +3,4 @@
 [5 Leaflet - conceptos básicos](05-leaflet-conceptos-basicos.qmd)  
 [6 Leaflet - manejo de capas vectoriales](06-leaflet-capas-vectoriales.qmd)  
 [7 Leaflet - mapas con capas de coropletas, puntos agrupados y calor](07-leaflet-coropletas-agrupados-calor.qmd)  
+[8 Leaflet - mapas con capas raster](08-leaflet-capas-raster.qmd)  

@@ -1,0 +1,15 @@
+# Leaflet - mapas con capas raster {#sec-pencom}
+
+## Introducción
+Leaflet puede manejar tanto capas vectoriales como raster. Aquí se describe el manejo de datos vectoriales mediante el complemento georaster-layer-for-leaflet.
+
+## El complemento GeoRasterLayer
+[georaster-layer-for-leaflet](https://github.com/GeoTIFF/georaster-layer-for-leaflet) despliega archivos GeoTIFF en mapas Leaflet.
+
+**Ejemplo de mapa Leaflet con capas raster**  
+Este ejemplo se implementa mediante el complemento [georaster-layer-for-leaflet](https://github.com/GeoTIFF/georaster-layer-for-leaflet).
+
+Haga clic en la imagen para acceder al mapa interactivo.  
+[![](img/ejemplo-mapa-leaflet-capas-raster.png)](https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-raster/)
+
+[Código fuente](https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-raster)
