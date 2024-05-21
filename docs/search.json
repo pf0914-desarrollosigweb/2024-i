@@ -372,7 +372,7 @@
     "href": "parte-iv-evaluaciones.html",
     "title": "Evaluaciones",
     "section": "",
-    "text": "Tareas\nTarea 1",
+    "text": "Tareas\nTarea 1\nTarea 2",
     "crumbs": [
       "Evaluaciones"
     ]
@@ -880,6 +880,83 @@
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Leaflet - mapas con capas WMS y WFS</span>"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html",
+    "href": "tarea-02.html",
+    "title": "Tarea 2",
+    "section": "",
+    "text": "Objetivos\nCada estudiante debe mostrar que es capaz de:",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html#fecha-y-hora-límite-de-entrega",
+    "href": "tarea-02.html#fecha-y-hora-límite-de-entrega",
+    "title": "Tarea 2",
+    "section": "",
+    "text": "Grupo 001\n???",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html#objetivos",
+    "href": "tarea-02.html#objetivos",
+    "title": "Tarea 2",
+    "section": "",
+    "text": "Desarrollar mapas interactivos con la biblioteca Leaflet de JavaScript.\nIncluir capas vectoriales y raster en los mapas Leaflet.\nIncluir controles en los mapas Leaflet.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html#entregables",
+    "href": "tarea-02.html#entregables",
+    "title": "Tarea 2",
+    "section": "Entregables",
+    "text": "Entregables\n\nDirección de un repositorio en GitHub (ej. https://github.com/mfvargas/tarea-02) con el contenido especificado en la sección Desarrollo.\nDirección de un sitio web publicado en GitHub Pages generado a partir del repositorio especificado en el punto anterior (ej. https://mfvargas.github.io/tarea-02/). Se recomienda usar un nombre más significativo que tarea-02 para el repositorio, acorde con su contenido.\n\nLa entrega debe realizarse a través de la plataforma Mediación Virtual.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html#consideraciones-adicionales",
+    "href": "tarea-02.html#consideraciones-adicionales",
+    "title": "Tarea 2",
+    "section": "Consideraciones adicionales",
+    "text": "Consideraciones adicionales\nLa tarea puede desarrollarse individualmente o en parejas.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html#desarrollo",
+    "href": "tarea-02.html#desarrollo",
+    "title": "Tarea 2",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nDebe desarrollar un sitio web, que contenga mapas interactivos, sobre un tema de su elección (un adelanto del trabajo final de graduación, alguna temática tratada en otro curso, un proyecto personal, etc.). El sitio debe contener, como mínimo, los siguientes elementos:\n\nUn mapa interactivo desarrollado con Leaflet. Este mapa debe contener:\n\nAl menos dos capas base (ej. OpenStreetMap).\nAl menos una capa raster.\nAl menos dos capas vectoriales.\nAl menos una capa de coropletas, de calor o de puntos agrupados, basada en alguna de las capas vectoriales.\nUn control para activar y desactivar las capas.\nUn control de escala.\n\n\nLas capas vectoriales y raster deben ser diferentes a las usadas en clase. La idea general de esta tarea es que los estudiantes utilicen sus datos.\nEl contenido del sitio debe ser coherente y estar bien presentado.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
+    ]
+  },
+  {
+    "objectID": "tarea-02.html#calificación",
+    "href": "tarea-02.html#calificación",
+    "title": "Tarea 2",
+    "section": "Calificación",
+    "text": "Calificación\nEntre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:\nCoherencia y presentación general del sitio web (10%).\nRevisión de las direcciones entregadas:\n\nDirección del repositorio en GitHub (5%).\nDirección del sitio web publicado en GitHub Pages (5%).\n\nRevisión de los componentes del mapa:\n\nCapas base (10%).\nCapa raster (20%).\nCapas vectoriales (20%).\nCapa de coropletas, de calor o de puntos agrupados (20%).\nControl de capas (5%).\nControl de escala (5%).",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 2"
     ]
   }
 ]

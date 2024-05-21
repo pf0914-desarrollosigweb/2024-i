@@ -25,6 +25,7 @@ book:
     - part: parte-iv-evaluaciones.qmd
       chapters: 
         - tarea-01.qmd        
+        - tarea-02.qmd        
 
 bibliography: referencias.bib
 

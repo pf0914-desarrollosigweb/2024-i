@@ -1,0 +1,52 @@
+# Tarea 2 {.unnumbered}
+
+## Objetivos
+Cada estudiante debe mostrar que es capaz de:
+
+1.  Desarrollar mapas interactivos con la biblioteca Leaflet de JavaScript.
+2.  Incluir capas vectoriales y raster en los mapas Leaflet.
+3.  Incluir controles en los mapas Leaflet.
+
+## Entregables
+1.  Dirección de un repositorio en GitHub (ej. `https://github.com/mfvargas/tarea-02`) con el contenido especificado en la sección Desarrollo.
+2.  Dirección de un sitio web publicado en GitHub Pages generado a partir del repositorio especificado en el punto anterior (ej. `https://mfvargas.github.io/tarea-02/`). **Se recomienda usar un nombre más significativo que `tarea-02` para el repositorio, acorde con su contenido.**
+
+La entrega debe realizarse a través de la plataforma Mediación Virtual.
+
+## Consideraciones adicionales
+**La tarea puede desarrollarse individualmente o en parejas**.
+
+## Desarrollo
+Debe desarrollar un sitio web, que contenga mapas interactivos, sobre un tema de su elección (un adelanto del trabajo final de graduación, alguna temática tratada en otro curso, un proyecto personal, etc.). El sitio debe contener, como mínimo, los siguientes elementos:
+
+- Un mapa interactivo desarrollado con Leaflet. Este mapa debe contener:
+    - Al menos dos capas base (ej. OpenStreetMap).
+    - Al menos una capa raster.
+    - Al menos dos capas vectoriales.
+    - Al menos una capa de coropletas, de calor o de puntos agrupados, basada en alguna de las capas vectoriales.
+    - Un control para activar y desactivar las capas.
+    - Un control de escala.
+
+**Las capas vectoriales y raster deben ser diferentes a las usadas en clase**. La idea general de esta tarea es que los estudiantes utilicen sus datos.
+
+El contenido del sitio debe ser **coherente** y estar **bien presentado**.
+
+
+## Calificación
+Entre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:
+
+Coherencia y presentación general del sitio web (10%).
+
+Revisión de las direcciones entregadas:
+
+- Dirección del repositorio en GitHub (5%).
+- Dirección del sitio web publicado en GitHub Pages (5%).
+
+Revisión de los componentes del mapa:
+
+- Capas base (10%).
+- Capa raster (20%).
+- Capas vectoriales (20%).
+- Capa de coropletas, de calor o de puntos agrupados (20%).
+- Control de capas (5%).
+- Control de escala (5%).
