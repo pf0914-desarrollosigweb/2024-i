@@ -459,7 +459,7 @@
     "href": "parte-ii-leaflet.html",
     "title": "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
     "section": "",
-    "text": "5 Leaflet - conceptos básicos\n6 Leaflet - manejo de capas vectoriales\n7 Leaflet - mapas con capas de coropletas, puntos agrupados y calor\n8 Leaflet - mapas con capas raster",
+    "text": "5 Leaflet - conceptos básicos\n6 Leaflet - manejo de capas vectoriales\n7 Leaflet - mapas con capas de coropletas, puntos agrupados y calor\n8 Leaflet - mapas con capas raster 9 Leaflet - mapas con capas WMS y WFS",
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos"
     ]
@@ -847,6 +847,39 @@
     "crumbs": [
       "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Leaflet - mapas con capas raster</span>"
+    ]
+  },
+  {
+    "objectID": "09-leaflet-wms-wfs.html",
+    "href": "09-leaflet-wms-wfs.html",
+    "title": "9  Leaflet - mapas con capas WMS y WFS",
+    "section": "",
+    "text": "9.1 Introducción\nLos servicios WMS (Web Map Service) y WFS (Web Feature Service) son dos tipos de servicios web estándar definidos por el Open Geospatial Consortium (OGC) que se utilizan para compartir datos geoespaciales a través de la web.\nEn Leaflet, una capa WMS puede agregarse a un mapa mediante la clase TileLayer.WMS.\nEjemplo de mapa Leaflet con capas WMS y WFS\nHaga clic en la imagen para acceder al mapa interactivo.\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Leaflet - mapas con capas WMS y WFS</span>"
+    ]
+  },
+  {
+    "objectID": "09-leaflet-wms-wfs.html#capas-wms",
+    "href": "09-leaflet-wms-wfs.html#capas-wms",
+    "title": "9  Leaflet - mapas con capas WMS y WFS",
+    "section": "9.2 Capas WMS",
+    "text": "9.2 Capas WMS\n\n9.2.1 El complemento …\ngeoraster-layer-for-leaflet despliega archivos GeoTIFF en mapas Leaflet.\nEjemplo de mapa Leaflet con capas WMS\nEste ejemplo se implementa mediante el complemento georaster-layer-for-leaflet.\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Leaflet - mapas con capas WMS y WFS</span>"
+    ]
+  },
+  {
+    "objectID": "09-leaflet-wms-wfs.html#capas-wfs",
+    "href": "09-leaflet-wms-wfs.html#capas-wfs",
+    "title": "9  Leaflet - mapas con capas WMS y WFS",
+    "section": "9.3 Capas WFS",
+    "text": "9.3 Capas WFS\n\n9.3.1 El complemento …\ngeoraster-layer-for-leaflet despliega archivos GeoTIFF en mapas Leaflet.\nEjemplo de mapa Leaflet con capas WMS\nEste ejemplo se implementa mediante el complemento georaster-layer-for-leaflet.\nHaga clic en la imagen para acceder al mapa interactivo.\n\nCódigo fuente",
+    "crumbs": [
+      "II - Leaflet: biblioteca para desarrollo de mapas interactivos",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Leaflet - mapas con capas WMS y WFS</span>"
     ]
   }
 ]

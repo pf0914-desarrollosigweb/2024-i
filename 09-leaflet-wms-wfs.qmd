@@ -1,0 +1,13 @@
+# Leaflet - mapas con capas WMS y WFS {#sec-pencom}
+
+## Introducción
+Los servicios WMS (Web Map Service) y WFS (Web Feature Service) son dos tipos de servicios web estándar definidos por el Open Geospatial Consortium (OGC) que se utilizan para compartir datos geoespaciales a través de la web.
+
+En Leaflet, una capa WMS puede agregarse a un mapa mediante la clase [TileLayer.WMS](https://leafletjs.com/reference.html).
+
+**Ejemplo de mapa Leaflet con capas WMS y WFS**  
+
+Haga clic en la imagen para acceder al mapa interactivo.  
+[![](img/ejemplo-mapa-leaflet-wms-wfs.png)](https://pf0914-desarrollosigweb.github.io/2024-i-ejemplo-mapa-leaflet-wms-wfs/)
+
+[Código fuente](https://github.com/pf0914-desarrollosigweb/2024-i-ejemplo-mapa-leaflet-wms-wfs)
