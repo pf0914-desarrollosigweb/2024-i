@@ -16,13 +16,13 @@
 conda update conda
 
 # Borrado del ambiente (si es que existe)
-# conda remove -n django
+# conda remove -n desarrollo_django --all
 
 # Creación del ambiente
-conda create -n django
+conda create -n desarrollo_django
 
 # Activación del ambiente
-conda activate django
+conda activate desarrollo_django
 
 # Configuración del ambiente
 conda config --env --add channels conda-forge
@@ -32,9 +32,9 @@ conda config --env --set channel_priority strict
 conda install mamba
 
 # Instalación de módulos
-mamba install git django psycopg2 pillow
+mamba install git python django psycopg2 pillow
 
-# Desactivación del ambiente
+# Desactivación del ambiente (para cuando termine de usarse)
 conda deactivate
 ```
 
