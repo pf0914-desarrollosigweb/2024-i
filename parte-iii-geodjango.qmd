@@ -1,0 +1,3 @@
+# III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web {.unnumbered}
+
+[10 GeoDjango - conceptos básicos](10-geodjango-conceptos-basicos.qmd)  

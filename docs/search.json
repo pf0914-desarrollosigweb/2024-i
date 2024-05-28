@@ -958,5 +958,48 @@
       "Evaluaciones",
       "Tarea 2"
     ]
+  },
+  {
+    "objectID": "parte-iii-geodjango.html",
+    "href": "parte-iii-geodjango.html",
+    "title": "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+    "section": "",
+    "text": "10 GeoDjango - conceptos básicos",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html",
+    "href": "10-geodjango-conceptos-basicos.html",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "",
+    "text": "10.1 Introducción\nGeoDjango es una extensión de Django, un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#instalación-y-configuración",
+    "href": "10-geodjango-conceptos-basicos.html#instalación-y-configuración",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.2 Instalación y configuración",
+    "text": "10.2 Instalación y configuración\n\nInstalar Miniconda.\nCrear un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n geodjango\n\n# Creación del ambiente\nconda create -n geodjango\n\n# Activación del ambiente\nconda activate geodjango\n\n# Configuración del ambiente\nconda config --env --add channels conda-forge\nconda config --env --set channel_priority strict\n\n# Instalación de mamba\nconda install mamba\n\n# Instalación de módulos\nmamba install git python django gdal psycopg2 pillow\n\n# Desactivación del ambiente\nconda deactivate",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#django",
+    "href": "10-geodjango-conceptos-basicos.html#django",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.2 Django",
+    "text": "10.2 Django\n\n10.2.1 Instalación\n\nInstale Miniconda.\nCree un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n django\n\n# Creación del ambiente\nconda create -n django\n\n# Activación del ambiente\nconda activate django\n\n# Configuración del ambiente\nconda config --env --add channels conda-forge\nconda config --env --set channel_priority strict\n\n# Instalación de mamba\nconda install mamba\n\n# Instalación de módulos\nmamba install git django psycopg2 pillow\n\n# Desactivación del ambiente\nconda deactivate\n\nInstale PostgreSQL y PostGIS.\n\n\n\n10.2.2 Tutorial\nSiga el tutorial “Writing your first Django app”.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
   }
 ]

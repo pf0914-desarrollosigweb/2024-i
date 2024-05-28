@@ -22,6 +22,9 @@ book:
         - 07-leaflet-coropletas-agrupados-calor.qmd
         - 08-leaflet-capas-raster.qmd     
         - 09-leaflet-wms-wfs.qmd  
+    - part: parte-iii-geodjango.qmd
+      chapters:
+        - 10-geodjango-conceptos-basicos.qmd                    
     - part: parte-iv-evaluaciones.qmd
       chapters: 
         - tarea-01.qmd        

@@ -1,0 +1,44 @@
+# GeoDjango - conceptos básicos  {#sec-pencom}
+
+## Introducción
+[GeoDjango](https://docs.djangoproject.com/en/5.0/ref/contrib/gis/) es una extensión de [Django](https://www.djangoproject.com/), un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.
+
+## Django
+
+### Instalación
+
+1. Instale [Miniconda](https://docs.anaconda.com/free/miniconda/).
+
+2. Cree un ambiente conda:
+
+```bash
+# Actualización de Conda
+conda update conda
+
+# Borrado del ambiente (si es que existe)
+# conda remove -n django
+
+# Creación del ambiente
+conda create -n django
+
+# Activación del ambiente
+conda activate django
+
+# Configuración del ambiente
+conda config --env --add channels conda-forge
+conda config --env --set channel_priority strict
+
+# Instalación de mamba
+conda install mamba
+
+# Instalación de módulos
+mamba install git django psycopg2 pillow
+
+# Desactivación del ambiente
+conda deactivate
+```
+
+3. Instale [PostgreSQL y PostGIS](https://www.postgresql.org/).
+
+### Tutorial
+Siga el [tutorial "Writing your first Django app"](https://docs.djangoproject.com/en/5.0/intro/tutorial01/).
