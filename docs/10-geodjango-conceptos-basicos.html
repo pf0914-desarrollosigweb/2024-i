@@ -279,11 +279,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">10.1</span> Introducción</a></li>
-  <li><a href="#django" id="toc-django" class="nav-link" data-scroll-target="#django"><span class="header-section-number">10.2</span> Django</a>
-  <ul>
-  <li><a href="#instalación" id="toc-instalación" class="nav-link" data-scroll-target="#instalación"><span class="header-section-number">10.2.1</span> Instalación</a></li>
-  <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">10.2.2</span> Tutorial</a></li>
-  </ul></li>
+  <li><a href="#instalación-de-django" id="toc-instalación-de-django" class="nav-link" data-scroll-target="#instalación-de-django"><span class="header-section-number">10.2</span> Instalación de Django</a></li>
+  <li><a href="#creación-de-un-proyecto-y-sus-aplicaciones" id="toc-creación-de-un-proyecto-y-sus-aplicaciones" class="nav-link" data-scroll-target="#creación-de-un-proyecto-y-sus-aplicaciones"><span class="header-section-number">10.3</span> Creación de un proyecto y sus aplicaciones</a></li>
+  <li><a href="#configuración-de-geodjango" id="toc-configuración-de-geodjango" class="nav-link" data-scroll-target="#configuración-de-geodjango"><span class="header-section-number">10.4</span> Configuración de GeoDjango</a></li>
+  <li><a href="#creación-de-un-superusuario" id="toc-creación-de-un-superusuario" class="nav-link" data-scroll-target="#creación-de-un-superusuario"><span class="header-section-number">10.5</span> Creación de un superusuario</a></li>
+  <li><a href="#creación-y-migración-de-modelos" id="toc-creación-y-migración-de-modelos" class="nav-link" data-scroll-target="#creación-y-migración-de-modelos"><span class="header-section-number">10.6</span> Creación y “migración” de modelos</a></li>
+  <li><a href="#configuración-de-la-interfaz-de-administración" id="toc-configuración-de-la-interfaz-de-administración" class="nav-link" data-scroll-target="#configuración-de-la-interfaz-de-administración"><span class="header-section-number">10.7</span> Configuración de la interfaz de administración</a></li>
   </ul>
 </nav>
     </div>
@@ -313,10 +314,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="10.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">10.1</span> Introducción</h2>
 <p><a href="https://docs.djangoproject.com/en/5.0/ref/contrib/gis/">GeoDjango</a> es una extensión de <a href="https://www.djangoproject.com/">Django</a>, un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.</p>
 </section>
-<section id="django" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="django"><span class="header-section-number">10.2</span> Django</h2>
-<section id="instalación" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="instalación"><span class="header-section-number">10.2.1</span> Instalación</h3>
+<section id="instalación-de-django" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="instalación-de-django"><span class="header-section-number">10.2</span> Instalación de Django</h2>
+<p>En un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django. Se utilizan esas versiones por razones de compatibilidad. También se instala la versión más reciente de sistema administrador de bases de datos PostgreSQL y su extensión espacial PostGIS. La biblioteca psycopg2 permite establecer conexiones a bases de datos PostgreSQL/PostGIS desde aplicaciones Python.</p>
 <ol type="1">
 <li><p>Instale <a href="https://docs.anaconda.com/free/miniconda/">Miniconda</a>.</p></li>
 <li><p>Cree un ambiente conda:</p></li>
@@ -325,36 +325,156 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update conda</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Borrado del ambiente (si es que existe)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># conda remove -n desarrollo_django --all</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># conda remove -n desarrollo_geodjango --all</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación del ambiente</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> desarrollo_django</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> desarrollo_geodjango</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Activación del ambiente</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate desarrollo_django</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate desarrollo_geodjango</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuración del ambiente</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--env</span> <span class="at">--add</span> channels conda-forge</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--env</span> <span class="at">--set</span> channel_priority strict</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de mamba</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install mamba</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de módulos</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install git python django psycopg2 pillow</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Desactivación del ambiente (para cuando termine de usarse)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de módulos</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge gdal=3.0.4</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge django</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge psycopg2</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Desactivación del ambiente (para cuando termine de usarse)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># conda deactivate</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
+<li>Revise las versiones del software instalado:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Versión de Python</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Versión de Django</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> django <span class="at">--version</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Versión de GDAL</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">gdalinfo</span> <span class="at">--version</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
 <li>Instale <a href="https://www.postgresql.org/">PostgreSQL y PostGIS</a>.</li>
 </ol>
 </section>
-<section id="tutorial" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="tutorial"><span class="header-section-number">10.2.2</span> Tutorial</h3>
-<p>Siga el <a href="https://docs.djangoproject.com/en/5.0/intro/tutorial01/">tutorial “Writing your first Django app”</a>.</p>
-
-
+<section id="creación-de-un-proyecto-y-sus-aplicaciones" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="creación-de-un-proyecto-y-sus-aplicaciones"><span class="header-section-number">10.3</span> Creación de un proyecto y sus aplicaciones</h2>
+<p>Se crea un proyecto Django con dos aplicaciones: una para el <em>backend</em> y otra para el <em>frontend</em>, las cuales acceden una base de datos PostgreSQL/PostGIS.</p>
+<ol start="5" type="1">
+<li><p>Cree una base de datos PostgreSQL/PostGIS llamada <code>mapa_leaflet_postgis</code>.</p></li>
+<li><p>Cree un proyecto Django:</p></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">django-admin</span> startproject mapa_leaflet_postgis</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cambio de directorio</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mapa_leaflet_postgis</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisión</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py check</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejecución del servidor</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py runserver</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="7" type="1">
+<li>Cree una aplicación para el <em>backend</em> y otra para el <em>frontend</em>.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">django-admin</span> startapp mapa_backend</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">django-admin</span> startapp mapa_frontend</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="configuración-de-geodjango" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="configuración-de-geodjango"><span class="header-section-number">10.4</span> Configuración de GeoDjango</h2>
+<ol start="8" type="1">
+<li>Edite el archivo <code>mapa_leaflet_postgis/settings.py</code> y agregue la aplicación <code>django.contrib.gis</code>, correspondiente a GeoDjango, y las aplicaciones correspondientes al <em>backend</em> y al <em>frontend</em>:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>INSTALLED_APPS <span class="op">=</span> [</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.admin'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.auth'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.contenttypes'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.sessions'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.messages'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.staticfiles'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.gis'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mapa_backend.apps.MapaBackendConfig'</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mapa_frontend.apps.MapaFrontendConfig'</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="9" type="1">
+<li>Revise la configuración:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisión</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py check</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="10" type="1">
+<li>Elimine los mensajes de “migraciones” no aplicadas:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comando migrate</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py migrate</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejecución del servidor (para revisar)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py runserver</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="creación-de-un-superusuario" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="creación-de-un-superusuario"><span class="header-section-number">10.5</span> Creación de un superusuario</h2>
+<p>Un superusuario tiene todos los privilegios en la interfaz de administración de Django. En las próximas secciones, se utilizará el superusuario para ingresar datos mediante esa interfaz.</p>
+<ol start="11" type="1">
+<li>Cree un superusuario para la intefaz de administración de Django:</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación del superusuario</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py createsuperuser</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="12" type="1">
+<li>Verifique el acceso en <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a>.</li>
+</ol>
+</section>
+<section id="creación-y-migración-de-modelos" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="creación-y-migración-de-modelos"><span class="header-section-number">10.6</span> Creación y “migración” de modelos</h2>
+<ol start="13" type="1">
+<li>Edite el archivo <code>mapa_backend/models.py</code> y agregue un modelo llamado <code>Observacion</code>:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.db <span class="im">import</span> models</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib.gis.db <span class="im">import</span> models</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Observacion(models.Model):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    nombre <span class="op">=</span> models.CharField(<span class="st">"Nombre de la observación"</span>, max_length<span class="op">=</span><span class="dv">50</span>, help_text<span class="op">=</span><span class="st">"Nombre de la observación"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    descripcion <span class="op">=</span> models.CharField(<span class="st">"Descripción de la observación"</span>, max_length<span class="op">=</span><span class="dv">254</span>, blank<span class="op">=</span><span class="va">True</span>, help_text<span class="op">=</span><span class="st">"Descripción de la observación"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    point_geom <span class="op">=</span> models.PointField()</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> Meta:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        verbose_name_plural <span class="op">=</span> <span class="st">"Observaciones"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.nombre</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="14" type="1">
+<li>Realice la “migración” de los modelos:</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comando makemigrations</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py makemigrations mapa_backend</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Comando migrate</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py migrate</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="15" type="1">
+<li>Revise los archivos de migración en la carpeta <code>mapa_backend/migrations</code>.</li>
+</ol>
+</section>
+<section id="configuración-de-la-interfaz-de-administración" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="configuración-de-la-interfaz-de-administración"><span class="header-section-number">10.7</span> Configuración de la interfaz de administración</h2>
+<ol start="16" type="1">
+<li>Edite el archivo <code>mapa_backend/admin.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib.gis <span class="im">import</span> admin</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Observacion</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Register your models here.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomGeoAdmin(admin.GISModelAdmin):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    gis_widget_kwargs <span class="op">=</span> {</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'attrs'</span>: {</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'default_zoom'</span>: <span class="dv">7</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'default_lon'</span>: <span class="op">-</span><span class="fl">84.0</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'default_lat'</span>: <span class="fl">10.0</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="at">@admin.register</span>(Observacion)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ObservacionAdmin(CustomGeoAdmin):</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="17" type="1">
+<li>Pruebe la interfaz de administración en <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a> y agregue algunos registros de observaciones.</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->

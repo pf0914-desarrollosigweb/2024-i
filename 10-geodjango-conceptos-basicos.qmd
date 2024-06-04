@@ -3,9 +3,8 @@
 ## Introducción
 [GeoDjango](https://docs.djangoproject.com/en/5.0/ref/contrib/gis/) es una extensión de [Django](https://www.djangoproject.com/), un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.
 
-## Django
-
-### Instalación
+## Instalación de Django
+En un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django. Se utilizan esas versiones por razones de compatibilidad. También se instala la versión más reciente de sistema administrador de bases de datos PostgreSQL y su extensión espacial PostGIS. La biblioteca psycopg2 permite establecer conexiones a bases de datos PostgreSQL/PostGIS desde aplicaciones Python.
 
 1. Instale [Miniconda](https://docs.anaconda.com/free/miniconda/).
 
@@ -16,29 +15,164 @@
 conda update conda
 
 # Borrado del ambiente (si es que existe)
-# conda remove -n desarrollo_django --all
+# conda remove -n desarrollo_geodjango --all
 
 # Creación del ambiente
-conda create -n desarrollo_django
+conda create -n desarrollo_geodjango
 
 # Activación del ambiente
-conda activate desarrollo_django
-
-# Configuración del ambiente
-conda config --env --add channels conda-forge
-conda config --env --set channel_priority strict
-
-# Instalación de mamba
-conda install mamba
+conda activate desarrollo_geodjango
 
 # Instalación de módulos
-mamba install git python django psycopg2 pillow
+conda install -c conda-forge gdal=3.0.4
+conda install -c conda-forge django
+conda install -c conda-forge psycopg2
 
 # Desactivación del ambiente (para cuando termine de usarse)
-conda deactivate
+# conda deactivate
 ```
 
-3. Instale [PostgreSQL y PostGIS](https://www.postgresql.org/).
+3. Revise las versiones del software instalado:
 
-### Tutorial
-Siga el [tutorial "Writing your first Django app"](https://docs.djangoproject.com/en/5.0/intro/tutorial01/).
+```bash
+# Versión de Python
+python --version
+# Versión de Django
+python -m django --version
+# Versión de GDAL
+gdalinfo --version
+```
+
+4. Instale [PostgreSQL y PostGIS](https://www.postgresql.org/).
+
+## Creación de un proyecto y sus aplicaciones
+Se crea un proyecto Django con dos aplicaciones: una para el *backend* y otra para el *frontend*, las cuales acceden una base de datos PostgreSQL/PostGIS.
+
+5. Cree una base de datos PostgreSQL/PostGIS llamada `mapa_leaflet_postgis`.
+
+6. Cree un proyecto Django:
+
+```bash
+# Creación
+django-admin startproject mapa_leaflet_postgis
+
+# Cambio de directorio
+cd mapa_leaflet_postgis
+
+# Revisión
+python manage.py check
+
+# Ejecución del servidor
+python manage.py runserver
+```
+
+7. Cree una aplicación para el *backend* y otra para el *frontend*.
+
+```bash
+django-admin startapp mapa_backend
+django-admin startapp mapa_frontend
+```
+
+## Configuración de GeoDjango
+
+8. Edite el archivo `mapa_leaflet_postgis/settings.py` y agregue la aplicación `django.contrib.gis`, correspondiente a GeoDjango, y las aplicaciones correspondientes al *backend* y al *frontend*:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'mapa_backend.apps.MapaBackendConfig',
+    'mapa_frontend.apps.MapaFrontendConfig'
+]
+```
+
+9. Revise la configuración:
+
+```bash
+# Revisión
+python manage.py check
+```
+
+10. Elimine los mensajes de "migraciones" no aplicadas:
+
+```bash
+# Comando migrate
+python manage.py migrate
+
+# Ejecución del servidor (para revisar)
+python manage.py runserver
+```
+
+## Creación de un superusuario
+Un superusuario tiene todos los privilegios en la interfaz de administración de Django. En las próximas secciones, se utilizará el superusuario para ingresar datos mediante esa interfaz.
+
+11. Cree un superusuario para la intefaz de administración de Django:
+
+```bash
+# Creación del superusuario
+python manage.py createsuperuser
+```
+
+12. Verifique el acceso en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
+
+## Creación y "migración" de modelos
+
+13. Edite el archivo `mapa_backend/models.py` y agregue un modelo llamado `Observacion`:
+
+```python
+from django.db import models
+from django.contrib.gis.db import models
+
+class Observacion(models.Model):
+    nombre = models.CharField("Nombre de la observación", max_length=50, help_text="Nombre de la observación")
+    descripcion = models.CharField("Descripción de la observación", max_length=254, blank=True, help_text="Descripción de la observación")
+    point_geom = models.PointField()
+
+    class Meta:
+        verbose_name_plural = "Observaciones"
+
+    def __str__(self):
+        return self.nombre
+```
+
+14. Realice la "migración" de los modelos:
+
+```bash
+# Comando makemigrations
+python manage.py makemigrations mapa_backend
+
+# Comando migrate
+python manage.py migrate
+```
+
+15. Revise los archivos de migración en la carpeta `mapa_backend/migrations`.
+
+## Configuración de la interfaz de administración
+
+16. Edite el archivo `mapa_backend/admin.py`:
+
+```python
+from django.contrib.gis import admin
+from .models import Observacion
+
+# Register your models here.
+class CustomGeoAdmin(admin.GISModelAdmin):
+    gis_widget_kwargs = {
+        'attrs': {
+            'default_zoom': 7,
+            'default_lon': -84.0,
+            'default_lat': 10.0
+        }
+    }
+
+@admin.register(Observacion)
+class ObservacionAdmin(CustomGeoAdmin):
+    pass
+```
+
+17. Pruebe la interfaz de administración en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) y agregue algunos registros de observaciones.

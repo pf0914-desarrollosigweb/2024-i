@@ -996,7 +996,95 @@
     "href": "10-geodjango-conceptos-basicos.html#django",
     "title": "10  GeoDjango - conceptos básicos",
     "section": "10.2 Django",
-    "text": "10.2 Django\n\n10.2.1 Instalación\n\nInstale Miniconda.\nCree un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n desarrollo_django --all\n\n# Creación del ambiente\nconda create -n desarrollo_django\n\n# Activación del ambiente\nconda activate desarrollo_django\n\n# Configuración del ambiente\nconda config --env --add channels conda-forge\nconda config --env --set channel_priority strict\n\n# Instalación de mamba\nconda install mamba\n\n# Instalación de módulos\nmamba install git python django psycopg2 pillow\n\n# Desactivación del ambiente (para cuando termine de usarse)\nconda deactivate\n\nInstale PostgreSQL y PostGIS.\n\n\n\n10.2.2 Tutorial\nSiga el tutorial “Writing your first Django app”.",
+    "text": "10.2 Django\n\n10.2.1 Instalación\nEn un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django, por razones de compatibilidad.\n\nInstale Miniconda.\nCree un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n desarrollo_geodjango --all\n\n# Creación del ambiente\nconda create -n desarrollo_geodjango\n\n# Activación del ambiente\nconda activate desarrollo_geodjango\n\n# Instalación de módulos\nconda install -c conda-forge gdal=3.0.4\nconda install -c conda-forge django\nconda install -c conda-forge psycopg2\n\n# Desactivación del ambiente (para cuando termine de usarse)\nconda deactivate\n\nRevise las versiones instaladas:\n\n# Versión de Python\npython --version\n# Versión de Django\npython -m django --version\n# Versión de GDAL\ngdalinfo --version\n\nInstale PostgreSQL y PostGIS.\nCree una base de datos PostGIS llamada mapa_leaflet_postgis.\nCree un proyecto Django:\n\n# Creación\ndjango-admin startproject mapa_leaflet_postgis\n\n# Cambio de directorio\ncd mapa_leaflet_postgis\n\n# Revisión\npython manage.py check\n\n# Ejecución del servidor\npython manage.py runserver\n\nCree una aplicación para el backend y otra para el frontend.\n\ndjango-admin startapp mapa_backend\ndjango-admin startapp mapa_frontend",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#instalación",
+    "href": "10-geodjango-conceptos-basicos.html#instalación",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.2 Instalación",
+    "text": "10.2 Instalación\nEn un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django. Se utilizan esas versiones por razones de compatibilidad. También se instala la versión más reciente de sistema administrador de bases de datos PostgreSQL y su extensión espacial PostGIS. La biblioteca psycopg2 permite establecer conexiones a bases de datos PostgreSQL/PostGIS desde aplicaciones Python.\n\nInstale Miniconda.\nCree un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n desarrollo_geodjango --all\n\n# Creación del ambiente\nconda create -n desarrollo_geodjango\n\n# Activación del ambiente\nconda activate desarrollo_geodjango\n\n# Instalación de módulos\nconda install -c conda-forge gdal=3.0.4\nconda install -c conda-forge django\nconda install -c conda-forge psycopg2\n\n# Desactivación del ambiente (para cuando termine de usarse)\n# conda deactivate\n\nRevise las versiones del software instalado:\n\n# Versión de Python\npython --version\n# Versión de Django\npython -m django --version\n# Versión de GDAL\ngdalinfo --version\n\nInstale PostgreSQL y PostGIS.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#creación-de-un-proyecto-django-y-sus-aplicaciones",
+    "href": "10-geodjango-conceptos-basicos.html#creación-de-un-proyecto-django-y-sus-aplicaciones",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.3 Creación de un proyecto Django y sus aplicaciones",
+    "text": "10.3 Creación de un proyecto Django y sus aplicaciones\nSe crea un proyecto Django con una aplicación para el frontend y otra para el backend\n\nCree una base de datos PostGIS llamada mapa_leaflet_postgis.\nCree un proyecto Django:\n\n# Creación\ndjango-admin startproject mapa_leaflet_postgis\n\n# Cambio de directorio\ncd mapa_leaflet_postgis\n\n# Revisión\npython manage.py check\n\n# Ejecución del servidor\npython manage.py runserver\n\nCree una aplicación para el backend y otra para el frontend.\n\ndjango-admin startapp mapa_backend\ndjango-admin startapp mapa_frontend",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#creación-de-un-proyecto-y-sus-aplicaciones",
+    "href": "10-geodjango-conceptos-basicos.html#creación-de-un-proyecto-y-sus-aplicaciones",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.3 Creación de un proyecto y sus aplicaciones",
+    "text": "10.3 Creación de un proyecto y sus aplicaciones\nSe crea un proyecto Django con dos aplicaciones: una para el backend y otra para el frontend, las cuales acceden una base de datos PostgreSQL/PostGIS.\n\nCree una base de datos PostgreSQL/PostGIS llamada mapa_leaflet_postgis.\nCree un proyecto Django:\n\n# Creación\ndjango-admin startproject mapa_leaflet_postgis\n\n# Cambio de directorio\ncd mapa_leaflet_postgis\n\n# Revisión\npython manage.py check\n\n# Ejecución del servidor\npython manage.py runserver\n\nCree una aplicación para el backend y otra para el frontend.\n\ndjango-admin startapp mapa_backend\ndjango-admin startapp mapa_frontend",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#configuración-de-geodjango",
+    "href": "10-geodjango-conceptos-basicos.html#configuración-de-geodjango",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.4 Configuración de GeoDjango",
+    "text": "10.4 Configuración de GeoDjango\n\nEdite el archivo mapa_leaflet_postgis/settings.py y agregue la aplicación django.contrib.gis, correspondiente a GeoDjango, y las aplicaciones correspondientes al backend y al frontend:\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'django.contrib.gis',\n    'mapa_backend.apps.MapaBackendConfig',\n    'mapa_frontend.apps.MapaFrontendConfig'\n]\n\nRevise la configuración:\n\n# Revisión\npython manage.py check\n\nElimine los mensajes de “migraciones” no aplicadas:\n\n# Comando migrate\npython manage.py migrate\n\n# Ejecución del servidor (para revisar)\npython manage.py runserver",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#creación-de-un-superusuario",
+    "href": "10-geodjango-conceptos-basicos.html#creación-de-un-superusuario",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.5 Creación de un superusuario",
+    "text": "10.5 Creación de un superusuario\nUn superusuario tiene todos los privilegios en la interfaz de administración de Django. En las próximas secciones, se utilizará el superusuario para ingresar datos mediante esa interfaz.\n\nCree un superusuario para la intefaz de administración de Django:\n\n# Creación del superusuario\npython manage.py createsuperuser\n\nVerifique el acceso en http://127.0.0.1:8000/admin/.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#creación-y-migración-de-modelos",
+    "href": "10-geodjango-conceptos-basicos.html#creación-y-migración-de-modelos",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.6 Creación y “migración” de modelos",
+    "text": "10.6 Creación y “migración” de modelos\n\nEdite el archivo mapa_backend/models.py y agregue un modelo llamado Observacion:\n\nfrom django.db import models\nfrom django.contrib.gis.db import models\n\nclass Observacion(models.Model):\n    nombre = models.CharField(\"Nombre de la observación\", max_length=50, help_text=\"Nombre de la observación\")\n    descripcion = models.CharField(\"Descripción de la observación\", max_length=254, blank=True, help_text=\"Descripción de la observación\")\n    point_geom = models.PointField()\n\n    class Meta:\n        verbose_name_plural = \"Observaciones\"\n\n    def __str__(self):\n        return self.nombre\n\nRealice la “migración” de los modelos:\n\n# Comando makemigrations\npython manage.py makemigrations mapa_backend\n\n# Comando migrate\npython manage.py migrate\n\nRevise los archivos de migración en la carpeta mapa_backend/migrations.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#configuración-de-la-interfaz-de-administración",
+    "href": "10-geodjango-conceptos-basicos.html#configuración-de-la-interfaz-de-administración",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.7 Configuración de la interfaz de administración",
+    "text": "10.7 Configuración de la interfaz de administración\n\nEdite el archivo mapa_backend/admin.py:\n\nfrom django.contrib.gis import admin\nfrom .models import Observacion\n\n# Register your models here.\nclass CustomGeoAdmin(admin.GISModelAdmin):\n    gis_widget_kwargs = {\n        'attrs': {\n            'default_zoom': 7,\n            'default_lon': -84.0,\n            'default_lat': 10.0\n        }\n    }\n\n@admin.register(Observacion)\nclass ObservacionAdmin(CustomGeoAdmin):\n    pass\n\nPruebe la interfaz de administración en http://127.0.0.1:8000/admin/ y agregue algunos registros de observaciones.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#instalación-de-django",
+    "href": "10-geodjango-conceptos-basicos.html#instalación-de-django",
+    "title": "10  GeoDjango - conceptos básicos",
+    "section": "10.2 Instalación de Django",
+    "text": "10.2 Instalación de Django\nEn un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django. Se utilizan esas versiones por razones de compatibilidad. También se instala la versión más reciente de sistema administrador de bases de datos PostgreSQL y su extensión espacial PostGIS. La biblioteca psycopg2 permite establecer conexiones a bases de datos PostgreSQL/PostGIS desde aplicaciones Python.\n\nInstale Miniconda.\nCree un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n desarrollo_geodjango --all\n\n# Creación del ambiente\nconda create -n desarrollo_geodjango\n\n# Activación del ambiente\nconda activate desarrollo_geodjango\n\n# Instalación de módulos\nconda install -c conda-forge gdal=3.0.4\nconda install -c conda-forge django\nconda install -c conda-forge psycopg2\n\n# Desactivación del ambiente (para cuando termine de usarse)\n# conda deactivate\n\nRevise las versiones del software instalado:\n\n# Versión de Python\npython --version\n# Versión de Django\npython -m django --version\n# Versión de GDAL\ngdalinfo --version\n\nInstale PostgreSQL y PostGIS.",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
