@@ -972,12 +972,12 @@
   {
     "objectID": "10-geodjango-conceptos-basicos.html",
     "href": "10-geodjango-conceptos-basicos.html",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "",
     "text": "10.1 Introducción\nGeoDjango es una extensión de Django, un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   },
   {
@@ -1027,67 +1027,111 @@
   {
     "objectID": "10-geodjango-conceptos-basicos.html#creación-de-un-proyecto-y-sus-aplicaciones",
     "href": "10-geodjango-conceptos-basicos.html#creación-de-un-proyecto-y-sus-aplicaciones",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "10.3 Creación de un proyecto y sus aplicaciones",
     "text": "10.3 Creación de un proyecto y sus aplicaciones\nSe crea un proyecto Django con dos aplicaciones: una para el backend y otra para el frontend, las cuales acceden una base de datos PostgreSQL/PostGIS.\n\nCree una base de datos PostgreSQL/PostGIS llamada mapa_leaflet_postgis.\nCree un proyecto Django:\n\n# Creación\ndjango-admin startproject mapa_leaflet_postgis\n\n# Cambio de directorio\ncd mapa_leaflet_postgis\n\n# Revisión\npython manage.py check\n\n# Ejecución del servidor\npython manage.py runserver\n\nCree una aplicación para el backend y otra para el frontend.\n\ndjango-admin startapp mapa_backend\ndjango-admin startapp mapa_frontend",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   },
   {
     "objectID": "10-geodjango-conceptos-basicos.html#configuración-de-geodjango",
     "href": "10-geodjango-conceptos-basicos.html#configuración-de-geodjango",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "10.4 Configuración de GeoDjango",
     "text": "10.4 Configuración de GeoDjango\n\nEdite el archivo mapa_leaflet_postgis/settings.py y agregue la aplicación django.contrib.gis, correspondiente a GeoDjango, y las aplicaciones correspondientes al backend y al frontend:\n\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'django.contrib.gis',\n    'mapa_backend.apps.MapaBackendConfig',\n    'mapa_frontend.apps.MapaFrontendConfig'\n]\n\nRevise la configuración:\n\n# Revisión\npython manage.py check\n\nElimine los mensajes de “migraciones” no aplicadas:\n\n# Comando migrate\npython manage.py migrate\n\n# Ejecución del servidor (para revisar)\npython manage.py runserver",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   },
   {
     "objectID": "10-geodjango-conceptos-basicos.html#creación-de-un-superusuario",
     "href": "10-geodjango-conceptos-basicos.html#creación-de-un-superusuario",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "10.5 Creación de un superusuario",
     "text": "10.5 Creación de un superusuario\nUn superusuario tiene todos los privilegios en la interfaz de administración de Django. En las próximas secciones, se utilizará el superusuario para ingresar datos mediante esa interfaz.\n\nCree un superusuario para la intefaz de administración de Django:\n\n# Creación del superusuario\npython manage.py createsuperuser\n\nVerifique el acceso en http://127.0.0.1:8000/admin/.",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   },
   {
     "objectID": "10-geodjango-conceptos-basicos.html#creación-y-migración-de-modelos",
     "href": "10-geodjango-conceptos-basicos.html#creación-y-migración-de-modelos",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "10.6 Creación y “migración” de modelos",
     "text": "10.6 Creación y “migración” de modelos\n\nEdite el archivo mapa_backend/models.py y agregue un modelo llamado Observacion:\n\nfrom django.db import models\nfrom django.contrib.gis.db import models\n\nclass Observacion(models.Model):\n    nombre = models.CharField(\"Nombre de la observación\", max_length=50, help_text=\"Nombre de la observación\")\n    descripcion = models.CharField(\"Descripción de la observación\", max_length=254, blank=True, help_text=\"Descripción de la observación\")\n    point_geom = models.PointField()\n\n    class Meta:\n        verbose_name_plural = \"Observaciones\"\n\n    def __str__(self):\n        return self.nombre\n\nRealice la “migración” de los modelos:\n\n# Comando makemigrations\npython manage.py makemigrations mapa_backend\n\n# Comando migrate\npython manage.py migrate\n\nRevise los archivos de migración en la carpeta mapa_backend/migrations.",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   },
   {
     "objectID": "10-geodjango-conceptos-basicos.html#configuración-de-la-interfaz-de-administración",
     "href": "10-geodjango-conceptos-basicos.html#configuración-de-la-interfaz-de-administración",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "10.7 Configuración de la interfaz de administración",
     "text": "10.7 Configuración de la interfaz de administración\n\nEdite el archivo mapa_backend/admin.py:\n\nfrom django.contrib.gis import admin\nfrom .models import Observacion\n\n# Register your models here.\nclass CustomGeoAdmin(admin.GISModelAdmin):\n    gis_widget_kwargs = {\n        'attrs': {\n            'default_zoom': 7,\n            'default_lon': -84.0,\n            'default_lat': 10.0\n        }\n    }\n\n@admin.register(Observacion)\nclass ObservacionAdmin(CustomGeoAdmin):\n    pass\n\nPruebe la interfaz de administración en http://127.0.0.1:8000/admin/ y agregue algunos registros de observaciones.",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   },
   {
     "objectID": "10-geodjango-conceptos-basicos.html#instalación-de-django",
     "href": "10-geodjango-conceptos-basicos.html#instalación-de-django",
-    "title": "10  GeoDjango - conceptos básicos",
+    "title": "10  GeoDjango",
     "section": "10.2 Instalación de Django",
     "text": "10.2 Instalación de Django\nEn un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django. Se utilizan esas versiones por razones de compatibilidad. También se instala la versión más reciente de sistema administrador de bases de datos PostgreSQL y su extensión espacial PostGIS. La biblioteca psycopg2 permite establecer conexiones a bases de datos PostgreSQL/PostGIS desde aplicaciones Python.\n\nInstale Miniconda.\nCree un ambiente conda:\n\n# Actualización de Conda\nconda update conda\n\n# Borrado del ambiente (si es que existe)\n# conda remove -n desarrollo_geodjango --all\n\n# Creación del ambiente\nconda create -n desarrollo_geodjango\n\n# Activación del ambiente\nconda activate desarrollo_geodjango\n\n# Instalación de módulos\nconda install -c conda-forge gdal=3.0.4\nconda install -c conda-forge django\nconda install -c conda-forge psycopg2\n\n# Desactivación del ambiente (para cuando termine de usarse)\n# conda deactivate\n\nRevise las versiones del software instalado:\n\n# Versión de Python\npython --version\n# Versión de Django\npython -m django --version\n# Versión de GDAL\ngdalinfo --version\n\nInstale PostgreSQL y PostGIS.",
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango - conceptos básicos</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#creación-de-vistas",
+    "href": "10-geodjango-conceptos-basicos.html#creación-de-vistas",
+    "title": "10  GeoDjango",
+    "section": "10.8 Creación de vistas",
+    "text": "10.8 Creación de vistas\nDe acuerdo con el patrón Modelo - Vista - Controlador (MVC), una vista es una interfaz que presenta información al usuario. En el caso de Django, la presenta por medio de documentos web (i.e. a través del protocolo HTTP). Cada vista recibe una solicitud (request) y retorna una respuesta (response).\nPrimero, a manera de ejemplo, se crea una vista muy sencilla.\n\nEdite el archivo mapa_backend/views.py:\n\nfrom django.shortcuts import render\nfrom django.http import HttpResponse\n\n# Create your views here.\ndef hello_world(request):\n    return HttpResponse(\"Hola mundo\")\nCada vista debe estar asociada a un URL.\n\nCree el archivo mapa_backend/urls.py y agregue el siguiente contenido:\n\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path(\"\", views.hello_world, name=\"hello_world\")\n]\nEl URL que acaba de crearse en la aplicación mapa_backend debe enlazarse con el archivo de URL del proyecto.\n\nEdite el archivo mapa_leaflet_postgis/urls.py:\n\nfrom django.contrib import admin\nfrom django.urls import path, include\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path(\"\", include(\"mapa_backend.urls\"))\n]\nDe esta manera, los URL de la aplicación quedan enlazados con los URL del proyecto.\nEjercicio: cambie la hilera vacía del URL por algo como backend/ y trate de accederlo.\n\n10.8.1 Recuperación de todos los objetos de un modelo\nEn un nuestro caso, lo que deseamos es consultar una base de datos espacial y obtener respuestas en formato GeoJSON (en el caso de datos vectoriales). Para lograr esto, es necesario realizar una serialización de los modelos. En este caso, significa transformar el contenido de la base de datos al formato GeoJSON.\n\nAgregue una vista para el modelo Observacion en mapa_backend/views.py:\n\nfrom django.shortcuts import render\nfrom django.http import HttpResponse\nfrom django.core.serializers import serialize\nfrom .models import Observacion\n\n# Create your views here.\ndef observaciones(request):\n    consulta = Observacion.objects.all()\n    geojson = serialize(\"geojson\", consulta, geometry_field=\"point_geom\", srid=3857)\n    return HttpResponse(geojson, content_type=\"application/json\")\nLa vista anterior:\n\nRecupera todos los objetos del modelo Observacion a través de una consulta realizada mediante el API de Django.\nSerializa el resultado de la consulta y lo convierte a GeoJSON.\nRetorna como respuesta la consuta en formato GeoJSON.\n\n\nPara acceder a la vista, debe asociarse con un URL. Modifique de la siguiente forma el archivo mapa_backend/urls.py:\n\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path(\"observaciones/\", views.observaciones, name=\"observaciones\")\n]\n\nTambién debe modificar las URL del proyecto en el archivo mapa_leaflet_postgis/urls.py:\n\nfrom django.contrib import admin\nfrom django.urls import path, include\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path(\"api/v1/\", include(\"mapa_backend.urls\"))\n]\nPuede acceder a la vista en: http://127.0.0.1:8000/api/v1/observaciones/\n\n\n10.8.2 Recuperación de un objeto\nSeguidamente, se crea una vista que recupera una observación según el valor del campo pk.\n\nModifique el archivo mapa_backend/views.py y agregue una función llamada observacion_por_llave():\n\nfrom django.shortcuts import render\nfrom django.http import HttpResponse\nfrom django.core.serializers import serialize\nfrom .models import Observacion\n\n# Create your views here.\ndef observaciones(request):\n    consulta = Observacion.objects.all()\n    geojson = serialize(\"geojson\", consulta, geometry_field=\"point_geom\", srid=3857)\n    return HttpResponse(geojson, content_type=\"application/json\")\n    \ndef observacion_por_llave(request, llave):\n    observacion = Observacion.objects.get(pk=llave)\n    geojson = serialize(\"geojson\", [observacion], geometry_field=\"point_geom\", srid=3857)\n    return HttpResponse(geojson, content_type=\"application/json\")\nLa función observacion_por_llave() recibe (además de request) el argumento llave, el cual se utiliza para recuperar un objeto de tipo Observacion, el cual se serializa y se retorna.\n\nPara acceder a la vista, modifique de la siguiente forma el archivo mapa_backend/urls.py:\n\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path(\"observaciones/\", views.observaciones, name=\"observaciones\"),\n    path(\"observacion_por_llave/&lt;int:llave&gt;\", views.observacion_por_llave, name=\"observacion_por_llave\")\n]\nAcceda a la nueva vista con, por ejemplo, http://127.0.0.1:8000/api/v1/observacion_por_llave/1.\nEjercicios:\n\nCree un modelo llamado Ciudad con los atributos nombre, poblacion y point_geom. Ingrese algunos registros a través de la interfaz de administración de Django.\nCree una vista para recuperar los datos de todas las ciudades y otra para recuperar los datos de una ciudad por nombre.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#modelos",
+    "href": "10-geodjango-conceptos-basicos.html#modelos",
+    "title": "10  GeoDjango",
+    "section": "10.6 Modelos",
+    "text": "10.6 Modelos\n\nEdite el archivo mapa_backend/models.py y agregue un modelo llamado Observacion:\n\nfrom django.db import models\nfrom django.contrib.gis.db import models\n\nclass Observacion(models.Model):\n    nombre = models.CharField(\"Nombre de la observación\", max_length=50, help_text=\"Nombre de la observación\")\n    descripcion = models.CharField(\"Descripción de la observación\", max_length=254, blank=True, help_text=\"Descripción de la observación\")\n    point_geom = models.PointField()\n\n    class Meta:\n        verbose_name_plural = \"Observaciones\"\n\n    def __str__(self):\n        return self.nombre\n\nRealice la “migración” de los modelos:\n\n# Comando makemigrations\npython manage.py makemigrations mapa_backend\n\n# Comando migrate\npython manage.py migrate\n\nRevise los archivos de migración en la carpeta mapa_backend/migrations.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#vistas",
+    "href": "10-geodjango-conceptos-basicos.html#vistas",
+    "title": "10  GeoDjango",
+    "section": "10.8 Vistas",
+    "text": "10.8 Vistas\nDe acuerdo con el patrón Modelo - Vista - Controlador (MVC), una vista es una interfaz que presenta información al usuario. En el caso de Django, la presenta por medio de documentos web (i.e. a través del protocolo HTTP). Cada vista recibe una solicitud (request) y retorna una respuesta (response).\nPrimero, a manera de ejemplo, se crea una vista muy sencilla.\n\nEdite el archivo mapa_backend/views.py:\n\nfrom django.shortcuts import render\nfrom django.http import HttpResponse\n\n# Create your views here.\ndef hello_world(request):\n    return HttpResponse(\"Hola mundo\")\nCada vista debe estar asociada a un URL.\n\nCree el archivo mapa_backend/urls.py y agregue el siguiente contenido:\n\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path(\"\", views.hello_world, name=\"hello_world\")\n]\nEl URL que acaba de crearse en la aplicación mapa_backend debe enlazarse con el archivo de URL del proyecto.\n\nEdite el archivo mapa_leaflet_postgis/urls.py:\n\nfrom django.contrib import admin\nfrom django.urls import path, include\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path(\"\", include(\"mapa_backend.urls\"))\n]\nDe esta manera, los URL de la aplicación quedan enlazados con los URL del proyecto.\nEjercicio: cambie la hilera vacía del URL por algo como backend/ y trate de accederlo.\n\n10.8.1 Recuperación de todos los objetos de un modelo\nEn un nuestro caso, lo que deseamos es consultar una base de datos espacial y obtener respuestas en formato GeoJSON (en el caso de datos vectoriales). Para lograr esto, es necesario realizar una serialización de los modelos. En este caso, significa transformar el contenido de la base de datos al formato GeoJSON.\n\nAgregue una vista para el modelo Observacion en mapa_backend/views.py:\n\nfrom django.shortcuts import render\nfrom django.http import HttpResponse\nfrom django.core.serializers import serialize\nfrom .models import Observacion\n\n# Create your views here.\ndef observaciones(request):\n    consulta = Observacion.objects.all()\n    geojson = serialize(\"geojson\", consulta, geometry_field=\"point_geom\", srid=3857)\n    return HttpResponse(geojson, content_type=\"application/json\")\nLa vista anterior:\n\nRecupera todos los objetos del modelo Observacion a través de una consulta realizada mediante el API de Django.\nSerializa el resultado de la consulta y lo convierte a GeoJSON.\nRetorna como respuesta la consuta en formato GeoJSON.\n\n\nPara acceder a la vista, debe asociarse con un URL. Modifique de la siguiente forma el archivo mapa_backend/urls.py:\n\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path(\"observaciones/\", views.observaciones, name=\"observaciones\")\n]\n\nTambién debe modificar las URL del proyecto en el archivo mapa_leaflet_postgis/urls.py:\n\nfrom django.contrib import admin\nfrom django.urls import path, include\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path(\"api/v1/\", include(\"mapa_backend.urls\"))\n]\nPuede acceder a la vista en: http://127.0.0.1:8000/api/v1/observaciones/\n\n\n10.8.2 Recuperación de un objeto\nSeguidamente, se crea una vista que recupera una observación según el valor del campo pk.\n\nModifique el archivo mapa_backend/views.py y agregue una función llamada observacion_por_llave():\n\nfrom django.shortcuts import render\nfrom django.http import HttpResponse\nfrom django.core.serializers import serialize\nfrom .models import Observacion\n\n# Create your views here.\ndef observaciones(request):\n    consulta = Observacion.objects.all()\n    geojson = serialize(\"geojson\", consulta, geometry_field=\"point_geom\", srid=3857)\n    return HttpResponse(geojson, content_type=\"application/json\")\n    \ndef observacion_por_llave(request, llave):\n    observacion = Observacion.objects.get(pk=llave)\n    geojson = serialize(\"geojson\", [observacion], geometry_field=\"point_geom\", srid=3857)\n    return HttpResponse(geojson, content_type=\"application/json\")\nLa función observacion_por_llave() recibe (además de request) el argumento llave, el cual se utiliza para recuperar un objeto de tipo Observacion, el cual se serializa y se retorna.\n\nPara acceder a la vista, modifique de la siguiente forma el archivo mapa_backend/urls.py:\n\nfrom django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path(\"observaciones/\", views.observaciones, name=\"observaciones\"),\n    path(\"observacion_por_llave/&lt;int:llave&gt;\", views.observacion_por_llave, name=\"observacion_por_llave\")\n]\nAcceda a la nueva vista con, por ejemplo, http://127.0.0.1:8000/api/v1/observacion_por_llave/1.\nEjercicios:\n\nCree un modelo llamado Ciudad con los atributos nombre, poblacion y point_geom. Ingrese algunos registros a través de la interfaz de administración de Django.\nCree una vista para recuperar los datos de todas las ciudades y otra para recuperar los datos de una ciudad por nombre.",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
+    ]
+  },
+  {
+    "objectID": "10-geodjango-conceptos-basicos.html#recursos-de-interés",
+    "href": "10-geodjango-conceptos-basicos.html#recursos-de-interés",
+    "title": "10  GeoDjango",
+    "section": "10.9 Recursos de interés",
+    "text": "10.9 Recursos de interés\nPython Web Apps 101 Python Web Apps: Django",
+    "crumbs": [
+      "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GeoDjango</span>"
     ]
   }
 ]

@@ -1,4 +1,4 @@
-# GeoDjango - conceptos básicos  {#sec-pencom}
+# GeoDjango {#sec-pencom}
 
 ## Introducción
 [GeoDjango](https://docs.djangoproject.com/en/5.0/ref/contrib/gis/) es una extensión de [Django](https://www.djangoproject.com/), un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.
@@ -120,7 +120,7 @@ python manage.py createsuperuser
 
 12. Verifique el acceso en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
 
-## Creación y "migración" de modelos
+## Modelos
 
 13. Edite el archivo `mapa_backend/models.py` y agregue un modelo llamado `Observacion`:
 
@@ -176,3 +176,151 @@ class ObservacionAdmin(CustomGeoAdmin):
 ```
 
 17. Pruebe la interfaz de administración en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) y agregue algunos registros de observaciones.
+
+## Vistas
+De acuerdo con el patrón [Modelo - Vista - Controlador (MVC)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador), una vista es una interfaz que presenta información al usuario. En el caso de Django, la presenta por medio de documentos web (i.e. a través del protocolo HTTP). Cada vista recibe una solicitud (*request*) y retorna una respuesta (*response*).
+
+Primero, a manera de ejemplo, se crea una vista muy sencilla.
+
+18. Edite el archivo `mapa_backend/views.py`:
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+def hello_world(request):
+    return HttpResponse("Hola mundo")
+```
+
+Cada vista debe estar asociada a un [URL](https://es.wikipedia.org/wiki/Localizador_de_recursos_uniforme).
+
+19. Cree el archivo `mapa_backend/urls.py` y agregue el siguiente contenido:
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.hello_world, name="hello_world")
+]
+```
+
+El URL que acaba de crearse en la aplicación `mapa_backend` debe enlazarse con el archivo de URL del proyecto.
+
+20. Edite el archivo `mapa_leaflet_postgis/urls.py`:
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", include("mapa_backend.urls"))
+]
+```
+
+De esta manera, los URL de la aplicación quedan enlazados con los URL del proyecto.
+
+**Ejercicio**: cambie la hilera vacía del URL por algo como `backend/` y trate de accederlo.
+
+### Recuperación de todos los objetos de un modelo
+
+En un nuestro caso, lo que deseamos es consultar una base de datos espacial y obtener respuestas en formato GeoJSON (en el caso de datos vectoriales). Para lograr esto, es necesario realizar una [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3n) de los modelos. En este caso, significa transformar el contenido de la base de datos al formato GeoJSON.
+
+21. Agregue una vista para el modelo `Observacion` en `mapa_backend/views.py`:
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.core.serializers import serialize
+from .models import Observacion
+
+# Create your views here.
+def observaciones(request):
+    consulta = Observacion.objects.all()
+    geojson = serialize("geojson", consulta, geometry_field="point_geom", srid=3857)
+    return HttpResponse(geojson, content_type="application/json")
+```
+
+La vista anterior:
+
+- Recupera todos los objetos del modelo `Observacion` a través de una consulta realizada mediante el [API de Django](https://docs.djangoproject.com/en/4.2/topics/db/queries/).
+- Serializa el resultado de la consulta y lo convierte a GeoJSON.
+- Retorna como respuesta la consuta en formato GeoJSON.
+
+22. Para acceder a la vista, debe asociarse con un URL. Modifique de la siguiente forma el archivo `mapa_backend/urls.py`:
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("observaciones/", views.observaciones, name="observaciones")
+]
+```
+
+23.  También debe modificar las URL del proyecto en el archivo `mapa_leaflet_postgis/urls.py`:
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("api/v1/", include("mapa_backend.urls"))
+]
+```
+
+Puede acceder a la vista en:
+[http://127.0.0.1:8000/api/v1/observaciones/](http://127.0.0.1:8000/api/v1/observaciones/)
+
+### Recuperación de un objeto
+
+Seguidamente, se crea una vista que recupera una observación según el valor del campo `pk`.
+
+24. Modifique el archivo `mapa_backend/views.py` y agregue una función llamada `observacion_por_llave()`:
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.core.serializers import serialize
+from .models import Observacion
+
+# Create your views here.
+def observaciones(request):
+    consulta = Observacion.objects.all()
+    geojson = serialize("geojson", consulta, geometry_field="point_geom", srid=3857)
+    return HttpResponse(geojson, content_type="application/json")
+    
+def observacion_por_llave(request, llave):
+    observacion = Observacion.objects.get(pk=llave)
+    geojson = serialize("geojson", [observacion], geometry_field="point_geom", srid=3857)
+    return HttpResponse(geojson, content_type="application/json")
+```
+
+La función `observacion_por_llave()` recibe (además de `request`) el argumento `llave`, el cual se utiliza para recuperar un objeto de tipo `Observacion`, el cual se serializa y se retorna.
+
+25. Para acceder a la vista, modifique de la siguiente forma el archivo `mapa_backend/urls.py`:
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("observaciones/", views.observaciones, name="observaciones"),
+    path("observacion_por_llave/<int:llave>", views.observacion_por_llave, name="observacion_por_llave")
+]
+```
+
+Acceda a la nueva vista con, por ejemplo, [http://127.0.0.1:8000/api/v1/observacion_por_llave/1](http://127.0.0.1:8000/api/v1/observacion_por_llave/1).
+
+**Ejercicios:**  
+
+1. Cree un modelo llamado `Ciudad` con los atributos `nombre`, `poblacion` y `point_geom`. Ingrese algunos registros a través de la interfaz de administración de Django.
+2. Cree una vista para recuperar los datos de todas las ciudades y otra para recuperar los datos de una ciudad por nombre.
+
+## Recursos de interés
+
+[Python Web Apps 101](https://www.youtube.com/playlist?list=PLmsFUfdnGr3yjFln0fJF5LP58Q0onAjpF)
+[Python Web Apps: Django](https://www.youtube.com/watch?v=5IhgcANAAFc)

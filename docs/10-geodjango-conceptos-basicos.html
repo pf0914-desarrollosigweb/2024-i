@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - 10&nbsp; GeoDjango - conceptos básicos</title>
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - 10&nbsp; GeoDjango</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iii-geodjango.html">III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web</a></li><li class="breadcrumb-item"><a href="./10-geodjango-conceptos-basicos.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango - conceptos básicos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iii-geodjango.html">III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web</a></li><li class="breadcrumb-item"><a href="./10-geodjango-conceptos-basicos.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-geodjango-conceptos-basicos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango - conceptos básicos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,17 +283,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creación-de-un-proyecto-y-sus-aplicaciones" id="toc-creación-de-un-proyecto-y-sus-aplicaciones" class="nav-link" data-scroll-target="#creación-de-un-proyecto-y-sus-aplicaciones"><span class="header-section-number">10.3</span> Creación de un proyecto y sus aplicaciones</a></li>
   <li><a href="#configuración-de-geodjango" id="toc-configuración-de-geodjango" class="nav-link" data-scroll-target="#configuración-de-geodjango"><span class="header-section-number">10.4</span> Configuración de GeoDjango</a></li>
   <li><a href="#creación-de-un-superusuario" id="toc-creación-de-un-superusuario" class="nav-link" data-scroll-target="#creación-de-un-superusuario"><span class="header-section-number">10.5</span> Creación de un superusuario</a></li>
-  <li><a href="#creación-y-migración-de-modelos" id="toc-creación-y-migración-de-modelos" class="nav-link" data-scroll-target="#creación-y-migración-de-modelos"><span class="header-section-number">10.6</span> Creación y “migración” de modelos</a></li>
+  <li><a href="#modelos" id="toc-modelos" class="nav-link" data-scroll-target="#modelos"><span class="header-section-number">10.6</span> Modelos</a></li>
   <li><a href="#configuración-de-la-interfaz-de-administración" id="toc-configuración-de-la-interfaz-de-administración" class="nav-link" data-scroll-target="#configuración-de-la-interfaz-de-administración"><span class="header-section-number">10.7</span> Configuración de la interfaz de administración</a></li>
+  <li><a href="#vistas" id="toc-vistas" class="nav-link" data-scroll-target="#vistas"><span class="header-section-number">10.8</span> Vistas</a>
+  <ul>
+  <li><a href="#recuperación-de-todos-los-objetos-de-un-modelo" id="toc-recuperación-de-todos-los-objetos-de-un-modelo" class="nav-link" data-scroll-target="#recuperación-de-todos-los-objetos-de-un-modelo"><span class="header-section-number">10.8.1</span> Recuperación de todos los objetos de un modelo</a></li>
+  <li><a href="#recuperación-de-un-objeto" id="toc-recuperación-de-un-objeto" class="nav-link" data-scroll-target="#recuperación-de-un-objeto"><span class="header-section-number">10.8.2</span> Recuperación de un objeto</a></li>
+  </ul></li>
+  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="header-section-number">10.9</span> Recursos de interés</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iii-geodjango.html">III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web</a></li><li class="breadcrumb-item"><a href="./10-geodjango-conceptos-basicos.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango - conceptos básicos</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iii-geodjango.html">III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web</a></li><li class="breadcrumb-item"><a href="./10-geodjango-conceptos-basicos.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-pencom" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango - conceptos básicos</span></span></h1>
+<h1 class="title"><span id="sec-pencom" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GeoDjango</span></span></h1>
 </div>
 
 
@@ -419,8 +425,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Verifique el acceso en <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a>.</li>
 </ol>
 </section>
-<section id="creación-y-migración-de-modelos" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="creación-y-migración-de-modelos"><span class="header-section-number">10.6</span> Creación y “migración” de modelos</h2>
+<section id="modelos" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="modelos"><span class="header-section-number">10.6</span> Modelos</h2>
 <ol start="13" type="1">
 <li>Edite el archivo <code>mapa_backend/models.py</code> y agregue un modelo llamado <code>Observacion</code>:</li>
 </ol>
@@ -473,6 +479,129 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="17" type="1">
 <li>Pruebe la interfaz de administración en <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a> y agregue algunos registros de observaciones.</li>
 </ol>
+</section>
+<section id="vistas" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="vistas"><span class="header-section-number">10.8</span> Vistas</h2>
+<p>De acuerdo con el patrón <a href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">Modelo - Vista - Controlador (MVC)</a>, una vista es una interfaz que presenta información al usuario. En el caso de Django, la presenta por medio de documentos web (i.e.&nbsp;a través del protocolo HTTP). Cada vista recibe una solicitud (<em>request</em>) y retorna una respuesta (<em>response</em>).</p>
+<p>Primero, a manera de ejemplo, se crea una vista muy sencilla.</p>
+<ol start="18" type="1">
+<li>Edite el archivo <code>mapa_backend/views.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.shortcuts <span class="im">import</span> render</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.http <span class="im">import</span> HttpResponse</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your views here.</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hello_world(request):</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HttpResponse(<span class="st">"Hola mundo"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cada vista debe estar asociada a un <a href="https://es.wikipedia.org/wiki/Localizador_de_recursos_uniforme">URL</a>.</p>
+<ol start="19" type="1">
+<li>Cree el archivo <code>mapa_backend/urls.py</code> y agregue el siguiente contenido:</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.urls <span class="im">import</span> path</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> views</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">""</span>, views.hello_world, name<span class="op">=</span><span class="st">"hello_world"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El URL que acaba de crearse en la aplicación <code>mapa_backend</code> debe enlazarse con el archivo de URL del proyecto.</p>
+<ol start="20" type="1">
+<li>Edite el archivo <code>mapa_leaflet_postgis/urls.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib <span class="im">import</span> admin</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.urls <span class="im">import</span> path, include</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">'admin/'</span>, admin.site.urls),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">""</span>, include(<span class="st">"mapa_backend.urls"</span>))</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>De esta manera, los URL de la aplicación quedan enlazados con los URL del proyecto.</p>
+<p><strong>Ejercicio</strong>: cambie la hilera vacía del URL por algo como <code>backend/</code> y trate de accederlo.</p>
+<section id="recuperación-de-todos-los-objetos-de-un-modelo" class="level3" data-number="10.8.1">
+<h3 data-number="10.8.1" class="anchored" data-anchor-id="recuperación-de-todos-los-objetos-de-un-modelo"><span class="header-section-number">10.8.1</span> Recuperación de todos los objetos de un modelo</h3>
+<p>En un nuestro caso, lo que deseamos es consultar una base de datos espacial y obtener respuestas en formato GeoJSON (en el caso de datos vectoriales). Para lograr esto, es necesario realizar una <a href="https://es.wikipedia.org/wiki/Serializaci%C3%B3n">serialización</a> de los modelos. En este caso, significa transformar el contenido de la base de datos al formato GeoJSON.</p>
+<ol start="21" type="1">
+<li>Agregue una vista para el modelo <code>Observacion</code> en <code>mapa_backend/views.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.shortcuts <span class="im">import</span> render</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.http <span class="im">import</span> HttpResponse</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.core.serializers <span class="im">import</span> serialize</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Observacion</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your views here.</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> observaciones(request):</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    consulta <span class="op">=</span> Observacion.objects.<span class="bu">all</span>()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    geojson <span class="op">=</span> serialize(<span class="st">"geojson"</span>, consulta, geometry_field<span class="op">=</span><span class="st">"point_geom"</span>, srid<span class="op">=</span><span class="dv">3857</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HttpResponse(geojson, content_type<span class="op">=</span><span class="st">"application/json"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La vista anterior:</p>
+<ul>
+<li>Recupera todos los objetos del modelo <code>Observacion</code> a través de una consulta realizada mediante el <a href="https://docs.djangoproject.com/en/4.2/topics/db/queries/">API de Django</a>.</li>
+<li>Serializa el resultado de la consulta y lo convierte a GeoJSON.</li>
+<li>Retorna como respuesta la consuta en formato GeoJSON.</li>
+</ul>
+<ol start="22" type="1">
+<li>Para acceder a la vista, debe asociarse con un URL. Modifique de la siguiente forma el archivo <code>mapa_backend/urls.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.urls <span class="im">import</span> path</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> views</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observaciones/"</span>, views.observaciones, name<span class="op">=</span><span class="st">"observaciones"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="23" type="1">
+<li>También debe modificar las URL del proyecto en el archivo <code>mapa_leaflet_postgis/urls.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib <span class="im">import</span> admin</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.urls <span class="im">import</span> path, include</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">'admin/'</span>, admin.site.urls),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"api/v1/"</span>, include(<span class="st">"mapa_backend.urls"</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Puede acceder a la vista en: <a href="http://127.0.0.1:8000/api/v1/observaciones/">http://127.0.0.1:8000/api/v1/observaciones/</a></p>
+</section>
+<section id="recuperación-de-un-objeto" class="level3" data-number="10.8.2">
+<h3 data-number="10.8.2" class="anchored" data-anchor-id="recuperación-de-un-objeto"><span class="header-section-number">10.8.2</span> Recuperación de un objeto</h3>
+<p>Seguidamente, se crea una vista que recupera una observación según el valor del campo <code>pk</code>.</p>
+<ol start="24" type="1">
+<li>Modifique el archivo <code>mapa_backend/views.py</code> y agregue una función llamada <code>observacion_por_llave()</code>:</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.shortcuts <span class="im">import</span> render</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.http <span class="im">import</span> HttpResponse</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.core.serializers <span class="im">import</span> serialize</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Observacion</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your views here.</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> observaciones(request):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    consulta <span class="op">=</span> Observacion.objects.<span class="bu">all</span>()</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    geojson <span class="op">=</span> serialize(<span class="st">"geojson"</span>, consulta, geometry_field<span class="op">=</span><span class="st">"point_geom"</span>, srid<span class="op">=</span><span class="dv">3857</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HttpResponse(geojson, content_type<span class="op">=</span><span class="st">"application/json"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> observacion_por_llave(request, llave):</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    observacion <span class="op">=</span> Observacion.objects.get(pk<span class="op">=</span>llave)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    geojson <span class="op">=</span> serialize(<span class="st">"geojson"</span>, [observacion], geometry_field<span class="op">=</span><span class="st">"point_geom"</span>, srid<span class="op">=</span><span class="dv">3857</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> HttpResponse(geojson, content_type<span class="op">=</span><span class="st">"application/json"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La función <code>observacion_por_llave()</code> recibe (además de <code>request</code>) el argumento <code>llave</code>, el cual se utiliza para recuperar un objeto de tipo <code>Observacion</code>, el cual se serializa y se retorna.</p>
+<ol start="25" type="1">
+<li>Para acceder a la vista, modifique de la siguiente forma el archivo <code>mapa_backend/urls.py</code>:</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.urls <span class="im">import</span> path</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> views</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observaciones/"</span>, views.observaciones, name<span class="op">=</span><span class="st">"observaciones"</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observacion_por_llave/&lt;int:llave&gt;"</span>, views.observacion_por_llave, name<span class="op">=</span><span class="st">"observacion_por_llave"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Acceda a la nueva vista con, por ejemplo, <a href="http://127.0.0.1:8000/api/v1/observacion_por_llave/1">http://127.0.0.1:8000/api/v1/observacion_por_llave/1</a>.</p>
+<p><strong>Ejercicios:</strong></p>
+<ol type="1">
+<li>Cree un modelo llamado <code>Ciudad</code> con los atributos <code>nombre</code>, <code>poblacion</code> y <code>point_geom</code>. Ingrese algunos registros a través de la interfaz de administración de Django.</li>
+<li>Cree una vista para recuperar los datos de todas las ciudades y otra para recuperar los datos de una ciudad por nombre.</li>
+</ol>
+</section>
+</section>
+<section id="recursos-de-interés" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">10.9</span> Recursos de interés</h2>
+<p><a href="https://www.youtube.com/playlist?list=PLmsFUfdnGr3yjFln0fJF5LP58Q0onAjpF">Python Web Apps 101</a> <a href="https://www.youtube.com/watch?v=5IhgcANAAFc">Python Web Apps: Django</a></p>
 
 
 </section>
