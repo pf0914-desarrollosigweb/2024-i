@@ -320,6 +320,175 @@ Acceda a la nueva vista con, por ejemplo, [http://127.0.0.1:8000/api/v1/observac
 1. Cree un modelo llamado `Ciudad` con los atributos `nombre`, `poblacion` y `point_geom`. Ingrese algunos registros a través de la interfaz de administración de Django.
 2. Cree una vista para recuperar los datos de todas las ciudades y otra para recuperar los datos de una ciudad por nombre.
 
+## Django REST Framework
+El [Django REST Framework (DRF)](https://www.django-rest-framework.org/) es una biblioteca poderosa y flexible para crear interfaces de programación de aplicaciones (API) para la Web en Django. Es ampliamente utilizado en el desarrollo de servicios *backend* que necesitan proporcionar datos al *frontend* mediante solicitudes HTTP, permitiendo la creación de arquitecturas basadas en [microservicios](https://es.wikipedia.org/wiki/Arquitectura_de_microservicios) y aplicaciones modernas y escalables.
+
+26. Para utilizar el DRS, es necesario instalar un par de módulos adicionales en nuestro ambiente Conda:
+
+```bash
+# Activación del ambiente
+conda activate desarrollo_geodjango
+
+# Instalación de módulos
+conda install -c conda-forge djangorestframework
+conda install -c conda-forge djangorestframework-gis
+```
+
+27. Edite el archivo `mapa_leaflet_postgis/settings.py` y agregue las aplicaciones:
+
+- `rest_framework`
+- `rest_framework_gis`
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'rest_framework',
+    'rest_framework_gis',
+    'mapa_backend.apps.MapaBackendConfig',
+    'mapa_frontend.apps.MapaFrontendConfig'
+]
+```
+
+28. Cree el archivo `mapa_backend/serializers.py` y agregue un serializador para el modelo `Observacion`, con el siguiente contenido:
+
+```python
+from .models import Observacion
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
+
+
+class ObservacionSerializador(GeoFeatureModelSerializer):
+    class Meta:
+        model = Observacion
+        geo_field = 'point_geom'
+
+        fields = (
+            'pk',
+            'nombre',
+            'descripcion'
+        )
+```
+
+29. Utilice el serializador que acaba de crear en dos vistas. Edite el archivo `mapa_backend/views.py` y agregue el siguiente contenido (antes comente el código de las vistas que creó en los pasos anteriores):
+
+```python
+from .models import Observacion
+from .models import Ciudad
+from .serializers import ObservacionSerializador
+from rest_framework import generics
+
+# Create your views here.
+class ObservacionLista(generics.ListAPIView):
+    queryset = Observacion.objects.all()
+    serializer_class = ObservacionSerializador
+    name = 'observacion-lista'
+
+class ObservacionDetalle(generics.RetrieveAPIView):
+    queryset = Observacion.objects.all()
+    serializer_class = ObservacionSerializador
+    name = 'observacion-detalle' 
+```
+
+Puede ver la especificación técnica de las vistas genéricas del DRF en [Generic views - Django REST Framework](https://www.django-rest-framework.org/api-guide/generic-views/).
+
+30. Para agregar los URL correspondientes a las vistas, edite el archivo `mapa_backend/urls.py` y agregue el siguiente contenido (antes comente el código de los URL que creó en los pasos anteriores):
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("observaciones/", views.ObservacionLista.as_view(), name=views.ObservacionLista.name),
+    path("observaciones/<int:pk>/", views.ObservacionDetalle.as_view(), name=views.ObservacionDetalle.name),
+    # path("observaciones/", views.observaciones, name="observaciones"),
+    # path("observacion_por_llave/<int:llave>", views.observacion_por_llave, name="observacion_por_llave"),
+    # path("ciudades/", views.ciudades, name="ciudades"),
+]
+```
+
+Puede acceder a las vista en:
+[http://127.0.0.1:8000/api/v1/observaciones/](http://127.0.0.1:8000/api/v1/observaciones/)
+[http://127.0.0.1:8000/api/v1/observaciones/1](http://127.0.0.1:8000/api/v1/observaciones/1)
+
+**Ejercicios**
+
+1. Cambie a la vista genérica de la vista `ObservacionLista` a `CreateAPIView` ([https://www.django-rest-framework.org/api-guide/generic-views/#createapiview](https://www.django-rest-framework.org/api-guide/generic-views/#createapiview)) y en cree una nueva observación en la interfaz web que se muestra al invocar la vista.
+2. Cambie a la vista genérica de la vista `ObservacionDetalle` a `RetrieveUpdateDestroyAPIView` ([https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdatedestroyapiview](https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdatedestroyapiview)) y modifique y borre observaciones en la interfaz web que se muestra al invocar la vista.
+3. Cree un serializador para el modelo `Ciudad` y vistas para recuperar todos los objetos y un objeto por la llave primaria (`pk`).
+
+### Funciones geoespaciales
+
+Seguidamente, se muestra un ejemplo de las funciones espaciales de GeoDjango. Se define una vista para mostrar las tres ciudades más cercanas a una observación. Debe agregarse contenido a los siguientes archivos:
+
+`mapa_backend/serializers.py`:
+
+```python
+class CiudadSerializador(GeoFeatureModelSerializer):
+    proximidad = serializers.SerializerMethodField('get_proximidad')
+
+    def get_proximidad(self, obj):
+        if obj.distance:
+            return obj.distance.km
+        return False
+    
+    class Meta:
+        model = Ciudad
+        geo_field = 'point_geom'
+
+        fields = (
+            'pk',
+            'nombre',
+            'descripcion',
+            'proximidad'
+        )      
+```
+
+`mapa_backend/views.py`:
+
+```python
+from django.http import Http404
+from django.contrib.gis.db.models.functions import Distance
+from django.shortcuts import get_object_or_404
+
+class CiudadLista(generics.ListAPIView):
+
+    serializer_class = CiudadSerializador
+    name = 'ciudad-lista'
+
+    def get_queryset(self):
+        observacionID = self.request.query_params.get('observacionid')
+
+        if observacionID is None:
+            raise Http404
+        
+        geom_observacion_seleccionada = get_object_or_404(Observacion, pk=observacionID).point_geom
+        ciudades_cercanas = Ciudad.objects.annotate(distance=Distance('point_geom', geom_observacion_seleccionada)).order_by('distance')[:3]
+
+        return ciudades_cercanas
+```
+
+`mapa_backend/urls.py`:
+
+```python
+urlpatterns = [
+    path("observaciones/", views.ObservacionLista.as_view(), name=views.ObservacionLista.name),
+    path("observaciones/<int:pk>/", views.ObservacionDetalle.as_view(), name=views.ObservacionDetalle.name),
+    path("ciudades/", views.CiudadLista.as_view(), name=views.CiudadLista.name)
+    # path("observaciones/", views.observaciones, name="observaciones"),
+    # path("observacion_por_llave/<int:llave>", views.observacion_por_llave, name="observacion_por_llave"),
+    # path("ciudades/", views.ciudades, name="ciudades"),
+]
+```
+
+Las tres ciudades más cercanas a una observación pueden consultarse, por ejemplo, con:
+
+[http://127.0.0.1:8000/api/v1/ciudades/?observacionid=2](http://127.0.0.1:8000/api/v1/ciudades/?observacionid=2)
+
 ## Recursos de interés
 
 [Python Web Apps 101](https://www.youtube.com/playlist?list=PLmsFUfdnGr3yjFln0fJF5LP58Q0onAjpF)

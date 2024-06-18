@@ -290,7 +290,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#recuperación-de-todos-los-objetos-de-un-modelo" id="toc-recuperación-de-todos-los-objetos-de-un-modelo" class="nav-link" data-scroll-target="#recuperación-de-todos-los-objetos-de-un-modelo"><span class="header-section-number">10.8.1</span> Recuperación de todos los objetos de un modelo</a></li>
   <li><a href="#recuperación-de-un-objeto" id="toc-recuperación-de-un-objeto" class="nav-link" data-scroll-target="#recuperación-de-un-objeto"><span class="header-section-number">10.8.2</span> Recuperación de un objeto</a></li>
   </ul></li>
-  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="header-section-number">10.9</span> Recursos de interés</a></li>
+  <li><a href="#django-rest-framework" id="toc-django-rest-framework" class="nav-link" data-scroll-target="#django-rest-framework"><span class="header-section-number">10.9</span> Django REST Framework</a>
+  <ul>
+  <li><a href="#funciones-geoespaciales" id="toc-funciones-geoespaciales" class="nav-link" data-scroll-target="#funciones-geoespaciales"><span class="header-section-number">10.9.1</span> Funciones geoespaciales</a></li>
+  </ul></li>
+  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="header-section-number">10.10</span> Recursos de interés</a></li>
   </ul>
 </nav>
     </div>
@@ -599,8 +603,151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 </section>
-<section id="recursos-de-interés" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">10.9</span> Recursos de interés</h2>
+<section id="django-rest-framework" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="django-rest-framework"><span class="header-section-number">10.9</span> Django REST Framework</h2>
+<p>El <a href="https://www.django-rest-framework.org/">Django REST Framework (DRF)</a> es una biblioteca poderosa y flexible para crear interfaces de programación de aplicaciones (API) para la Web en Django. Es ampliamente utilizado en el desarrollo de servicios <em>backend</em> que necesitan proporcionar datos al <em>frontend</em> mediante solicitudes HTTP, permitiendo la creación de arquitecturas basadas en <a href="https://es.wikipedia.org/wiki/Arquitectura_de_microservicios">microservicios</a> y aplicaciones modernas y escalables.</p>
+<ol start="26" type="1">
+<li>Para utilizar el DRS, es necesario instalar un par de módulos adicionales en nuestro ambiente Conda:</li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Activación del ambiente</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate desarrollo_geodjango</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de módulos</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge djangorestframework</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge djangorestframework-gis</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="27" type="1">
+<li>Edite el archivo <code>mapa_leaflet_postgis/settings.py</code> y agregue las aplicaciones:</li>
+</ol>
+<ul>
+<li><code>rest_framework</code></li>
+<li><code>rest_framework_gis</code></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>INSTALLED_APPS <span class="op">=</span> [</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.admin'</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.auth'</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.contenttypes'</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.sessions'</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.messages'</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.staticfiles'</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'django.contrib.gis'</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rest_framework'</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rest_framework_gis'</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mapa_backend.apps.MapaBackendConfig'</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'mapa_frontend.apps.MapaFrontendConfig'</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="28" type="1">
+<li>Cree el archivo <code>mapa_backend/serializers.py</code> y agregue un serializador para el modelo <code>Observacion</code>, con el siguiente contenido:</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Observacion</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rest_framework_gis.serializers <span class="im">import</span> GeoFeatureModelSerializer</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ObservacionSerializador(GeoFeatureModelSerializer):</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> Meta:</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> Observacion</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        geo_field <span class="op">=</span> <span class="st">'point_geom'</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        fields <span class="op">=</span> (</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pk'</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'nombre'</span>,</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">'descripcion'</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="29" type="1">
+<li>Utilice el serializador que acaba de crear en dos vistas. Edite el archivo <code>mapa_backend/views.py</code> y agregue el siguiente contenido (antes comente el código de las vistas que creó en los pasos anteriores):</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Observacion</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Ciudad</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .serializers <span class="im">import</span> ObservacionSerializador</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rest_framework <span class="im">import</span> generics</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your views here.</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ObservacionLista(generics.ListAPIView):</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    queryset <span class="op">=</span> Observacion.objects.<span class="bu">all</span>()</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    serializer_class <span class="op">=</span> ObservacionSerializador</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">'observacion-lista'</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ObservacionDetalle(generics.RetrieveAPIView):</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    queryset <span class="op">=</span> Observacion.objects.<span class="bu">all</span>()</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    serializer_class <span class="op">=</span> ObservacionSerializador</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">'observacion-detalle'</span> </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Puede ver la especificación técnica de las vistas genéricas del DRF en <a href="https://www.django-rest-framework.org/api-guide/generic-views/">Generic views - Django REST Framework</a>.</p>
+<ol start="30" type="1">
+<li>Para agregar los URL correspondientes a las vistas, edite el archivo <code>mapa_backend/urls.py</code> y agregue el siguiente contenido (antes comente el código de los URL que creó en los pasos anteriores):</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.urls <span class="im">import</span> path</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> . <span class="im">import</span> views</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observaciones/"</span>, views.ObservacionLista.as_view(), name<span class="op">=</span>views.ObservacionLista.name),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observaciones/&lt;int:pk&gt;/"</span>, views.ObservacionDetalle.as_view(), name<span class="op">=</span>views.ObservacionDetalle.name),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path("observaciones/", views.observaciones, name="observaciones"),</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path("observacion_por_llave/&lt;int:llave&gt;", views.observacion_por_llave, name="observacion_por_llave"),</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path("ciudades/", views.ciudades, name="ciudades"),</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Puede acceder a las vista en: <a href="http://127.0.0.1:8000/api/v1/observaciones/">http://127.0.0.1:8000/api/v1/observaciones/</a> <a href="http://127.0.0.1:8000/api/v1/observaciones/1">http://127.0.0.1:8000/api/v1/observaciones/1</a></p>
+<p><strong>Ejercicios</strong></p>
+<ol type="1">
+<li>Cambie a la vista genérica de la vista <code>ObservacionLista</code> a <code>CreateAPIView</code> (<a href="https://www.django-rest-framework.org/api-guide/generic-views/#createapiview">https://www.django-rest-framework.org/api-guide/generic-views/#createapiview</a>) y en cree una nueva observación en la interfaz web que se muestra al invocar la vista.</li>
+<li>Cambie a la vista genérica de la vista <code>ObservacionDetalle</code> a <code>RetrieveUpdateDestroyAPIView</code> (<a href="https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdatedestroyapiview">https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdatedestroyapiview</a>) y modifique y borre observaciones en la interfaz web que se muestra al invocar la vista.</li>
+<li>Cree un serializador para el modelo <code>Ciudad</code> y vistas para recuperar todos los objetos y un objeto por la llave primaria (<code>pk</code>).</li>
+</ol>
+<section id="funciones-geoespaciales" class="level3" data-number="10.9.1">
+<h3 data-number="10.9.1" class="anchored" data-anchor-id="funciones-geoespaciales"><span class="header-section-number">10.9.1</span> Funciones geoespaciales</h3>
+<p>Seguidamente, se muestra un ejemplo de las funciones espaciales de GeoDjango. Se define una vista para mostrar las tres ciudades más cercanas a una observación. Debe agregarse contenido a los siguientes archivos:</p>
+<p><code>mapa_backend/serializers.py</code>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CiudadSerializador(GeoFeatureModelSerializer):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    proximidad <span class="op">=</span> serializers.SerializerMethodField(<span class="st">'get_proximidad'</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_proximidad(<span class="va">self</span>, obj):</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> obj.distance:</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> obj.distance.km</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> Meta:</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> Ciudad</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>        geo_field <span class="op">=</span> <span class="st">'point_geom'</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        fields <span class="op">=</span> (</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pk'</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">'nombre'</span>,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">'descripcion'</span>,</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'proximidad'</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>        )      </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>mapa_backend/views.py</code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.http <span class="im">import</span> Http404</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib.gis.db.models.functions <span class="im">import</span> Distance</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.shortcuts <span class="im">import</span> get_object_or_404</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CiudadLista(generics.ListAPIView):</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    serializer_class <span class="op">=</span> CiudadSerializador</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="st">'ciudad-lista'</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_queryset(<span class="va">self</span>):</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        observacionID <span class="op">=</span> <span class="va">self</span>.request.query_params.get(<span class="st">'observacionid'</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> observacionID <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> Http404</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>        geom_observacion_seleccionada <span class="op">=</span> get_object_or_404(Observacion, pk<span class="op">=</span>observacionID).point_geom</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>        ciudades_cercanas <span class="op">=</span> Ciudad.objects.annotate(distance<span class="op">=</span>Distance(<span class="st">'point_geom'</span>, geom_observacion_seleccionada)).order_by(<span class="st">'distance'</span>)[:<span class="dv">3</span>]</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ciudades_cercanas</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>mapa_backend/urls.py</code>:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>urlpatterns <span class="op">=</span> [</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observaciones/"</span>, views.ObservacionLista.as_view(), name<span class="op">=</span>views.ObservacionLista.name),</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"observaciones/&lt;int:pk&gt;/"</span>, views.ObservacionDetalle.as_view(), name<span class="op">=</span>views.ObservacionDetalle.name),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    path(<span class="st">"ciudades/"</span>, views.CiudadLista.as_view(), name<span class="op">=</span>views.CiudadLista.name)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path("observaciones/", views.observaciones, name="observaciones"),</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path("observacion_por_llave/&lt;int:llave&gt;", views.observacion_por_llave, name="observacion_por_llave"),</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># path("ciudades/", views.ciudades, name="ciudades"),</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Las tres ciudades más cercanas a una observación pueden consultarse, por ejemplo, con:</p>
+<p><a href="http://127.0.0.1:8000/api/v1/ciudades/?observacionid=2">http://127.0.0.1:8000/api/v1/ciudades/?observacionid=2</a></p>
+</section>
+</section>
+<section id="recursos-de-interés" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">10.10</span> Recursos de interés</h2>
 <p><a href="https://www.youtube.com/playlist?list=PLmsFUfdnGr3yjFln0fJF5LP58Q0onAjpF">Python Web Apps 101</a> <a href="https://www.youtube.com/watch?v=5IhgcANAAFc">Python Web Apps: Django</a></p>
 
 
