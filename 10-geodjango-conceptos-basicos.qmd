@@ -1,14 +1,131 @@
-# GeoDjango {#sec-pencom}
+# Desarrollo de aplicaciones geoespaciales de pila completa (*full stack*) con GeoDjango {#sec-pencom}
 
 ## Introducción
-[GeoDjango](https://docs.djangoproject.com/en/5.0/ref/contrib/gis/) es una extensión de [Django](https://www.djangoproject.com/), un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales.
+[GeoDjango](https://docs.djangoproject.com/en/5.0/ref/contrib/gis/) es una extensión de [Django](https://www.djangoproject.com/), un popular marco de trabajo web de Python, que permite desarrollar aplicaciones geoespaciales, tanto para la capa de *backend* (acceso a los datos) como para la capa de *frontend* (interfaz de usuario).
 
-## Instalación de Django
-En un ambiente conda, se instala la versión 3.0.4 de la biblioteca GDAL y la versión 4.2 de Django. Se utilizan esas versiones por razones de compatibilidad. También se instala la versión más reciente de sistema administrador de bases de datos PostgreSQL y su extensión espacial PostGIS. La biblioteca psycopg2 permite establecer conexiones a bases de datos PostgreSQL/PostGIS desde aplicaciones Python.
+Un marco de trabajo (*framework*) es una estructura reutilizable que proporciona una base para el desarrollo de un proyecto de sofware. Usualmente, un marco de trabajo incluye bibliotecas y un conjunto de mejores prácticas para utilizarlas. El uso de un marco de trabajo permite un desarrollo más rápido, al proporcionar los componentes esenciales de un proyecto y dotarlos de funcionalidades básicas, que de otro modo habría que desarrollar completamente.
 
-1. Instale [Miniconda](https://docs.anaconda.com/free/miniconda/).
+## Django
+Django fue desarrollado originalmente para gestionar páginas web orientadas a noticias de la World Company de Lawrence, Kansas. En 2005, fue liberado al público con una licencia BSD. Fue nombrado al guitarrista de jazz gitano [Django Reinhardt](https://es.wikipedia.org/wiki/Django_Reinhardt). 
 
-2. Cree un ambiente conda:
+### Estructura de proyectos
+
+#### Directorio principal
+Un proyecto Django reside en un directorio del sistema de archivos, el cual contiene varios archivos y subdirectorios. Por ejemplo, el directorio de un proyecto llamado `miproyecto`, tendría una estructura inicial como la siguiente:
+
+```
+miproyecto/
+    manage.py
+    miproyecto/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+```
+
+Seguidamente, se describen los principales componentes de esta estructura:
+
+- El directorio raíz externo `miproyecto/` es un contenedor para el proyecto. Puede tener cualquier nombre.
+- `manage.py`: es un utilitario de línea de comandos que permite realizar varias tareas administrativas, como ejecutar el proyecto y revisar su consistencia.
+- El directorio interno `miproyecto/` es el paquete de Python correspondiente al proyecto. 
+    - `miproyecto/__init__.py`: un archivo vacío que le dice a Python que este directorio debe considerarse un paquete. 
+    - `miproyecto/settings.py`: configuración del proyecto (aplicaciones, conexiones a bases de datos).
+    - `miproyecto/urls.py`: conjunto de URL que utiliza el proyecto (ej. para acceder a las vistas).
+    - `miproyecto/asgi.py`: punto de entrada para servidores web compatibles con ASGI.
+    - `miproyecto/wsgi.py`: punto de entrada para servidores web compatibles con WSGI.
+
+#### Aplicaciones
+Un proyecto contiene varias aplicaciones. Algunas están incorporadas por defecto en cualquier proyecto. Un programador también puede desarrollar sus propias aplicaciones.
+
+Al crear una aplicación llamada `miaplicacion`, se genera un directorio como el siguiente:
+
+```
+miaplicacion/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+```
+
+Las aplicaciones de un proyecto se listan en un vector del archivo `settings.py` llamado `INSTALLED_APPS`, como el que se muestra seguidamente:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles'
+]
+```
+
+Si se incluyen o se crean nuevas aplicaciones para este proyecto, deben agregarse al vector `INSTALLED_APPS`.
+
+### El patrón Modelo–Vista–Controlador
+La arquitectura de Django está basada en el patrón de diseño de software denominado [Modelo-Vista-Controlador (MVC)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador), el cual es muy popular en el desarrollo  de aplicaciones y sus interfaces de usuario. El patrón consiste de tres componentes, los cuales se muestran en la @fig-modelo-vista-controlador.
+
+![El patrón Modelo-Vista-Controlador. Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MVC-Process.svg).](img/modelo-vista-controlador.png){#fig-modelo-vista-controlador .lightbox fig-alt="El patrón Modelo-Vista-Controlador" fig-align="center"}
+
+#### Modelo 
+El modelo es la representación interna de los datos. En el caso de Django, esta representación se implementa mediante clases de Python, las cuales se definen en el archivo `models.py` de cada aplicación.
+
+Django utiliza [ORM (Object Relational Mapping)](https://es.wikipedia.org/wiki/Mapeo_relacional_de_objetos), o mapeo relacional de objetos, para mapear las clases definidas en `models.py` a las tablas de una base de datos. Esto permite utilizar el paradigma de [programación orientada a objetos](https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos) para manipular la base de datos. Se puede considerar un ORM como una herramienta para convertir los objetos Python de una aplicación a un formato adecuado para ser almacenados en sistemas administradores de bases de datos como Oracle, MySQL, PostgreSQL o SQLite.
+
+#### Vista
+Una vista presenta un modelo (i.e. datos) en un formato adecuado. Las vistas se definen en el archivo `views.py` de cada aplicación.
+
+#### Controlador
+Responde a eventos e invoca peticiones al modelo cuando se hace alguna solicitud de información (ej. editar un documento o un registro en una base de datos). El controlador funciona como un "intermediario" entre el modelo y la vista.
+
+### *Frontend* y *Backend*
+Django es marco de trabajo de "pila completa" (*full stack*), lo que significa que apoya el desarrollo de las dos grandes capas de la arquitectura de un sistema de información: el *frontend* y el *backend*, cuya relación se muestra en la @fig-frontend-backend:
+
+![*Frontend* y *Backend*. Fuente: [Hack a Boss](https://www.hackaboss.com/blog/frontend-backend-explicados).](img/frontend-backend.png){#fig-frontend-backend .lightbox fig-alt="Frontend y Backend" fig-align="center"}
+
+El *frontend* es la capa con la que los usuarios finales interactúan directamente. Incluye todos los aspectos relacionados con la interfaz del usuario, tales como la disposición de los elementos en la pantalla, los estilos y las interacciones que se realizan a través de menús, botones y formularios para ingreso de datos, entre otras.
+
+Por su parte, el *backend* se encarga del procesamiento de los datos y del funcionamiento interno. No es visible para los usuarios finales. Incluye servidores de aplicaciones, bases de datos y la lógica de aplicación necesaria para procesar las instrucciones que los usuarios envían a través del *frontend* y para retornar los resultados por la misma vía.
+
+Esta arquitectura permite una clara separación de responsabilidades, donde el *frontend* se enfoca en la experiencia del usuario y el *backend* en la lógica de procesamiento y acceso a datos. Esto no solo mejora la organización del código y facilita el mantenimiento, sino que también permite modificar partes de la aplicación de manera independiente, mejorando la eficiencia y la capacidad de manejo de los datos.
+
+### El *Django REST Framework*
+El [Django REST Framework (DRF)](https://www.django-rest-framework.org/) es una biblioteca para la creación de interfaces de programación de aplicaciones (API) para la Web en Django. Es ampliamente utilizado en el desarrollo de servicios *backend* que necesitan proporcionar datos al *frontend* mediante solicitudes HTTP (Protocolo de transferencia de hipertexto).
+
+## GeoDjango
+GeoDjango es un módulo de Django para el desarrollo de aplicaciones geoespaciales. Enriquece una aplicación Django capacidades como:
+
+- Acceso a bases de datos espaciales.
+- Consultas espaciales (relaciones topológicas, cálculo de área, cálculo de distancias, etc.).
+- Creación y modificación de geometrías.
+- Transformaciones entre sistemas de coordenadas.
+
+Las aplicaciones desarrolladas con GeoDjango usualmente utilizan una base de datos espacial como [PostgreSQL](https://www.postgresql.org/) y su extensión [PostGIS](https://postgis.net/). También requieren de bibliotecas espaciales como [GDAL](https://gdal.org/).
+
+## Ejemplo de desarrollo de un proyecto en GeoDjango
+En esta sección, a manera de ejemplo, se desarrolla un proyecto con GeoDjango. El proyecto permite la captura de datos de puntos de observación y la generación de un mapa de calor que muestra las zonas con mayor concentración de puntos.
+
+El proyecto consiste de dos aplicaciones:
+
+- Un *backend* en el que se definen los modelos y las vistas. Los datos se capturan mediante la interfaz de administración de Django y se almacenan en una base de datos PosgreSQL y su extensión espacial PostGIS.
+- Un *frontend* que despliega el mapa de calor.
+
+Las secciones subsiguientes muestran los pasos detallados del proceso de desarrollo del proyecto.
+
+### Instalación de herramientas
+En esta sección, se detalla la instalación del marco de trabajo Django y la base de datos PostgreSQL y su extensión espacial PostGIS.
+
+#### Django
+En este proyecto se utiliza la versión 4.2 de Django. La instalación se realiza en un ambiente del administrador de paquetes [Conda](https://docs.conda.io/), el cual se crea mediante la distribución de Python llamada Miniconda. En el mismo ambiente, se instala la biblioteca geoespacial GDAL versión 3.0.4. Se eligieron estas versiones de Django y GDAL por razones de compatibilidad. También se instala el paquete de Python psycopg2 (para conexión a PostgreSQL) y el *Django REST Framework*.
+
+
+**1. Instale [Miniconda](https://docs.anaconda.com/free/miniconda/).**
+
+**2. Cree un ambiente conda:**
 
 ```bash
 # Actualización de Conda
@@ -27,30 +144,44 @@ conda activate desarrollo_geodjango
 conda install -c conda-forge gdal=3.0.4
 conda install -c conda-forge django
 conda install -c conda-forge psycopg2
+conda install -c conda-forge djangorestframework
+conda install -c conda-forge djangorestframework-gis
 
 # Desactivación del ambiente (para cuando termine de usarse)
 # conda deactivate
 ```
 
-3. Revise las versiones del software instalado:
+**3. Revise las versiones del software instalado:**
 
 ```bash
 # Versión de Python
 python --version
+> Python 3.8.15
+
 # Versión de Django
 python -m django --version
+> 4.2.13
+
 # Versión de GDAL
 gdalinfo --version
+> GDAL 3.0.4, released 2020/01/28
 ```
 
-4. Instale [PostgreSQL y PostGIS](https://www.postgresql.org/).
+#### PostgreSQL y PostGIS
 
-## Creación de un proyecto y sus aplicaciones
-Se crea un proyecto Django con dos aplicaciones: una para el *backend* y otra para el *frontend*, las cuales acceden una base de datos PostgreSQL/PostGIS.
+**4. Instale [PostgreSQL y PostGIS](https://www.postgresql.org/).**
 
-5. Cree una base de datos PostgreSQL/PostGIS llamada `mapa_leaflet_postgis`.
+### Creación de una base de datos espaciales
 
-6. Cree un proyecto Django:
+**5. Cree una base de datos PostgreSQL llamada `mapa_leaflet_postgis` que tenga la extensión `postgis`.**
+
+### Creación de un proyecto Django y sus aplicaciones
+
+Se crea un proyecto Django con dos aplicaciones: una para el *backend* y otra para el *frontend*.
+
+#### Creación del proyecto
+
+**6. Cree un proyecto Django:**
 
 ```bash
 # Creación
@@ -61,21 +192,34 @@ cd mapa_leaflet_postgis
 
 # Revisión
 python manage.py check
+> System check identified no issues (0 silenced).
 
 # Ejecución del servidor
 python manage.py runserver
 ```
 
-7. Cree una aplicación para el *backend* y otra para el *frontend*.
+El servidor debe estar disponible en la dirección [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
+#### Creación de las aplicaciones
+
+**7. Cree una aplicación para el *backend* y otra para el *frontend*.**
 
 ```bash
 django-admin startapp mapa_backend
 django-admin startapp mapa_frontend
 ```
 
-## Configuración de GeoDjango
+## Configuración de Django y GeoDjango
 
-8. Edite el archivo `mapa_leaflet_postgis/settings.py` y agregue la aplicación `django.contrib.gis`, correspondiente a GeoDjango, y las aplicaciones correspondientes al *backend* y al *frontend*:
+### Adición de aplicaciones
+
+**8. Edite el archivo `mapa_leaflet_postgis/settings.py` y en el vector `INSTALLED_APPS` agregue las aplicaciones:**
+
+- **`django.contrib.gis` (GeoDjango).**
+- **`rest_framework` (DRF).**
+- **`rest_framework_gis` (funciones espaciales del DRF).**
+- **`mapa_backend.apps.MapaBackendConfig` (*backend*)**.
+- **`mapa_frontend.apps.MapaFrontendConfig` (*frontend*).**
 
 ```python
 INSTALLED_APPS = [
@@ -86,19 +230,41 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'rest_framework',
+    'rest_framework_gis',
     'mapa_backend.apps.MapaBackendConfig',
     'mapa_frontend.apps.MapaFrontendConfig'
 ]
 ```
 
-9. Revise la configuración:
+### Configuración de la conexión a la base de datos
+
+**9. Edite el archivo `mapa_leaflet_postgis/settings.py` y en el objeto `DATABASES` especifique la conexión a la base de datos espaciales que creó:**
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'mapa_leaflet_postgis',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
+```
+
+**10. Revise la configuración:**
 
 ```bash
 # Revisión
 python manage.py check
+> System check identified no issues (0 silenced).
 ```
 
-10. Elimine los mensajes de "migraciones" no aplicadas:
+### Eliminación de los mensajes de migraciones no aplicadas
+
+**11. Elimine los mensajes de "migraciones" no aplicadas (se están desplegando al ejecutar el servidor):**
 
 ```bash
 # Comando migrate
@@ -108,21 +274,23 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## Creación de un superusuario
+### Creación de un superusuario
 Un superusuario tiene todos los privilegios en la interfaz de administración de Django. En las próximas secciones, se utilizará el superusuario para ingresar datos mediante esa interfaz.
 
-11. Cree un superusuario para la intefaz de administración de Django:
+**11. Cree un superusuario para la intefaz de administración de Django:**
 
 ```bash
 # Creación del superusuario
 python manage.py createsuperuser
 ```
 
-12. Verifique el acceso en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
+**12. Verifique el acceso en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).**
 
-## Modelos
+## Desarrollo del *backend*
 
-13. Edite el archivo `mapa_backend/models.py` y agregue un modelo llamado `Observacion`:
+### Modelos
+
+**13. Edite el archivo `mapa_backend/models.py` y agregue un modelo llamado `Observacion`:**
 
 ```python
 from django.db import models
@@ -131,7 +299,7 @@ from django.contrib.gis.db import models
 class Observacion(models.Model):
     nombre = models.CharField("Nombre de la observación", max_length=50, help_text="Nombre de la observación")
     descripcion = models.CharField("Descripción de la observación", max_length=254, blank=True, help_text="Descripción de la observación")
-    point_geom = models.PointField()
+    ubicacion = models.PointField()
 
     class Meta:
         verbose_name_plural = "Observaciones"
@@ -140,7 +308,7 @@ class Observacion(models.Model):
         return self.nombre
 ```
 
-14. Realice la "migración" de los modelos:
+**14. Realice la "migración" de los modelos:**
 
 ```bash
 # Comando makemigrations
@@ -150,11 +318,11 @@ python manage.py makemigrations mapa_backend
 python manage.py migrate
 ```
 
-15. Revise los archivos de migración en la carpeta `mapa_backend/migrations`.
+**15. Revise los archivos de migración en la carpeta `mapa_backend/migrations` y la tabla `mapa_backend_observacion` en la base de datos `mapa_leaflet_postgis`. Ambos deben haberse creado como producto de los comandos anteriores. **
 
-## Configuración de la interfaz de administración
+### Configuración de la interfaz de administración
 
-16. Edite el archivo `mapa_backend/admin.py`:
+**16. Edite el archivo `mapa_backend/admin.py`:**
 
 ```python
 from django.contrib.gis import admin
@@ -175,14 +343,18 @@ class ObservacionAdmin(CustomGeoAdmin):
     pass
 ```
 
-17. Pruebe la interfaz de administración en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) y agregue algunos registros de observaciones.
+**17. Pruebe la interfaz de administración en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) y agregue algunos registros de observaciones.**
 
-## Vistas
+**18. Confirme que las observaciones se hayan agregado a la tabla `mapa_backend_observacion` en la base de datos `mapa_leaflet_postgis`.
+
+### Vistas
 De acuerdo con el patrón [Modelo - Vista - Controlador (MVC)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador), una vista es una interfaz que presenta información al usuario. En el caso de Django, la presenta por medio de documentos web (i.e. a través del protocolo HTTP). Cada vista recibe una solicitud (*request*) y retorna una respuesta (*response*).
+
+#### Ejemplo
 
 Primero, a manera de ejemplo, se crea una vista muy sencilla.
 
-18. Edite el archivo `mapa_backend/views.py`:
+**19. Edite el archivo `mapa_backend/views.py`:**
 
 ```python
 from django.shortcuts import render
@@ -195,7 +367,7 @@ def hello_world(request):
 
 Cada vista debe estar asociada a un [URL](https://es.wikipedia.org/wiki/Localizador_de_recursos_uniforme).
 
-19. Cree el archivo `mapa_backend/urls.py` y agregue el siguiente contenido:
+**20. Cree el archivo `mapa_backend/urls.py` y agregue el siguiente contenido:**
 
 ```python
 from django.urls import path
@@ -208,7 +380,7 @@ urlpatterns = [
 
 El URL que acaba de crearse en la aplicación `mapa_backend` debe enlazarse con el archivo de URL del proyecto.
 
-20. Edite el archivo `mapa_leaflet_postgis/urls.py`:
+**21. Edite el archivo `mapa_leaflet_postgis/urls.py`:**
 
 ```python
 from django.contrib import admin
@@ -222,13 +394,15 @@ urlpatterns = [
 
 De esta manera, los URL de la aplicación quedan enlazados con los URL del proyecto.
 
-**Ejercicio**: cambie la hilera vacía del URL por algo como `backend/` y trate de accederlo.
+**22. Verifique el acceso la vista `hello_world` en [http://127.0.0.1:8000/](http://127.0.0.1:8000/).**
 
-### Recuperación de todos los objetos de un modelo
+**Ejercicio**: cambie la hilera vacía del URL por `backend/` y trate de accederlo.
+
+#### Recuperación de todos los objetos de un modelo
 
 En un nuestro caso, lo que deseamos es consultar una base de datos espacial y obtener respuestas en formato GeoJSON (en el caso de datos vectoriales). Para lograr esto, es necesario realizar una [serialización](https://es.wikipedia.org/wiki/Serializaci%C3%B3n) de los modelos. En este caso, significa transformar el contenido de la base de datos al formato GeoJSON.
 
-21. Agregue una vista para el modelo `Observacion` en `mapa_backend/views.py`:
+**23. Agregue una vista para el modelo `Observacion` en `mapa_backend/views.py`:**
 
 ```python
 from django.shortcuts import render
@@ -239,7 +413,7 @@ from .models import Observacion
 # Create your views here.
 def observaciones(request):
     consulta = Observacion.objects.all()
-    geojson = serialize("geojson", consulta, geometry_field="point_geom", srid=3857)
+    geojson = serialize("geojson", consulta, geometry_field="ubicacion", srid=3857)
     return HttpResponse(geojson, content_type="application/json")
 ```
 
@@ -249,7 +423,7 @@ La vista anterior:
 - Serializa el resultado de la consulta y lo convierte a GeoJSON.
 - Retorna como respuesta la consuta en formato GeoJSON.
 
-22. Para acceder a la vista, debe asociarse con un URL. Modifique de la siguiente forma el archivo `mapa_backend/urls.py`:
+**24. Para acceder a la vista, debe asociarse con un URL. Modifique de la siguiente forma el archivo `mapa_backend/urls.py`:**
 
 ```python
 from django.urls import path
@@ -260,7 +434,7 @@ urlpatterns = [
 ]
 ```
 
-23.  También debe modificar las URL del proyecto en el archivo `mapa_leaflet_postgis/urls.py`:
+**25.  También debe modificar las URL del proyecto en el archivo `mapa_leaflet_postgis/urls.py`:**
 
 ```python
 from django.contrib import admin
@@ -275,11 +449,11 @@ urlpatterns = [
 Puede acceder a la vista en:
 [http://127.0.0.1:8000/api/v1/observaciones/](http://127.0.0.1:8000/api/v1/observaciones/)
 
-### Recuperación de un objeto
+#### Recuperación de un objeto
 
-Seguidamente, se crea una vista que recupera una observación según el valor del campo `pk`.
+Seguidamente, se crea una vista que recupera una observación según el valor del campo `pk` (este campo se crea automáticamente).
 
-24. Modifique el archivo `mapa_backend/views.py` y agregue una función llamada `observacion_por_llave()`:
+**26. Modifique el archivo `mapa_backend/views.py` y agregue una función llamada `observacion_por_llave()`:**
 
 ```python
 from django.shortcuts import render
@@ -290,18 +464,18 @@ from .models import Observacion
 # Create your views here.
 def observaciones(request):
     consulta = Observacion.objects.all()
-    geojson = serialize("geojson", consulta, geometry_field="point_geom", srid=3857)
+    geojson = serialize("geojson", consulta, geometry_field="ubicacion", srid=3857)
     return HttpResponse(geojson, content_type="application/json")
     
 def observacion_por_llave(request, llave):
     observacion = Observacion.objects.get(pk=llave)
-    geojson = serialize("geojson", [observacion], geometry_field="point_geom", srid=3857)
+    geojson = serialize("geojson", [observacion], geometry_field="ubicacion", srid=3857)
     return HttpResponse(geojson, content_type="application/json")
 ```
 
 La función `observacion_por_llave()` recibe (además de `request`) el argumento `llave`, el cual se utiliza para recuperar un objeto de tipo `Observacion`, el cual se serializa y se retorna.
 
-25. Para acceder a la vista, modifique de la siguiente forma el archivo `mapa_backend/urls.py`:
+**27. Para acceder a la vista, modifique de la siguiente forma el archivo `mapa_backend/urls.py`:**
 
 ```python
 from django.urls import path
@@ -320,42 +494,10 @@ Acceda a la nueva vista con, por ejemplo, [http://127.0.0.1:8000/api/v1/observac
 1. Cree un modelo llamado `Ciudad` con los atributos `nombre`, `poblacion` y `point_geom`. Ingrese algunos registros a través de la interfaz de administración de Django.
 2. Cree una vista para recuperar los datos de todas las ciudades y otra para recuperar los datos de una ciudad por nombre.
 
-## Django REST Framework
-El [Django REST Framework (DRF)](https://www.django-rest-framework.org/) es una biblioteca poderosa y flexible para crear interfaces de programación de aplicaciones (API) para la Web en Django. Es ampliamente utilizado en el desarrollo de servicios *backend* que necesitan proporcionar datos al *frontend* mediante solicitudes HTTP, permitiendo la creación de arquitecturas basadas en [microservicios](https://es.wikipedia.org/wiki/Arquitectura_de_microservicios) y aplicaciones modernas y escalables.
+### Uso del DRF
+En esta sección, se mostrará el uso del DRF en el *backend*.
 
-26. Para utilizar el DRS, es necesario instalar un par de módulos adicionales en nuestro ambiente Conda:
-
-```bash
-# Activación del ambiente
-conda activate desarrollo_geodjango
-
-# Instalación de módulos
-conda install -c conda-forge djangorestframework
-conda install -c conda-forge djangorestframework-gis
-```
-
-27. Edite el archivo `mapa_leaflet_postgis/settings.py` y agregue las aplicaciones:
-
-- `rest_framework`
-- `rest_framework_gis`
-
-```python
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.gis',
-    'rest_framework',
-    'rest_framework_gis',
-    'mapa_backend.apps.MapaBackendConfig',
-    'mapa_frontend.apps.MapaFrontendConfig'
-]
-```
-
-28. Cree el archivo `mapa_backend/serializers.py` y agregue un serializador para el modelo `Observacion`, con el siguiente contenido:
+**28. Cree el archivo `mapa_backend/serializers.py` y agregue un serializador para el modelo `Observacion`, con el siguiente contenido:**
 
 ```python
 from .models import Observacion
@@ -365,7 +507,7 @@ from rest_framework_gis.serializers import GeoFeatureModelSerializer
 class ObservacionSerializador(GeoFeatureModelSerializer):
     class Meta:
         model = Observacion
-        geo_field = 'point_geom'
+        geo_field = 'ubicacion'
 
         fields = (
             'pk',
@@ -374,7 +516,7 @@ class ObservacionSerializador(GeoFeatureModelSerializer):
         )
 ```
 
-29. Utilice el serializador que acaba de crear en dos vistas. Edite el archivo `mapa_backend/views.py` y agregue el siguiente contenido (antes comente el código de las vistas que creó en los pasos anteriores):
+**29. Utilice el serializador que acaba de crear en dos vistas. Edite el archivo `mapa_backend/views.py` y agregue el siguiente contenido (puede eliminar o comenat el código de las vistas que creó en los pasos anteriores):**
 
 ```python
 from .models import Observacion
@@ -396,7 +538,7 @@ class ObservacionDetalle(generics.RetrieveAPIView):
 
 Puede ver la especificación técnica de las vistas genéricas del DRF en [Generic views - Django REST Framework](https://www.django-rest-framework.org/api-guide/generic-views/).
 
-30. Para agregar los URL correspondientes a las vistas, edite el archivo `mapa_backend/urls.py` y agregue el siguiente contenido (antes comente el código de los URL que creó en los pasos anteriores):
+**30. Para agregar los URL correspondientes a las vistas, edite el archivo `mapa_backend/urls.py` y agregue el siguiente contenido (antes comente el código de los URL que creó en los pasos anteriores):**
 
 ```python
 from django.urls import path
@@ -404,16 +546,14 @@ from . import views
 
 urlpatterns = [
     path("observaciones/", views.ObservacionLista.as_view(), name=views.ObservacionLista.name),
-    path("observaciones/<int:pk>/", views.ObservacionDetalle.as_view(), name=views.ObservacionDetalle.name),
-    # path("observaciones/", views.observaciones, name="observaciones"),
-    # path("observacion_por_llave/<int:llave>", views.observacion_por_llave, name="observacion_por_llave"),
-    # path("ciudades/", views.ciudades, name="ciudades"),
+    path("observaciones/<int:pk>/", views.ObservacionDetalle.as_view(), name=views.ObservacionDetalle.name)
 ]
 ```
 
-Puede acceder a las vista en:
-[http://127.0.0.1:8000/api/v1/observaciones/](http://127.0.0.1:8000/api/v1/observaciones/)
-[http://127.0.0.1:8000/api/v1/observaciones/1](http://127.0.0.1:8000/api/v1/observaciones/1)
+Puede acceder a las vistas en:
+
+- [http://127.0.0.1:8000/api/v1/observaciones/](http://127.0.0.1:8000/api/v1/observaciones/)
+- [http://127.0.0.1:8000/api/v1/observaciones/1](http://127.0.0.1:8000/api/v1/observaciones/1)
 
 **Ejercicios**
 
@@ -421,73 +561,220 @@ Puede acceder a las vista en:
 2. Cambie a la vista genérica de la vista `ObservacionDetalle` a `RetrieveUpdateDestroyAPIView` ([https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdatedestroyapiview](https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdatedestroyapiview)) y modifique y borre observaciones en la interfaz web que se muestra al invocar la vista.
 3. Cree un serializador para el modelo `Ciudad` y vistas para recuperar todos los objetos y un objeto por la llave primaria (`pk`).
 
-### Funciones geoespaciales
+## Desarrollo del *frontend*
+El *frontend* recibe, mediante vistas, los datos contenidos en los modelos del *backend* y los despliega para el usuario. En este caso, se muestran en un mapa desarrollado en la bibioteca Leaflet.
 
-Seguidamente, se muestra un ejemplo de las funciones espaciales de GeoDjango. Se define una vista para mostrar las tres ciudades más cercanas a una observación. Debe agregarse contenido a los siguientes archivos:
+### Archivos estáticos
+Las vistas acceden archivos JS y CSS. En este contexto, estos archivos se denominan "estáticos", por tener contenido fijo o estático, a diferencia de las plantillas, que tienen contenido dinámico.
 
-`mapa_backend/serializers.py`:
+**31. Cree los siguientes archivos estáticos en la aplicación *frontend* (note que debe crear algunos directorios también):**
 
-```python
-class CiudadSerializador(GeoFeatureModelSerializer):
-    proximidad = serializers.SerializerMethodField('get_proximidad')
+- **`mapa_frontend/static/css/estilos.css`**
 
-    def get_proximidad(self, obj):
-        if obj.distance:
-            return obj.distance.km
-        return False
-    
-    class Meta:
-        model = Ciudad
-        geo_field = 'point_geom'
+```css
+*{
+    box-sizing: border-box;
+}
 
-        fields = (
-            'pk',
-            'nombre',
-            'descripcion',
-            'proximidad'
-        )      
+body {
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+#mapaid {
+    height: 100vh;
+    width: 100vw;
+}
 ```
 
-`mapa_backend/views.py`:
+- **`mapa_frontend/static/js/principal.js`**
 
-```python
-from django.http import Http404
-from django.contrib.gis.db.models.functions import Distance
-from django.shortcuts import get_object_or_404
+```js
+// Evento que se dispara al cargar la página web
+document.addEventListener("DOMContentLoaded", iniciar)
 
-class CiudadLista(generics.ListAPIView):
+// Función que se invoca con el disparo de "DOMContentLoaded"
+function iniciar() {
 
-    serializer_class = CiudadSerializador
-    name = 'ciudad-lista'
+    // Objeto del mapa Leaflet
+    var mapa = L.map('mapaid').setView([9.5, -84], 8);
 
-    def get_queryset(self):
-        observacionID = self.request.query_params.get('observacionid')
+    // Capa base de Carto
+    positromap = L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+        {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: "abcd",
+          maxZoom: 20,
+        }
+    ).addTo(mapa);
 
-        if observacionID is None:
-            raise Http404
-        
-        geom_observacion_seleccionada = get_object_or_404(Observacion, pk=observacionID).point_geom
-        ciudades_cercanas = Ciudad.objects.annotate(distance=Distance('point_geom', geom_observacion_seleccionada)).order_by('distance')[:3]
+    // Capa base de OSM
+    osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    });
+  
+    // Capa base de ESRI
+    esriworld = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {
+        attribution:
+            "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+        }
+    );
 
-        return ciudades_cercanas
+    // Objeto de capas base
+    var mapasbase = {
+      "Carto Positron": positromap,
+      OpenStreetMap: osm,
+      "ESRI WorldImagery": esriworld,
+    };
+
+    // Control de capas
+    control_capas = L.control
+    .layers(mapasbase, null, { collapsed: false })
+    .addTo(mapa);
+
+    // Función asíncrona que realiza una solicitud HTTP (tipo GET) 
+    // a una URL especificada, procesa la respuesta JSON y luego
+    // ejecuta una función pasada como argumento con los datos JSON obtenidos.
+    const fetchGetRequest = async(url, func) => {
+        try {
+            const response = await fetch(url)
+            const json = await response.json()
+            return func(json)
+        } catch (error) {
+            console.log(error.message)
+        }    
+    }
+
+    // Función que agrega los datos GeoJSON al mapa
+    const agregarObservacionesAlMapa = (json) => {
+        // console.log(json)
+
+        // Se obtienen los datos en GeoJSON
+        observaciones = L.geoJSON(json, {}).addTo(mapa);
+
+        // Se agrgan los datos GeoJSON al mapa
+        control_capas.addOverlay(observaciones, "Observaciones");      
+    }
+
+    // Llamado a fetchGetRequest()
+    fetchGetRequest('/api/v1/observaciones', agregarObservacionesAlMapa)
+}
 ```
 
-`mapa_backend/urls.py`:
+### Plantillas
+Las plantillas (*templates*) son archivos HTML combinados con el [Django Template Languaje (DTL)](https://docs.djangoproject.com/en/4.2/ref/templates/language/). Estos archivos definen la estructura de las páginas web. Utilizan el DTL para incluir contenido dinámico, permiten incorporar datos provenientes de las vistas y pueden incluir etiquetas y filtros de Django para lógica básica y manipulación de datos.
+
+**32. Cree los archivos**:
+
+- **`mapa_frontend/templates/mapa_frontend/base.html`**
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Observaciones{% endblock %}</title>
+    <!-- CSS -->
+    {% block enlaces_css %}{% endblock %}
+</head>
+<body>
+    <!-- JS -->
+    {% block enlaces_js %}{% endblock %}
+
+    <div id="content">
+        {% block contenido %}{% endblock %}
+    </div>    
+</body>
+
+</html>
+```
+
+- **`mapa_frontend/templates/mapa_frontend/observaciones_base.html`**
+
+```html
+{% extends './base.html' %}
+{% load static %}
+
+{% block enlaces_css %}
+<!-- Enlace a hoja CSS de Leaflet -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+<!-- Enlace a estilos del mapa -->
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+{% endblock %}
+
+{% block enlaces_js %}
+<!-- Enlace a biblioteca JavaScript de Leaflet -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+<!-- Código JS/Leaflet para crear y configurar el mapa -->
+<script src="{% static 'js/principal.js' %}"></script>
+{% endblock %}
+
+{% block contenido %}
+<div id="mapaid"></div>
+{% endblock %}
+```
+
+### Vistas
+Las vistas del *frontend* retornan HTML, para lo que emplean el método [render()](https://docs.djangoproject.com/en/4.2/topics/http/shortcuts/#render).
+
+**33. Edite el archivo `mapa_frontend/views.py`:**
 
 ```python
+from django.shortcuts import render
+
+# Create your views here.
+def observacionesListaMapa(request):
+    return render(request, 'mapa_frontend/observaciones_base.html')
+```
+
+**34. Cree el archivo `mapa_frontend/urls.py` y agregue el siguiente contenido:**
+
+```python
+from django.urls import path
+from . import views
+
+app_name = 'mapa_frontend'
 urlpatterns = [
-    path("observaciones/", views.ObservacionLista.as_view(), name=views.ObservacionLista.name),
-    path("observaciones/<int:pk>/", views.ObservacionDetalle.as_view(), name=views.ObservacionDetalle.name),
-    path("ciudades/", views.CiudadLista.as_view(), name=views.CiudadLista.name)
-    # path("observaciones/", views.observaciones, name="observaciones"),
-    # path("observacion_por_llave/<int:llave>", views.observacion_por_llave, name="observacion_por_llave"),
-    # path("ciudades/", views.ciudades, name="ciudades"),
+    path('', views.observacionesListaMapa, name='observaciones-lista-mapa')
 ]
 ```
 
-Las tres ciudades más cercanas a una observación pueden consultarse, por ejemplo, con:
+**35. Edite el archivo `mapa_leaflet_postgis/urls.py`:**
 
-[http://127.0.0.1:8000/api/v1/ciudades/?observacionid=2](http://127.0.0.1:8000/api/v1/ciudades/?observacionid=2)
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("api/v1/", include("mapa_backend.urls")),
+    path('', include('mapa_frontend.urls'))
+]
+```
+
+**36. El mapa Leaflet con los puntos de observación ingresados por medio de la interfaz de administración de Django debe estar visible en la dirección [http://127.0.0.1:8000/](http://127.0.0.1:8000/).**
+
+**Ejercicios**
+
+1. Agregue al mapa Leaflet una capa de puntos agrupados, con base en la capa de observaciones.
+2. Agregue al mapa Leaflet una capa de calor, con base en la capa de observaciones.
 
 ## Recursos de interés
 
