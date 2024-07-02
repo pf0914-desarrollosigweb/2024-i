@@ -338,7 +338,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#plantillas" id="toc-plantillas" class="nav-link" data-scroll-target="#plantillas"><span class="header-section-number">10.7.2</span> Plantillas</a></li>
   <li><a href="#vistas-1" id="toc-vistas-1" class="nav-link" data-scroll-target="#vistas-1"><span class="header-section-number">10.7.3</span> Vistas</a></li>
   </ul></li>
-  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="header-section-number">10.8</span> Recursos de interés</a></li>
+  <li><a href="#carga-de-datos-externos" id="toc-carga-de-datos-externos" class="nav-link" data-scroll-target="#carga-de-datos-externos"><span class="header-section-number">10.8</span> Carga de datos externos</a></li>
+  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="header-section-number">10.9</span> Recursos de interés</a></li>
   </ul>
 </nav>
     </div>
@@ -426,10 +427,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="el-patrón-modelovistacontrolador" class="level3" data-number="10.2.2">
 <h3 data-number="10.2.2" class="anchored" data-anchor-id="el-patrón-modelovistacontrolador"><span class="header-section-number">10.2.2</span> El patrón Modelo–Vista–Controlador</h3>
 <p>La arquitectura de Django está basada en el patrón de diseño de software denominado <a href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">Modelo-Vista-Controlador (MVC)</a>, el cual es muy popular en el desarrollo de aplicaciones y sus interfaces de usuario. El patrón consiste de tres componentes, los cuales se muestran en la <a href="#fig-modelo-vista-controlador" class="quarto-xref">Figura&nbsp;<span>10.1</span></a>.</p>
-<div id="fig-modelo-vista-controlador" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="El patrón Modelo-Vista-Controlador" data-fig-align="center">
+<div id="fig-modelo-vista-controlador" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="El patrón Modelo-Vista-Controlador">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-modelo-vista-controlador-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="img/modelo-vista-controlador.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="img/modelo-vista-controlador.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="El patrón Modelo-Vista-Controlador"></a>
+<a href="img/modelo-vista-controlador.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="img/modelo-vista-controlador.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="El patrón Modelo-Vista-Controlador"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-modelo-vista-controlador-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;10.1: El patrón Modelo-Vista-Controlador. Fuente: <a href="https://commons.wikimedia.org/wiki/File:MVC-Process.svg">Wikimedia Commons</a>.
@@ -453,10 +454,10 @@ Figura&nbsp;10.1: El patrón Modelo-Vista-Controlador. Fuente: <a href="https://
 <section id="frontend-y-backend" class="level3" data-number="10.2.3">
 <h3 data-number="10.2.3" class="anchored" data-anchor-id="frontend-y-backend"><span class="header-section-number">10.2.3</span> <em>Frontend</em> y <em>Backend</em></h3>
 <p>Django es marco de trabajo de “pila completa” (<em>full stack</em>), lo que significa que apoya el desarrollo de las dos grandes capas de la arquitectura de un sistema de información: el <em>frontend</em> y el <em>backend</em>, cuya relación se muestra en la <a href="#fig-frontend-backend" class="quarto-xref">Figura&nbsp;<span>10.2</span></a>:</p>
-<div id="fig-frontend-backend" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Frontend y Backend" data-fig-align="center">
+<div id="fig-frontend-backend" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Frontend y Backend">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-frontend-backend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="img/frontend-backend.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="img/frontend-backend.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Frontend y Backend"></a>
+<a href="img/frontend-backend.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="img/frontend-backend.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Frontend y Backend"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frontend-backend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;10.2: <em>Frontend</em> y <em>Backend</em>. Fuente: <a href="https://www.hackaboss.com/blog/frontend-backend-explicados">Hack a Boss</a>.
@@ -1040,8 +1041,92 @@ Figura&nbsp;10.2: <em>Frontend</em> y <em>Backend</em>. Fuente: <a href="https:/
 </ol>
 </section>
 </section>
-<section id="recursos-de-interés" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">10.8</span> Recursos de interés</h2>
+<section id="carga-de-datos-externos" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="carga-de-datos-externos"><span class="header-section-number">10.8</span> Carga de datos externos</h2>
+<p>En esta sección se muestra como cargar datos geoespaciales a través de GeoDjango para su uso en las aplicaciones.</p>
+<p><strong>37. Cree el directorio mapa_backend/datos y coloque ahí el archivo <a href="https://github.com/pf0914-desarrollosigweb/2024-i/blob/main/datos/registros-presencia.gpkg">registros-presencia.gpkg</a>.</strong></p>
+<p>Este archivo contiene un conjunto de registros de presencia de especies.</p>
+<p><strong>38. Ejecute el siguiente comando:</strong></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py ogrinspect mapa_backend/datos/registros-presencia.gpkg RegistroPresencia <span class="at">--mapping</span> <span class="at">--name-field</span> species <span class="at">--null</span> true</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Como salida, generará un modelo Django y un mapeo de campos que se utilizará en un script de Python.</p>
+<p><strong>39. Agregue el modelo a <code>mapa_backend/models.py</code> (note los cambios en los argumentos <code>max_length</code>)</strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> RegistroPresencia(models.Model):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    species <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">50</span>, null<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    sex <span class="op">=</span> models.CharField(max_length<span class="op">=</span><span class="dv">50</span>, null<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    age <span class="op">=</span> models.IntegerField(null<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    decimallongitude <span class="op">=</span> models.FloatField(null<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    decimallatitude <span class="op">=</span> models.FloatField(null<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    geom <span class="op">=</span> models.PointField()</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>): <span class="cf">return</span> <span class="va">self</span>.species</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>40. Revise la documentación en <a href="https://docs.djangoproject.com/en/4.1/ref/contrib/gis/tutorial/#layermapping">https://docs.djangoproject.com/en/4.1/ref/contrib/gis/tutorial/#layermapping</a> y cree el archivo <code>mapa_backend/load.py</code>:</strong></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib.gis.utils <span class="im">import</span> LayerMapping</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> RegistroPresencia</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>registropresencia_mapping <span class="op">=</span> {</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'species'</span>: <span class="st">'species'</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sex'</span>: <span class="st">'sex'</span>,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age'</span>: <span class="st">'age'</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'decimallongitude'</span>: <span class="st">'decimalLongitude'</span>,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'decimallatitude'</span>: <span class="st">'decimalLatitude'</span>,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'geom'</span>: <span class="st">'POINT'</span>,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>registros_gpkg <span class="op">=</span> Path(<span class="va">__file__</span>).resolve().parent <span class="op">/</span> <span class="st">'datos'</span> <span class="op">/</span> <span class="st">'registros-presencia.gpkg'</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run(verbose<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    lm <span class="op">=</span> LayerMapping(RegistroPresencia, registros_gpkg, registropresencia_mapping, transform<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    lm.save(strict<span class="op">=</span><span class="va">True</span>, verbose<span class="op">=</span>verbose)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>41. Realice las migraciones:</strong></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py makemigrations    </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py migrate</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>42. Abra la interfaz de línea de comandos de Django:</strong></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> manage.py shell</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>43. Cargue los datos desde el archivo:</strong></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mapa_backend <span class="im">import</span> load</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>load.run()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>44. Consulte los datos cargados:</strong></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mapa_backend.models <span class="im">import</span> RegistroPresencia</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>RegistroPresencia.objects.count()</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>RegistroPresencia.objects.<span class="bu">all</span>()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>RegistroPresencia.objects.get(<span class="bu">id</span> <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>RegistroPresencia.objects.get(<span class="bu">id</span> <span class="op">=</span> <span class="dv">1</span>).sex</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>RegistroPresencia.objects.<span class="bu">filter</span>(sex<span class="op">=</span><span class="st">"Hembra"</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>RegistroPresencia.objects.<span class="bu">filter</span>(sex<span class="op">=</span><span class="st">"Hembra"</span>).count()</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>exit()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>45. Edite el archivo <code>mapa_backend/admin.py</code> para incluir el modelo en la interfaz de administración de Django:</strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> django.contrib.gis <span class="im">import</span> admin</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> Observacion</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .models <span class="im">import</span> RegistroPresencia</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Register your models here.</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomGeoAdmin(admin.GISModelAdmin):</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    gis_widget_kwargs <span class="op">=</span> {</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'attrs'</span>: {</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'default_zoom'</span>: <span class="dv">7</span>,</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'default_lon'</span>: <span class="op">-</span><span class="fl">84.0</span>,</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'default_lat'</span>: <span class="fl">10.0</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="at">@admin.register</span>(Observacion)</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ObservacionAdmin(CustomGeoAdmin):</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="at">@admin.register</span>(RegistroPresencia)</span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> RegistroPresenciaAdmin(CustomGeoAdmin):</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Ejercicios</strong></p>
+<ol type="1">
+<li>Cree un serializador y una vista en modo lista para todas las instancias del modelo <code>RegistroPresencia</code>.</li>
+<li>Cree los URL necesarios.</li>
+<li>Modifique la aplicación Leaflet para desplegar los registros de presencia.</li>
+</ol>
+</section>
+<section id="recursos-de-interés" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">10.9</span> Recursos de interés</h2>
 <p><a href="https://www.youtube.com/playlist?list=PLmsFUfdnGr3yjFln0fJF5LP58Q0onAjpF">Python Web Apps 101</a> <a href="https://www.youtube.com/watch?v=5IhgcANAAFc">Python Web Apps: Django</a></p>
 
 
@@ -1474,7 +1559,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

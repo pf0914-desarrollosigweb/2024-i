@@ -776,6 +776,125 @@ urlpatterns = [
 1. Agregue al mapa Leaflet una capa de puntos agrupados, con base en la capa de observaciones.
 2. Agregue al mapa Leaflet una capa de calor, con base en la capa de observaciones.
 
+## Carga de datos externos
+En esta sección se muestra como cargar datos geoespaciales a través de GeoDjango para su uso en las aplicaciones.
+
+**37. Cree el directorio mapa_backend/datos y coloque ahí el archivo [registros-presencia.gpkg](https://github.com/pf0914-desarrollosigweb/2024-i/blob/main/datos/registros-presencia.gpkg).**
+
+Este archivo contiene un conjunto de registros de presencia de especies.
+
+**38. Ejecute el siguiente comando:**
+
+```bash
+python manage.py ogrinspect mapa_backend/datos/registros-presencia.gpkg RegistroPresencia --mapping --name-field species --null true
+```
+
+Como salida, generará un modelo Django y un mapeo de campos que se utilizará en un script de Python.
+
+**39. Agregue el modelo a `mapa_backend/models.py` (note los cambios en los argumentos `max_length`)**
+
+```python
+class RegistroPresencia(models.Model):
+    species = models.CharField(max_length=50, null=True)
+    sex = models.CharField(max_length=50, null=True)
+    age = models.IntegerField(null=True)
+    decimallongitude = models.FloatField(null=True)
+    decimallatitude = models.FloatField(null=True)
+    geom = models.PointField()
+
+    def __str__(self): return self.species
+```
+
+**40. Revise la documentación en [https://docs.djangoproject.com/en/4.1/ref/contrib/gis/tutorial/#layermapping](https://docs.djangoproject.com/en/4.1/ref/contrib/gis/tutorial/#layermapping) y cree el archivo `mapa_backend/load.py`:**
+
+```python
+from pathlib import Path
+from django.contrib.gis.utils import LayerMapping
+from .models import RegistroPresencia
+
+registropresencia_mapping = {
+    'species': 'species',
+    'sex': 'sex',
+    'age': 'age',
+    'decimallongitude': 'decimalLongitude',
+    'decimallatitude': 'decimalLatitude',
+    'geom': 'POINT',
+}
+
+registros_gpkg = Path(__file__).resolve().parent / 'datos' / 'registros-presencia.gpkg'
+
+def run(verbose=True):
+    lm = LayerMapping(RegistroPresencia, registros_gpkg, registropresencia_mapping, transform=False)
+    lm.save(strict=True, verbose=verbose)
+```
+
+**41. Realice las migraciones:**
+
+```bash
+python manage.py makemigrations    
+python manage.py migrate
+```
+
+**42. Abra la interfaz de línea de comandos de Django:**
+
+```bash
+python manage.py shell
+```
+
+**43. Cargue los datos desde el archivo:**
+
+```python
+from mapa_backend import load
+load.run()
+```
+
+**44. Consulte los datos cargados:**
+
+```python
+from mapa_backend.models import RegistroPresencia
+RegistroPresencia.objects.count()
+RegistroPresencia.objects.all()
+RegistroPresencia.objects.get(id = 1)
+RegistroPresencia.objects.get(id = 1).sex
+RegistroPresencia.objects.filter(sex="Hembra")
+RegistroPresencia.objects.filter(sex="Hembra").count()
+exit()
+```
+
+**45. Edite el archivo `mapa_backend/admin.py` para incluir el modelo en la interfaz de administración de Django:**
+
+```python
+from django.contrib.gis import admin
+from .models import Observacion
+from .models import RegistroPresencia
+
+
+# Register your models here.
+class CustomGeoAdmin(admin.GISModelAdmin):
+    gis_widget_kwargs = {
+        'attrs': {
+            'default_zoom': 7,
+            'default_lon': -84.0,
+            'default_lat': 10.0
+        }
+    }
+
+@admin.register(Observacion)
+class ObservacionAdmin(CustomGeoAdmin):
+    pass
+
+@admin.register(RegistroPresencia)
+class RegistroPresenciaAdmin(CustomGeoAdmin):
+    pass
+```
+
+**Ejercicios**
+
+1. Cree un serializador y una vista en modo lista para todas las instancias del modelo `RegistroPresencia`.
+2. Cree los URL necesarios.
+3. Modifique la aplicación Leaflet para desplegar los registros de presencia.
+
+
 ## Recursos de interés
 
 [Python Web Apps 101](https://www.youtube.com/playlist?list=PLmsFUfdnGr3yjFln0fJF5LP58Q0onAjpF)
