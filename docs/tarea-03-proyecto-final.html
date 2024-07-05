@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - Evaluaciones</title>
+<title>PF0914 Desarrollo de sistemas de información geográfica en la Web 2024-I - Proyecto final</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tarea-01.html" rel="next">
-<link href="./10-geodjango-conceptos-basicos.html" rel="prev">
+<link href="./tarea-02.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iv-evaluaciones.html">Evaluaciones</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iv-evaluaciones.html">Evaluaciones</a></li><li class="breadcrumb-item"><a href="./tarea-03-proyecto-final.html">Proyecto final</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -213,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./parte-iv-evaluaciones.html" class="sidebar-item-text sidebar-link active">
+            <a href="./parte-iv-evaluaciones.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Evaluaciones</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -234,8 +233,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./proyecto-final-tarea-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tarea 3 y Proyecto final</span></a>
+  <a href="./tarea-03-proyecto-final.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Proyecto final</span></a>
   </div>
 </li>
       </ul>
@@ -250,16 +249,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#tareas" id="toc-tareas" class="nav-link active" data-scroll-target="#tareas">Tareas</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link active" data-scroll-target="#objetivos">Objetivos</a></li>
+  <li><a href="#entregables" id="toc-entregables" class="nav-link" data-scroll-target="#entregables">Entregables</a></li>
+  <li><a href="#consideraciones-adicionales" id="toc-consideraciones-adicionales" class="nav-link" data-scroll-target="#consideraciones-adicionales">Consideraciones adicionales</a></li>
+  <li><a href="#desarrollo" id="toc-desarrollo" class="nav-link" data-scroll-target="#desarrollo">Desarrollo</a></li>
+  <li><a href="#calificación" id="toc-calificación" class="nav-link" data-scroll-target="#calificación">Calificación</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./parte-iv-evaluaciones.html">Evaluaciones</a></li><li class="breadcrumb-item"><a href="./tarea-03-proyecto-final.html">Proyecto final</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Evaluaciones</h1>
+<h1 class="title">Proyecto final</h1>
 </div>
 
 
@@ -276,11 +279,62 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="tareas" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="tareas">Tareas</h2>
-<p><a href="./tarea-01.html">Tarea 1</a><br>
-<a href="./tarea-02.html">Tarea 2</a><br>
-<a href="./proyecto-final-tarea-03.html">Tarea 3 y Proyecto final</a></p>
+<section id="objetivos" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
+<p>Cada estudiante debe mostrar que es capaz de:</p>
+<ol type="1">
+<li>Desarrollar mapas interactivos con la biblioteca Leaflet de JavaScript.</li>
+<li>Incluir capas vectoriales y raster en los mapas Leaflet.</li>
+<li>Incluir controles en los mapas Leaflet.</li>
+</ol>
+</section>
+<section id="entregables" class="level2">
+<h2 class="anchored" data-anchor-id="entregables">Entregables</h2>
+<ol type="1">
+<li>Dirección de un repositorio en GitHub (ej. <code>https://github.com/mfvargas/tarea-02</code>) con el contenido especificado en la sección Desarrollo.</li>
+<li>Dirección de un sitio web publicado en GitHub Pages generado a partir del repositorio especificado en el punto anterior (ej. <code>https://mfvargas.github.io/tarea-02/</code>). <strong>Se recomienda usar un nombre más significativo que <code>tarea-02</code> para el repositorio, acorde con su contenido.</strong></li>
+</ol>
+<p>La entrega debe realizarse a través de la plataforma Mediación Virtual.</p>
+</section>
+<section id="consideraciones-adicionales" class="level2">
+<h2 class="anchored" data-anchor-id="consideraciones-adicionales">Consideraciones adicionales</h2>
+<p><strong>La tarea puede desarrollarse individualmente o en parejas</strong>.</p>
+</section>
+<section id="desarrollo" class="level2">
+<h2 class="anchored" data-anchor-id="desarrollo">Desarrollo</h2>
+<p>Debe desarrollar un sitio web, que contenga mapas interactivos, sobre un tema de su elección (un adelanto del trabajo final de graduación, alguna temática tratada en otro curso, un proyecto personal, etc.). El sitio debe contener, como mínimo, los siguientes elementos:</p>
+<ul>
+<li>Un mapa interactivo desarrollado con Leaflet. Este mapa debe contener:
+<ul>
+<li>Al menos dos capas base (ej. OpenStreetMap).</li>
+<li>Al menos una capa raster.</li>
+<li>Al menos dos capas vectoriales.</li>
+<li>Al menos una capa de coropletas, de calor o de puntos agrupados, basada en alguna de las capas vectoriales.</li>
+<li>Un control para activar y desactivar las capas.</li>
+<li>Un control de escala.</li>
+</ul></li>
+</ul>
+<p><strong>Las capas vectoriales y raster deben ser diferentes a las usadas en clase</strong>. La idea general de esta tarea es que los estudiantes utilicen sus datos.</p>
+<p>El contenido del sitio debe ser <strong>coherente</strong> y estar <strong>bien presentado</strong>.</p>
+</section>
+<section id="calificación" class="level2">
+<h2 class="anchored" data-anchor-id="calificación">Calificación</h2>
+<p>Entre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:</p>
+<p>Coherencia y presentación general del sitio web (10%).</p>
+<p>Revisión de las direcciones entregadas:</p>
+<ul>
+<li>Dirección del repositorio en GitHub (5%).</li>
+<li>Dirección del sitio web publicado en GitHub Pages (5%).</li>
+</ul>
+<p>Revisión de los componentes del mapa:</p>
+<ul>
+<li>Capas base (10%).</li>
+<li>Capa raster (20%).</li>
+<li>Capas vectoriales (20%).</li>
+<li>Capa de coropletas, de calor o de puntos agrupados (20%).</li>
+<li>Control de capas (5%).</li>
+<li>Control de escala (5%).</li>
+</ul>
 
 
 </section>
@@ -697,14 +751,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-geodjango-conceptos-basicos.html" class="pagination-link" aria-label="Desarrollo de aplicaciones geoespaciales de pila completa (*full stack*) con GeoDjango">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Desarrollo de aplicaciones geoespaciales de pila completa (<em>full stack</em>) con GeoDjango</span></span>
+      <a href="./tarea-02.html" class="pagination-link" aria-label="Tarea 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tarea 2</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tarea-01.html" class="pagination-link" aria-label="Tarea 1">
-        <span class="nav-page-text">Tarea 1</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

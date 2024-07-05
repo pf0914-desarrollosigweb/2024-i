@@ -269,6 +269,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Tarea 2</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proyecto-final-tarea-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tarea 3 - Proyecto final</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -427,10 +433,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="el-patrón-modelovistacontrolador" class="level3" data-number="10.2.2">
 <h3 data-number="10.2.2" class="anchored" data-anchor-id="el-patrón-modelovistacontrolador"><span class="header-section-number">10.2.2</span> El patrón Modelo–Vista–Controlador</h3>
 <p>La arquitectura de Django está basada en el patrón de diseño de software denominado <a href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">Modelo-Vista-Controlador (MVC)</a>, el cual es muy popular en el desarrollo de aplicaciones y sus interfaces de usuario. El patrón consiste de tres componentes, los cuales se muestran en la <a href="#fig-modelo-vista-controlador" class="quarto-xref">Figura&nbsp;<span>10.1</span></a>.</p>
-<div id="fig-modelo-vista-controlador" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="El patrón Modelo-Vista-Controlador">
+<div id="fig-modelo-vista-controlador" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="El patrón Modelo-Vista-Controlador" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-modelo-vista-controlador-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="img/modelo-vista-controlador.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="img/modelo-vista-controlador.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="El patrón Modelo-Vista-Controlador"></a>
+<a href="img/modelo-vista-controlador.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="img/modelo-vista-controlador.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="El patrón Modelo-Vista-Controlador"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-modelo-vista-controlador-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;10.1: El patrón Modelo-Vista-Controlador. Fuente: <a href="https://commons.wikimedia.org/wiki/File:MVC-Process.svg">Wikimedia Commons</a>.
@@ -454,10 +460,10 @@ Figura&nbsp;10.1: El patrón Modelo-Vista-Controlador. Fuente: <a href="https://
 <section id="frontend-y-backend" class="level3" data-number="10.2.3">
 <h3 data-number="10.2.3" class="anchored" data-anchor-id="frontend-y-backend"><span class="header-section-number">10.2.3</span> <em>Frontend</em> y <em>Backend</em></h3>
 <p>Django es marco de trabajo de “pila completa” (<em>full stack</em>), lo que significa que apoya el desarrollo de las dos grandes capas de la arquitectura de un sistema de información: el <em>frontend</em> y el <em>backend</em>, cuya relación se muestra en la <a href="#fig-frontend-backend" class="quarto-xref">Figura&nbsp;<span>10.2</span></a>:</p>
-<div id="fig-frontend-backend" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Frontend y Backend">
+<div id="fig-frontend-backend" class="lightbox quarto-figure quarto-figure-center quarto-float anchored" alt="Frontend y Backend" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-frontend-backend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="img/frontend-backend.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="img/frontend-backend.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Frontend y Backend"></a>
+<a href="img/frontend-backend.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="img/frontend-backend.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Frontend y Backend"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frontend-backend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;10.2: <em>Frontend</em> y <em>Backend</em>. Fuente: <a href="https://www.hackaboss.com/blog/frontend-backend-explicados">Hack a Boss</a>.
@@ -1559,7 +1565,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

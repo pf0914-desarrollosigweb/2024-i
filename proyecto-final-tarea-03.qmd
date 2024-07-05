@@ -1,0 +1,54 @@
+# Tarea 3 y Proyecto final {.unnumbered}
+
+## Fecha y hora límite de entrega {.unnumbered}
+Lunes 15 de julio de 2024 a las 11:59 p.m.
+
+## Descripción general
+En este trabajo se debe desarrollar un proyecto geoespacial de "pila completa" (*full stack*) con una capa *backend* y una capa *frontend*, utilizando el marco de trabajo GeoDjango de Python y la biblioteca Leaflet de JavaScript. 
+
+## Objetivos
+Cada estudiante debe mostrar que es capaz de:
+
+1. Instalar y configurar el marco de trabajo GeoDjango.
+2. Desarrollar proyectos geoespaciales de pila completa, que incluyan una capa *backend* y una capa *frontend*, con el marco de trabajo GeoDjango.
+3. Integrar mapas interactivos programados con la biblioteca Leaflet de JavaScript en aplicaciones GeoDjango.
+4. Aplicar el patrón Modelo-Vista-Controlador de diseño de software en el desarrollo de aplicaciones GeoDjango.
+
+## Entregables
+1. Dirección de un repositorio en GitHub con el código del proyecto desarrollado.
+2. Documento en formato PDF con el contenido especificado en la sección Desarrollo de este documento.
+
+La entrega debe realizarse a través de la plataforma Mediación Virtual.
+
+## Consideraciones adicionales
+**Este trabajo puede desarrollarse individualmente o en parejas.**
+
+**La calificación de este trabajo se aplicará tanto a la tarea 3 como al proyecto final del curso.**
+
+## Desarrollo
+El proyecto debe mostrar un mapa Leaflet que despliegue al menos una capa vectorial almacenada en una base de datos PostgreSQL/PostGIS. **Esta capa vectorial debe ser diferente a las utiizadas en los ejemplos del curso. Utilice alguna capa que sea de su interés.**.
+
+Para desarrollar su proyecto, puede basarse en la [Sección III](https://pf0914-desarrollosigweb.github.io/2024-i/parte-iii-geodjango.html) del sitio web de este curso. El código fuente de la aplicación desarrollada como ejemplo durante el curso está disponible en [https://github.com/pf0914-desarrollosigweb/2024-i-mapa-leaflet-postgis](https://github.com/pf0914-desarrollosigweb/2024-i-mapa-leaflet-postgis).
+
+Debe escribir o adaptar:
+
+1. Una aplicación *backend* que incluya:
+    a. (10%) Archivos de configuración.
+    b. (10%) Modelos.
+    c. (10%) Vistas. 
+    d. (10%) URL.
+    
+2. Una aplicación *frontend* que acceda a los datos de la capa vectorial a través del *backend* y los despliegue en un mapa Leaflet. Esta aplicación debe incluir:
+    a. (5%) Vistas y archivos de configuración.
+    b. En el mapa Leaflet:
+        - (5%) Al menos una capa base (ej. OSM, ESRI, Carto).
+        - (20%) La capa o capas vectoriales que agregó.
+        - (5%) Un control para activiar y desactivar las capas.
+        - (5%) Un control de escala.
+
+3. Un documento en formato PDF que incluya:
+    a. (5%) Una descripción del o los conjuntos de datos vectoriales que se despliegan en el mapa.
+    b. (10%) Los nombres de los modelos, vistas y URL que programó. **Mencione explícitamente cuál es el URL en el que se muestra el mapa Leaflet*.
+    c. (5%) Capturas de pantalla (las que considere necesarias) que muestren el mapa Leaflet y la capa vectorial.
+    
+Entre paréntesis se muestra el porcentaje de la calificación correspondiente a cada punto.

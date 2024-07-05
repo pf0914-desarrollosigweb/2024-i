@@ -372,7 +372,7 @@
     "href": "parte-iv-evaluaciones.html",
     "title": "Evaluaciones",
     "section": "",
-    "text": "Tareas\nTarea 1\nTarea 2",
+    "text": "Tareas\nTarea 1\nTarea 2\nTarea 3 y Proyecto final",
     "crumbs": [
       "Evaluaciones"
     ]
@@ -1242,6 +1242,149 @@
     "crumbs": [
       "III - GeoDjango: marco de trabajo para desarrollo de aplicaciones geoespaciales en la web",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Desarrollo de aplicaciones geoespaciales de pila completa (*full stack*) con GeoDjango</span>"
+    ]
+  },
+  {
+    "objectID": "tarea-03-proyecto-final.html",
+    "href": "tarea-03-proyecto-final.html",
+    "title": "Proyecto final",
+    "section": "",
+    "text": "Objetivos\nCada estudiante debe mostrar que es capaz de:",
+    "crumbs": [
+      "Evaluaciones",
+      "Proyecto final"
+    ]
+  },
+  {
+    "objectID": "tarea-03-proyecto-final.html#objetivos",
+    "href": "tarea-03-proyecto-final.html#objetivos",
+    "title": "Proyecto final",
+    "section": "",
+    "text": "Desarrollar mapas interactivos con la biblioteca Leaflet de JavaScript.\nIncluir capas vectoriales y raster en los mapas Leaflet.\nIncluir controles en los mapas Leaflet.",
+    "crumbs": [
+      "Evaluaciones",
+      "Proyecto final"
+    ]
+  },
+  {
+    "objectID": "tarea-03-proyecto-final.html#entregables",
+    "href": "tarea-03-proyecto-final.html#entregables",
+    "title": "Proyecto final",
+    "section": "Entregables",
+    "text": "Entregables\n\nDirección de un repositorio en GitHub (ej. https://github.com/mfvargas/tarea-02) con el contenido especificado en la sección Desarrollo.\nDirección de un sitio web publicado en GitHub Pages generado a partir del repositorio especificado en el punto anterior (ej. https://mfvargas.github.io/tarea-02/). Se recomienda usar un nombre más significativo que tarea-02 para el repositorio, acorde con su contenido.\n\nLa entrega debe realizarse a través de la plataforma Mediación Virtual.",
+    "crumbs": [
+      "Evaluaciones",
+      "Proyecto final"
+    ]
+  },
+  {
+    "objectID": "tarea-03-proyecto-final.html#consideraciones-adicionales",
+    "href": "tarea-03-proyecto-final.html#consideraciones-adicionales",
+    "title": "Proyecto final",
+    "section": "Consideraciones adicionales",
+    "text": "Consideraciones adicionales\nLa tarea puede desarrollarse individualmente o en parejas.",
+    "crumbs": [
+      "Evaluaciones",
+      "Proyecto final"
+    ]
+  },
+  {
+    "objectID": "tarea-03-proyecto-final.html#desarrollo",
+    "href": "tarea-03-proyecto-final.html#desarrollo",
+    "title": "Proyecto final",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nDebe desarrollar un sitio web, que contenga mapas interactivos, sobre un tema de su elección (un adelanto del trabajo final de graduación, alguna temática tratada en otro curso, un proyecto personal, etc.). El sitio debe contener, como mínimo, los siguientes elementos:\n\nUn mapa interactivo desarrollado con Leaflet. Este mapa debe contener:\n\nAl menos dos capas base (ej. OpenStreetMap).\nAl menos una capa raster.\nAl menos dos capas vectoriales.\nAl menos una capa de coropletas, de calor o de puntos agrupados, basada en alguna de las capas vectoriales.\nUn control para activar y desactivar las capas.\nUn control de escala.\n\n\nLas capas vectoriales y raster deben ser diferentes a las usadas en clase. La idea general de esta tarea es que los estudiantes utilicen sus datos.\nEl contenido del sitio debe ser coherente y estar bien presentado.",
+    "crumbs": [
+      "Evaluaciones",
+      "Proyecto final"
+    ]
+  },
+  {
+    "objectID": "tarea-03-proyecto-final.html#calificación",
+    "href": "tarea-03-proyecto-final.html#calificación",
+    "title": "Proyecto final",
+    "section": "Calificación",
+    "text": "Calificación\nEntre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:\nCoherencia y presentación general del sitio web (10%).\nRevisión de las direcciones entregadas:\n\nDirección del repositorio en GitHub (5%).\nDirección del sitio web publicado en GitHub Pages (5%).\n\nRevisión de los componentes del mapa:\n\nCapas base (10%).\nCapa raster (20%).\nCapas vectoriales (20%).\nCapa de coropletas, de calor o de puntos agrupados (20%).\nControl de capas (5%).\nControl de escala (5%).",
+    "crumbs": [
+      "Evaluaciones",
+      "Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html",
+    "href": "proyecto-final-tarea-03.html",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "",
+    "text": "Fecha y hora límite de entrega\nLunes 15 de julio de 2024 a las 11:59 p.m.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html#objetivos",
+    "href": "proyecto-final-tarea-03.html#objetivos",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "Objetivos",
+    "text": "Objetivos\nCada estudiante debe mostrar que es capaz de:\n\nInstalar y configurar el marco de trabajo GeoDjango.\nDesarrollar proyectos geoespaciales de pila completa, que incluyan una capa backend y una capa frontend, con el marco de trabajo GeoDjango.\nIntegrar mapas interactivos programados con la biblioteca Leaflet de JavaScript en aplicaciones GeoDjango.\nAplicar el patrón Modelo-Vista-Controlador de diseño de software en el desarrollo de aplicaciones GeoDjango.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html#entregables",
+    "href": "proyecto-final-tarea-03.html#entregables",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "Entregables",
+    "text": "Entregables\n\nDirección de un repositorio en GitHub con el código del proyecto desarrollado.\nDocumento en formato PDF con el contenido especificado en la sección Desarrollo de este documento.\n\nLa entrega debe realizarse a través de la plataforma Mediación Virtual.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html#consideraciones-adicionales",
+    "href": "proyecto-final-tarea-03.html#consideraciones-adicionales",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "Consideraciones adicionales",
+    "text": "Consideraciones adicionales\nEste trabajo puede desarrollarse individualmente o en parejas.\nLa calificación de este trabajo se aplicará tanto a la tarea 3 como al proyecto final del curso.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html#desarrollo",
+    "href": "proyecto-final-tarea-03.html#desarrollo",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "Desarrollo",
+    "text": "Desarrollo\nEl proyecto debe mostrar un mapa Leaflet que despliegue al menos una capa vectorial almacenada en una base de datos PostgreSQL/PostGIS. Esta capa vectorial debe ser diferente a las utiizadas en los ejemplos del curso. Utilice alguna capa que sea de su interés..\nPara desarrollar su proyecto, puede basarse en la Sección III del sitio web de este curso. El código fuente de la aplicación desarrollada como ejemplo durante el curso está disponible en https://github.com/pf0914-desarrollosigweb/2024-i-mapa-leaflet-postgis.\nDebe escribir o adaptar:\n\nUna aplicación backend que incluya:\n\n(10%) Archivos de configuración.\n(10%) Modelos.\n(10%) Vistas.\n(10%) URL.\n\nUna aplicación frontend que acceda a los datos de la capa vectorial a través del backend y los despliegue en un mapa Leaflet. Esta aplicación debe incluir:\n\n(5%) Vistas y archivos de configuración.\nEn el mapa Leaflet:\n\n(5%) Al menos una capa base (ej. OSM, ESRI, Carto).\n(20%) La capa o capas vectoriales que agregó.\n(5%) Un control para activiar y desactivar las capas.\n(5%) Un control de escala.\n\n\nUn documento en formato PDF que incluya:\n\n(5%) Una descripción del o los conjuntos de datos vectoriales que se despliegan en el mapa.\n(10%) Los nombres de los modelos, vistas y URL que programó. **Mencione explícitamente cuál es el URL en el que se muestra el mapa Leaflet*.\n(5%) Capturas de pantalla (las que considere necesarias) que muestren el mapa Leaflet y la capa vectorial.\n\n\nEntre paréntesis se muestra el porcentaje de la calificación correspondiente a cada punto.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html#calificación",
+    "href": "proyecto-final-tarea-03.html#calificación",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "Calificación",
+    "text": "Calificación\nEntre paréntesis, se muestra el porcentaje correspondiente a cada aspecto que se calificará:\nCoherencia y presentación general del sitio web (10%).\nRevisión de las direcciones entregadas:\n\nDirección del repositorio en GitHub (5%).\nDirección del sitio web publicado en GitHub Pages (5%).\n\nRevisión de los componentes del mapa:\n\nCapas base (10%).\nCapa raster (20%).\nCapas vectoriales (20%).\nCapa de coropletas, de calor o de puntos agrupados (20%).\nControl de capas (5%).\nControl de escala (5%).",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
+    ]
+  },
+  {
+    "objectID": "proyecto-final-tarea-03.html#descripción-general",
+    "href": "proyecto-final-tarea-03.html#descripción-general",
+    "title": "Tarea 3 y Proyecto final",
+    "section": "Descripción general",
+    "text": "Descripción general\nEn este trabajo se debe desarrollar un proyecto geoespacial de “pila completa” (full stack) con una capa backend y una capa frontend, utilizando el marco de trabajo GeoDjango de Python y la biblioteca Leaflet de JavaScript.",
+    "crumbs": [
+      "Evaluaciones",
+      "Tarea 3 y Proyecto final"
     ]
   }
 ]
